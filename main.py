@@ -112,6 +112,18 @@ class SupabaseResource(Enum):
         filters={"section": "eq.data_analyst"},
     )
 
+    LLD_QUESTIONS = ResourceConfig(
+        table_name="lld_questions", select="*", order="id.asc"
+    )
+
+    HLD_QUESTIONS = ResourceConfig(
+        table_name="hld_questions", select="*", order="id.asc"
+    )
+
+    JOB_PORTALS = ResourceConfig(table_name="job-portals", select="*")
+
+    COLD_DMS = ResourceConfig(table_name="cold-dms", select="*", order="Title.asc")
+
     @property
     def config(self) -> ResourceConfig:
         """Get the resource configuration."""
@@ -301,6 +313,14 @@ def main():
     scrape_resource(SupabaseResource.INTERVIEW_QUESTIONS_GENERAL)
     scrape_resource(SupabaseResource.INTERVIEW_QUESTIONS_JAVA)
     scrape_resource(SupabaseResource.INTERVIEW_QUESTIONS_DATA_ANALYST)
+
+    # Scrape design questions
+    scrape_resource(SupabaseResource.LLD_QUESTIONS)
+    scrape_resource(SupabaseResource.HLD_QUESTIONS)
+
+    # Scrape job-related resources
+    scrape_resource(SupabaseResource.JOB_PORTALS)
+    scrape_resource(SupabaseResource.COLD_DMS)
 
     # Example: Customize query parameters for a specific resource
     # custom_config = SupabaseResource.CS.customize(

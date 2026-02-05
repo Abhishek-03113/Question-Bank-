@@ -1,0 +1,451 @@
+{
+  "metadata": {
+    "resource": "lld_questions",
+    "file_id": 1,
+    "timestamp": "2026-02-05T13:24:54.220174",
+    "record_count": 49
+  },
+  "data": [
+    {
+      "id": 1,
+      "question": "Design a Parking Lot System",
+      "answer": "To design a Parking Lot system, we use an Object-Oriented approach. The core classes are `ParkingLot`, `ParkingFloor`, `ParkingSpot`, and `Vehicle`. The `ParkingLot` acts as a Singleton, managing multiple floors. Each `ParkingFloor` manages spots. We use an Enum for `SpotType` (Compact, Large, Handicapped) and a Strategy Pattern for `ParkingFeeCalculation` (e.g., Hourly vs Flat). Concurrency is handled using locks on the `assignSpot` method to prevent two vehicles from booking the same spot simultaneously.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Core Concepts:**\n1. **Singleton Pattern:** Ensure only one instance of the Parking System exists.\n2. **Factory Pattern:** To create different types of Tickets or Vehicles.\n3. **Strategy Pattern:** To calculate fees based on vehicle type and duration.\n\n**Key Class Structure:**\n- `ParkingLot`: List<ParkingFloor>\n- `ParkingFloor`: List<ParkingSpot>\n- `ParkingSpot`: id, isFree, type\n- `Vehicle`: licensePlate, type\n- `Ticket`: entryTime, spotId\n\n**Concurrency:**\nWhen `getNewParkingTicket(vehicle)` is called, the system must lock the resource or use a database transaction with `SELECT FOR UPDATE` to ensure the spot isn't assigned to someone else in that millisecond.",
+      "examples": "**Scenario:**\n1. A **Truck** enters.\n2. System checks `isFull(Truck)`.\n3. If false, `assignSpot()` finds the nearest large spot.\n4. Returns a `Ticket` object with entry timestamp."
+    },
+    {
+      "id": 2,
+      "question": "Design a Rate Limiter",
+      "answer": "A Rate Limiter restricts the number of requests a user can make in a given timeframe. The most common low-level implementation uses the **Token Bucket Algorithm**. We define a `Bucket` class containing `currentTokens`, `maxCapacity`, and `lastRefillTime`. When a request arrives, we calculate how many tokens to add based on the time elapsed since the last request (Lazy Refill). If tokens > 0, we decrement one and allow the request. If tokens == 0, we deny it. For thread safety, methods modifying the bucket must be `synchronized`.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Algorithms:**\n- **Token Bucket:** Tokens added at a fixed rate. Good for allowing bursts.\n- **Leaky Bucket:** Requests processed at a fixed rate. Smooths traffic.\n- **Sliding Window:** More accurate but memory-intensive.\n\n**Low-Level Implementation Details:**\nWe don't need a background thread filling buckets (inefficient). We use **Lazy Refill**:\n1. Request arrives at time T.\n2. Calculate `tokensToAdd = (T - lastRefill) * rate`.\n3. Update `currentTokens = min(maxCap, currentTokens + tokensToAdd)`.\n4. If `currentTokens >= 1`, decrement and return True.\n\n**Concurrency:**\nIn a distributed system, this logic moves to Redis using **Lua Scripts** to ensure atomicity.",
+      "examples": "**Example:**\n- Limit: 5 requests/sec.\n- User sends 3 requests instantly. All allowed. Tokens = 2.\n- User sends 3 more. 2 allowed, 1 denied (429 Too Many Requests).\n- After 1 second, tokens refill to 5."
+    },
+    {
+      "id": 3,
+      "question": "Design a Tic-Tac-Toe Game",
+      "answer": "We model this with a `Board` class (NxN grid), a `Player` class, and a `Game` controller. The `Board` holds a 2D array of pieces. The critical logic is the `checkWin()` algorithm. A naive approach scans the board (O(N^2)), but an optimized approach uses arrays (`rows[]`, `cols[]`, `diag`, `antiDiag`) to track counts. If Player 1 moves at row X, we increment `rows[X]`. If `rows[X] == N`, they win. This makes the win check O(1).",
+      "difficulty": "Easy",
+      "section": "Game Design",
+      "explanation": "**Key Components:**\n- **Board:** Manages the grid state and validation (`isValidMove`).\n- **Player:** Attributes like Name and Symbol (X/O).\n- **Game:** Manages the turn loop (`while !gameOver`).\n\n**Optimization (O(1) Win Check):**\nInstead of iterating loops to check for a win:\n1. Keep an array `rows[N]` and `cols[N]`.\n2. When Player 1 moves at `(r,c)`, `rows[r]++`, `cols[c]++`.\n3. If `rows[r] == N`, Player 1 wins.\n4. For Player 2, decrement: `rows[r]--`. If `rows[r] == -N`, Player 2 wins.\n\n**Extensibility:**\nThe design should allow easy expansion to a 4x4 or 5x5 board by simply changing the constructor parameter `size`.",
+      "examples": "**Scenario:**\n- Board size: 3.\n- P1 (X) places at (0,0). `rows[0]` becomes 1.\n- P1 places at (0,1). `rows[0]` becomes 2.\n- P1 places at (0,2). `rows[0]` becomes 3. -> **WIN** detected."
+    },
+    {
+      "id": 4,
+      "question": "Design an Elevator System",
+      "answer": "This requires a `Controller` that manages multiple `ElevatorCars`. We use the **State Pattern** for the car (Idle, MovingUp, MovingDown). The dispatching logic typically uses the **SCAN (LOOK) Algorithm**: the elevator continues in the current direction servicing requests until there are no more requests in that direction, then it switches. We use a `PriorityQueue` inside the controller to manage floor requests efficiently based on the current direction.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Design Patterns:**\n- **State Pattern:** To manage `MovingState`, `IdleState`, `StoppedState`.\n- **Observer Pattern:** The elevator buttons are subjects; the Controller is the observer.\n\n**Algorithm (LOOK):**\n1. Elevator is at floor 5, moving UP.\n2. Requests exist at 8 and 2.\n3. It ignores 2 for now, goes to 8.\n4. Once at 8, if no requests > 8, it changes direction to DOWN and services 2.\n\n**Classes:**\n- `ElevatorSystem` (Singleton Facade)\n- `ElevatorCar` (id, currentFloor, direction)\n- `Panel` (Internal/External buttons)",
+      "examples": "**Example:**\n- User A at Floor 1 presses UP.\n- User B inside Elevator presses Floor 5.\n- Controller adds both to queue.\n- Elevator stops at 1 (picks A), then continues to 5 (drops B)."
+    },
+    {
+      "id": 5,
+      "question": "Design an LRU Cache",
+      "answer": "An LRU (Least Recently Used) Cache evicts the least recently accessed item when capacity is reached. The standard LLD implementation uses a **HashMap** combined with a **Doubly Linked List**. The HashMap provides O(1) access to data. The Doubly Linked List maintains the order of usage. When an item is accessed or added, it is moved to the head of the list. When capacity is full, the item at the tail is removed from both the list and the map.",
+      "difficulty": "Medium",
+      "section": "Data Structures",
+      "explanation": "**Data Structures:**\n- **HashMap<Key, Node>:** For O(1) retrieval.\n- **DoublyLinkedList:** To store Nodes ordered by recency. Head = Most Recently Used. Tail = Least Recently Used.\n\n**Operations:**\n1. `get(key)`: Check map. If exists, move Node to Head. Return value.\n2. `put(key, value)`:\n   - If key exists: Update value, move to Head.\n   - If new: Create Node, add to Head, add to Map.\n   - If over capacity: Remove Tail Node, remove from Map.\n\n**Thread Safety:**\nUse `ReentrantReadWriteLock`. Read lock for `get`, Write lock for `put`.",
+      "examples": "**Scenario:**\n- Capacity: 3.\n- `put(A)`, `put(B)`, `put(C)`. List: C->B->A.\n- `get(A)`. List: A->C->B.\n- `put(D)`. Cache full. Remove Tail (B). List: D->A->C."
+    },
+    {
+      "id": 7,
+      "question": "Design a Library Management System",
+      "answer": "This system manages `Book`, `Member`, `Lending`, and `Fine`. We use a `Librarian` actor (Admin) and `Member` actor. We implement a `Search` interface to find books by Title, Author, or Subject. The core complexity handles the business rules: A member can only checkout `MAX_BOOKS`. If a book is returned after the due date, a fine is calculated using a `FineCalculator` strategy (e.g., $1 per day).",
+      "difficulty": "Easy",
+      "section": "Object-Oriented Design",
+      "explanation": "**Actors:**\n- **Librarian:** Can add/remove books, block members.\n- **Member:** Can search, checkout, return, reserve.\n\n**Use Cases:**\n1. **Checkout:** Check if Member has fines > 0. Check if `loans.size() < 5`. Check if book `isAvailable`. Create `BookLending` record.\n2. **Return:** Calculate `diff = Today - DueDate`. If diff > 0, generate `Fine`. Update book status to Available.\n\n**Concurrency:**\nIf there is only 1 copy of \"Harry Potter\", two users cannot check it out simultaneously. Requires database locking on the `BookItem` row.",
+      "examples": "**Example:**\n- Member scans book barcode.\n- System validates member card.\n- System creates Loan Record with Due Date = Today + 14 days.\n- Updates Book status to 'Loaned'."
+    },
+    {
+      "id": 8,
+      "question": "Design a Stack Overflow Clone",
+      "answer": "This system involves `Users`, `Questions`, `Answers`, `Comments`, and `Tags`. The key feature is the **Reputation/Badge System** and **Voting**. We typically use the **Observer Pattern** so that when an answer gets an upvote, the `User` entity is notified to update their reputation score. Questions also need a flexible tagging system, often modeled as a Many-to-Many relationship in the DB.",
+      "difficulty": "Medium",
+      "section": "System Design",
+      "explanation": "**Key Entities:**\n- `Question`: contains List<Answer>, List<Comment>, List<Tag>.\n- `Answer`: contains List<Comment>, voteCount.\n- `User`: reputationScore, badges.\n\n**Design Patterns:**\n- **Observer:** When a user earns points, check if they qualify for a Badge (Gold/Silver/Bronze).\n- **Composite:** Comments can be on Questions OR Answers.\n\n**Search:**\nRequires an inverted index (or ElasticSearch integration in high level) to search questions by keywords or tags efficiently.",
+      "examples": "**Scenario:**\n- User A posts Question.\n- User B answers.\n- User A 'Accepts' answer.\n- System triggers event: User B gets +15 Reputation. Question marked 'Solved'."
+    },
+    {
+      "id": 9,
+      "question": "Design a Logging Framework",
+      "answer": "A Logging Framework like Log4j uses the **Chain of Responsibility** pattern. We have `Logger` objects with different levels (INFO, DEBUG, ERROR). When a log message arrives, it flows through the chain. If the logger's level matches the message, it processes it. We also use 'Appenders' (ConsoleAppender, FileAppender) to decide *where* to write. To prevent blocking the main thread, the actual writing should be asynchronous using a queue.",
+      "difficulty": "Medium",
+      "section": "Design Patterns",
+      "explanation": "**Architecture:**\n1. **Logger (Singleton):** Entry point.\n2. **LogLevel (Enum):** INFO, DEBUG, WARN, ERROR.\n3. **Appender (Interface):** `write(message)`. Implementations: Console, File, DB.\n4. **Layout (Interface):** `format(message)`. Implementations: JSON, XML, Text.\n\n**Chain of Responsibility:**\nYou can configure a chain where ERROR logs go to the DB, but INFO logs only go to the Console.\n\n**Performance:**\nUse a `BlockingQueue` for log messages. A separate daemon thread polls this queue and writes to the disk/network. This ensures the application doesn't freeze if the disk is slow.",
+      "examples": "**Example:**\n- Config: Console (INFO), File (ERROR).\n- Code: `log.info(\"User login\")` -> Console prints.\n- Code: `log.error(\"DB Down\")` -> Console prints AND File writes."
+    },
+    {
+      "id": 10,
+      "question": "Design a Meeting Scheduler",
+      "answer": "The Scheduler manages `Rooms` and `Meetings`. A Room has a capacity. The core logic is `findMeetingSlot(users, duration)`. This checks the calendars of all invitees and finds a common free time interval. We must handle concurrency: two people cannot book the same room for the same slot. We use a global `Calendar` object or individual `UserCalendar` objects.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Core Logic (Interval Intersection):**\nGiven n users, find a time block where all are free.\n1. Merge all busy slots of all users.\n2. Invert the result to find free slots.\n3. Filter free slots by `Room` availability.\n\n**Classes:**\n- `Scheduler`: The main controller.\n- `Room`: id, capacity.\n- `Meeting`: startTime, endTime, participants.\n- `Calendar`: Map<Date, List<Meeting>>.\n\n**Notifications:**\nUse **Observer Pattern** to notify users via email when a meeting is booked or cancelled.",
+      "examples": "**Scenario:**\n- Request: Book Room A for 10:00-11:00.\n- Check Room A calendar.\n- If free, create Meeting object.\n- Add Meeting to Room Calendar and User Calendars.\n- Send Invitations."
+    },
+    {
+      "id": 11,
+      "question": "Design an ATM System",
+      "answer": "The ATM system is a classic example of the **State Design Pattern**. The machine transitions through various states: `ReadyState`, `EnterPinState`, `SelectTransactionState`, `DepositState`, and `WithdrawCashState`. \n\nThe core class `ATM` acts as the Context. We also use the **Chain of Responsibility** pattern for the cash dispenser (e.g., $100 handler -> $50 handler -> $20 handler). \n\nSecurity is paramount; the `CardReader` class validates the card, and the `BankService` interface handles the actual transaction verification with the bank's backend. Singleton pattern is used for the ATM instance itself.",
+      "difficulty": "Medium",
+      "section": "Design Patterns",
+      "explanation": "**State Pattern Implementation:**\n- **Idle:** Waiting for card insertion.\n- **HasCard:** Card inserted, waiting for PIN.\n- **SelectOption:** PIN verified, waiting for user input.\n- **Dispensing:** Counting cash.\n\n**Cash Dispenser Logic (Chain of Responsibility):**\n- `HundredDollarDispenser`: Checks if amount >= 100. Dispenses quotient. Passes remainder to next.\n- `FiftyDollarDispenser`: Handles remainder >= 50.\n- `TwentyDollarDispenser`: Handles remainder >= 20.\n\n**Concurrency:**\nATM transactions must be atomic. If money is deducted but not dispensed (hardware fail), a rollback (reversal) transaction must trigger.",
+      "examples": "**Scenario:**\n- User inserts card. State -> `EnterPin`.\n- User types 1234. Valid. State -> `SelectOption`.\n- User selects 'Withdraw $130'. State -> `Dispensing`.\n- Chain: $100 (1 note) -> $50 (0 notes) -> $20 (1 note) -> $10 (1 note).\n- State -> `Idle`."
+    },
+    {
+      "id": 12,
+      "question": "Design a Movie Ticket Booking System",
+      "answer": "This system requires handling `Cinemas`, `Halls`, `Shows`, `Seats`, and `Bookings`. The most critical LLD challenge is **Concurrency** to prevent double-booking. \n\nWhen a user selects a seat, we use a database transaction with a 'Select for Update' or a distributed lock (e.g., Redis) to hold the seat for 10 minutes. \n\nClasses include `Cinema` (aggregates Halls), `Show` (aggregates Seats and Movie), and `Booking`. We use the **Strategy Pattern** for pricing (Premium vs. Standard seats, Afternoon vs. Evening pricing).",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Concurrency Handling (The Hard Part):**\n1. **Optimistic Locking:** Add a `version` column to the Seat. When updating, check if version matches. If not, fail.\n2. **Pessimistic Locking:** Lock the row in DB. `SELECT * FROM seats WHERE id=1 FOR UPDATE`.\n\n**Class Design:**\n- `Cinema`: Name, Location, List<Hall>.\n- `Hall`: ID, List<Seat>.\n- `Show`: Movie, StartTime, EndTime, Map<SeatID, Status>.\n- `Seat`: Row, Col, Type (Regular/Recliner).\n\n**Search Logic:**\nUsers search by Movie, City, or Date. We need an efficient index or Search Service.",
+      "examples": "**Scenario:**\n- User A and B click 'Book' on Seat A1 at the same time.\n- System starts transaction for User A. Locks Seat A1.\n- User B's request blocks or fails immediately with \"Seat unavailable\".\n- User A pays. Seat status becomes 'Booked'. Lock released."
+    },
+    {
+      "id": 13,
+      "question": "Design Snake and Ladder Game",
+      "answer": "The game consists of a `Board` (100 cells), `Dice`, `Players`, and entities for `Snake` and `Ladder`. \n\nThe `Board` can be modeled as a HashMap or Array where the index is the cell number. A `Snake` is a jump from `start` to `end` (where start > end), and a `Ladder` is `start` to `end` (where end > start). \n\nThe `Game` class runs the loop. The Dice is a utility class generating random 1-6. We can use the **Strategy Pattern** for the Dice if we want to support crooked dice or multiple dice. The design should allow easy adding of new 'Jumps' (like a portal).",
+      "difficulty": "Easy",
+      "section": "Game Design",
+      "explanation": "**Core Objects:**\n- **Jumper (Entity):** Has startPoint and endPoint. Snakes and Ladders are both Jumpers.\n- **Board:** Contains `Map<Integer, Jumper>`.\n- **Player:** Current position (0-100).\n- **Dice:** `roll()` returns 1-6.\n\n**Game Loop:**\n1. `while (!winner)`\n2. `currentTurnPlayer = players.queue.poll()`\n3. `steps = dice.roll()`\n4. `newPos = currentPos + steps`\n5. `if (newPos > 100)` skip turn.\n6. `if (board.hasJumper(newPos))` newPos = jumper.end.\n7. `if (newPos == 100)` Winner!\n\n**Extensibility:**\nIf we want to add 'Special Cells' (e.g., Skip Turn cell), we can make the Cell an object with an `onLand(Player p)` method (Command Pattern).",
+      "examples": "**Scenario:**\n- Player at 98.\n- Rolls 4. (98+4 = 102). Move ignored.\n- Next turn, Rolls 2. (98+2 = 100). Wins.\n- Another Player at 14. Rolls 3. Lands on 17.\n- 17 is a Snake Head (ends at 4). Player slides to 4."
+    },
+    {
+      "id": 14,
+      "question": "Design Splitwise (Expense Sharing)",
+      "answer": "Splitwise simplifies debts among a group. The key entities are `User`, `Group`, `Expense`, and `Split`. \n\nThe `Expense` class can have different types: `EqualSplit`, `ExactSplit`, `PercentSplit`. This is a perfect use case for the **Strategy Pattern** or **Factory Pattern**. \n\nThe algorithmic core is **Debt Simplification**. If A owes B $10, and B owes C $10, the system simplifies this to A owes C $10. This is solved using a Min-Cash-Flow algorithm or graph simplification.",
+      "difficulty": "Hard",
+      "section": "Algorithms",
+      "explanation": "**Class Hierarchy:**\n- `ExpenseService`: Manages adding expenses.\n- `Expense`: metadata, paidBy user, List<Split>.\n- `Split`: abstract class. `User`, `amount`.\n- `BalanceSheet`: Stores `Map<User, Double>` (net amount).\n\n**Algorithm (Simplification):**\n1. Calculate net balance for every person.\n2. Separate into two lists: `Debit` (owe money) and `Credit` (receive money).\n3. Sort both lists.\n4. Take max from Debit and max from Credit.\n5. Match them. Subtract the min of the two.\n6. Repeat until lists are empty.\n\n**Design Pattern:**\n**Command Pattern** can be used for 'Add Expense' to allow Undo functionality.",
+      "examples": "**Scenario:**\n- Alice pays $100 for lunch with Bob.\n- Split: Equal.\n- System creates: Expense($100, PaidBy: Alice).\n- Bob's Balance: -$50. Alice's Balance: +$50.\n- Graph: Bob -> Alice ($50)."
+    },
+    {
+      "id": 15,
+      "question": "Design an Airline Management System",
+      "answer": "This system manages `Flights`, `Airports`, `Aircrafts`, and `Schedules`. A crucial distinction is between a `Flight` (generic route, e.g., BA123) and a `FlightInstance` (specific date, e.g., BA123 on Dec 25th). \n\nWe need an `Itinerary` class for multi-leg bookings. The system must handle complex search queries. We use the **Observer Pattern** to notify customers of flight delays or gate changes. \n\nConcurrency control is similar to the Movie Ticket system but strictly stricter, often using **Two-Phase Commit** if distributed across multiple airline partners.",
+      "difficulty": "Hard",
+      "section": "Object-Oriented Design",
+      "explanation": "**Key Classes:**\n- `Airport`: Code, City.\n- `Aircraft`: Model, SeatMap.\n- `Flight`: FlightNumber, Source, Destination.\n- `FlightInstance`: Flight, Date, Gate, Status, Price.\n- `Seat`: Class (Economy, Business), Status.\n\n**Design Patterns:**\n- **Observer:** `FlightStatusObserver`. When `instance.setStatus(DELAYED)`, notify all Bookings.\n- **Factory:** To create different ticket classes (EconomyTicket, FirstClassTicket).\n\n**Complexity:**\nHandling time zones is critical. All internal times should be stored in UTC and converted to local time for display.",
+      "examples": "**Scenario:**\n- User searches NYC to LON.\n- System finds direct flight (Delta) and connection (United + BA).\n- User books connection.\n- System creates PNR (booking ref) linking two FlightInstances.\n- System decreases seat count on both planes."
+    },
+    {
+      "id": 16,
+      "question": "Design a Restaurant Management System",
+      "answer": "This system handles `Tables`, `Orders`, `Meals`, and Employees (`Waiter`, `Chef`). \n\nWe use the **Command Pattern** for Orders. An Order is a request wrapped as an object, passed from Waiter to Chef. \n\nWe use the **State Pattern** for Table status (Empty, Occupied, Reserved) and Order status (Received, Preparing, Completed, Served). \n\nThe **Observer Pattern** is useful: when a Chef marks an order as 'Ready', the assigned Waiter is notified.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Actors:**\n- **Receptionist:** Assigns tables.\n- **Waiter:** Takes order, serves food.\n- **Chef:** Prepares food.\n\n**Workflow:**\n1. Customer sits at Table 5.\n2. Waiter creates Order. Adds `MealItems`.\n3. Order added to `OrderQueue`.\n4. Chef picks Order. State: `Preparing`.\n5. Chef finishes. State: `Ready`.\n6. Waiter receives notification. Serves.\n\n**Class Structure:**\n- `Table`: id, capacity, status.\n- `MealItem`: name, price, description.\n- `Order`: id, tableId, items[], status.\n- `Menu`: List<Sections> (Starters, Mains).",
+      "examples": "**Scenario:**\n- Party of 4 arrives.\n- Receptionist finds Table with capacity >= 4.\n- Waiter takes order via tablet.\n- Kitchen Display System (KDS) shows new order.\n- Chef acknowledges."
+    },
+    {
+      "id": 17,
+      "question": "Design a Chat System (WhatsApp/Telegram)",
+      "answer": "Designing a Chat App involves `Users`, `Conversations` (1-on-1 and Group), and `Messages`. \n\nThe core is real-time communication. In LLD, we model the `Connection` using **WebSockets**. The `Message` status (Sent, Delivered, Read) is a state machine. \n\nFor Group chats, we use the **Composite Pattern** (treating a Group similar to a User for sending logic) or a `GroupConversation` class that holds a list of `Participants`. We need a `Gateway` service to route messages to the correct user session.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Key Classes:**\n- `User`: id, name, status (online/offline).\n- `Conversation`: id, List<User>, List<Message>.\n- `Message`: id, sender, content, timestamp, Status (Enum).\n\n**Real-time Logic:**\n- **Observer Pattern:** The Client app subscribes to the Server. When a new message arrives for a User, the server 'pushes' it.\n- **Queueing:** If User B is offline, the message is stored in a DB. When B comes online, the `SyncService` pushes pending messages.\n\n**Media:**\nMessages can have types (Text, Image, Video). Use **Factory Pattern** to render or handle different content types.",
+      "examples": "**Scenario:**\n- A sends \"Hi\" to B.\n- Server receives. Saves to DB (Status: Sent).\n- Checks if B is online.\n- B is connected via WebSocket. Server pushes message.\n- B's app sends `ACK`. Server updates Status: Delivered."
+    },
+    {
+      "id": 18,
+      "question": "Design a Notification System",
+      "answer": "This system decouples the trigger of a notification from the delivery method. We use the **Observer Pattern** or **Pub-Sub**. \n\nThe core class is `NotificationService`. It uses a `NotificationFactory` to create specific notifications (Email, SMS, Push). \n\nWe implement the **Adapter Pattern** to integrate with third-party providers (e.g., Twilio for SMS, SendGrid for Email). This ensures that if we switch providers, our core logic doesn't change. We also need a `TemplateEngine` to inject variables (e.g., \"Hello {name}\") into messages.",
+      "difficulty": "Medium",
+      "section": "Design Patterns",
+      "explanation": "**Components:**\n- **Notification:** abstract class.\n- **Channel:** Interface `send(message)`. Implementations: `EmailChannel`, `SMSChannel`.\n- **Template:** Stores standard message formats.\n\n**Flow:**\n1. Client calls `sendNotification(userId, type, context)`.\n2. Service fetches User preferences (e.g., User opted out of SMS).\n3. Service formats message using Template.\n4. Service places message in a **PriorityQueue** (OTP is high priority, Marketing is low).\n5. Workers pick up and call the external API adapter.\n\n**Failure Handling:**\nRetry logic with exponential backoff if the external provider is down.",
+      "examples": "**Scenario:**\n- Event: User forgot password.\n- System generates OTP.\n- Calls `NotificationService.send(OTP, SMS)`.\n- Adapter calls Twilio API.\n- Logs status."
+    },
+    {
+      "id": 19,
+      "question": "Design a File System",
+      "answer": "Modeling a File System (like Unix or Windows) relies heavily on the **Composite Design Pattern**. \n\nWe have an abstract class `FileSystemEntry`. Two concrete classes extend it: `File` and `Directory`. \n- A `File` is a leaf node. \n- A `Directory` is a composite node that contains a list of `FileSystemEntry` (which can be Files or other Directories).\n\nThis allows us to treat individual files and directories uniformly (e.g., `getSize()`, `delete()`). We also need to handle Permissions (`Read`, `Write`, `Execute`) often using a **Decorator Pattern** or simple bitmasks.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Class Structure:**\n- `Entry` (Abstract): name, created_at, size, parent. methods: `delete()`, `getSize()`.\n- `File` (extends Entry): content. `getSize()` returns content length.\n- `Directory` (extends Entry): List<Entry>. `getSize()` returns sum of children sizes.\n\n**Operations:**\n- **Recursive Delete:** `Directory.delete()` calls `delete()` on all children recursively.\n- **Search:** Recursive traversal.\n\n**Singleton:**\nThe `FileSystemManager` (root access) is likely a Singleton.",
+      "examples": "**Scenario:**\n- Root contains `Dir A` and `File B`.\n- `Dir A` contains `File C`.\n- `root.getSize()` calls `Dir A.getSize()` + `File B.getSize()`.\n- `Dir A.getSize()` calls `File C.getSize()`.\n- Result cascades up."
+    },
+    {
+      "id": 20,
+      "question": "Design a HashMap Implementation",
+      "answer": "Designing a HashMap tests knowledge of Data Structures. The core is an Array of `Nodes` (Buckets). Each `Node` is a Linked List (or a Red-Black Tree in Java 8+) to handle collisions. \n\nKey functions:\n- `put(K, V)`: Calculate `hash(K) % size`. Go to that index. If empty, insert. If occupied, traverse list to update or append. \n- `get(K)`: Calculate hash. Traverse list to find Key. \n\nWe must handle **Resizing**. When `size / capacity > loadFactor` (usually 0.75), we create a new array of double size and **Rehash** all existing entries into the new array.",
+      "difficulty": "Hard",
+      "section": "Data Structures",
+      "explanation": "**Internal Structure:**\n- `Entry<K,V>`: key, value, next, hash.\n- `Bucket[]`: Array of Entry.\n\n**Handling Collisions:**\n- **Chaining:** Use a Linked List at the bucket index.\n- **Open Addressing:** (Alternative) Find next empty slot. Chaining is more common in LLD questions.\n\n**HashCode:**\nA good hash function distributes keys uniformly.\n`index = (key.hashCode() & 0x7FFFFFFF) % array.length`.\n\n**Thread Safety:**\nThis standard design is NOT thread-safe. For thread safety, we design **ConcurrentHashMap** which uses Segment Locking or CAS (Compare-And-Swap) on specific buckets rather than locking the whole map.",
+      "examples": "**Scenario:**\n- Map size 4.\n- `put(\"A\", 1)` -> hash(\"A\")%4 = 1. Insert at [1].\n- `put(\"B\", 2)` -> hash(\"B\")%4 = 1. Collision! Append to [1] list.\n- `get(\"B\")` -> Go to [1]. Check first node (\"A\"). No match. Check next (\"B\"). Match. Return 2."
+    },
+    {
+      "id": 21,
+      "question": "Design a Pub-Sub System (Message Queue)",
+      "answer": "A Pub-Sub system (like Kafka or RabbitMQ) decouples Producers from Consumers. \n\nCore components: `Topic`, `Message`, `Broker`, `Producer`, `Consumer`.\nWe use the **Observer Pattern**. Consumers 'subscribe' to a Topic. When a Producer 'publishes' to a Topic, the Broker notifies all subscribers. \n\nTo handle scale, we introduce **Partitions** within a Topic. A partition is an ordered, immutable sequence of messages. This allows parallel consumption. The Broker must persist messages to disk (WAL - Write Ahead Log) for durability.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Key Classes:**\n- `Topic`: name, list of partitions.\n- `Partition`: list of messages (offset based).\n- `Broker`: manages topics and persistence.\n- `ConsumerGroup`: manages offsets for a group of consumers.\n\n**Flow:**\n1. Producer sends Msg to Topic 'Orders'.\n2. Broker appends Msg to Partition 0.\n3. Consumer A (subscribed to 'Orders') polls the Broker.\n4. Broker returns Msg.\n5. Consumer processes and commits offset.\n\n**Idempotency:**\nConsumer must handle duplicate messages (e.g., if it crashes before committing offset).",
+      "examples": "**Scenario:**\n- Topic: 'Sports'.\n- User A and User B subscribe.\n- Publisher sends \"Goal!\".\n- Broker puts message in queue.\n- Pushes to A. Pushes to B.\n- A and B process independently."
+    },
+    {
+      "id": 22,
+      "question": "Design a Coffee Machine",
+      "answer": "This is a classic example of the **Decorator Pattern**. We have a base class `Beverage` (cost, description). Concrete classes are `Espresso`, `Decaf`. \n\nWe have `CondimentDecorator` extending `Beverage`. Concrete decorators: `Milk`, `Soy`, `Mocha`, `Whip`. \n\nThis allows flexible combinations like 'Double Mocha Soy Latte' without creating thousands of subclasses. We wrap the object: `new Mocha(new Milk(new Espresso()))`. The `cost()` method calls the wrapped object's cost and adds its own.",
+      "difficulty": "Easy",
+      "section": "Design Patterns",
+      "explanation": "**Class Hierarchy:**\n- `Beverage` (Abstract): `abstract double cost()`.\n- `Espresso` (extends Beverage): returns 1.99.\n- `CondimentDecorator` (extends Beverage): holds a `Beverage` object.\n- `Milk` (extends Condiment): `return beverage.cost() + 0.50`.\n\n**Why Decorator?**\nIf we used inheritance (e.g., `MilkEspresso`, `SugarMilkEspresso`), we would have a class explosion. Decorator allows dynamic composition at runtime.\n\n**Command Pattern:**\nCan be used for the machine buttons: `MakeCoffeeCommand`.",
+      "examples": "**Scenario:**\n- User wants Espresso ($2) + Milk ($0.5).\n- Code: `Beverage b = new Espresso();`\n- `b = new Milk(b);`\n- `b.cost()` triggers `Milk.cost()` -> `Espresso.cost() + 0.5` -> $2.5."
+    },
+    {
+      "id": 23,
+      "question": "Design a Car Rental System",
+      "answer": "The system manages `VehicleInventory`, `Reservation`, `User`, and `StoreLocation`. \n\nWe use the **Factory Pattern** to handle different vehicle types (SUV, Sedan, Bike). \nWe use the **Strategy Pattern** for pricing (DailyRate, WeeklyRate, MileageRate). \n\nA key LLD feature is the **Inventory Management**. We need to track vehicle status: `Available`, `Booked`, `InUse`, `Maintenance`. A 'Barcode Scanner' interface might be needed for check-out/check-in processing.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Classes:**\n- `Vehicle`: barcode, make, model, status.\n- `RentalSystem`: Manages locations.\n- `Booking`: vehicle, user, duration, insuranceType.\n\n**Search Logic:**\n`search(type, location, dates)`.\nThe system must filter out vehicles that are booked for overlapping dates.\n\n**Extensions:**\n- **Penalty Calculation:** If returned late or with empty tank.\n- **Observer:** Notify user when a specific car becomes available.",
+      "examples": "**Scenario:**\n- User books SUV for 3 days.\n- System changes SUV status to `Booked`.\n- User picks up. Status `InUse`.\n- User returns after 4 days.\n- System calculates: (3 days * rate) + (1 day * late_rate). Generates Invoice."
+    },
+    {
+      "id": 24,
+      "question": "Design Cricinfo (Cricket Scoreboard)",
+      "answer": "This system requires real-time updates. We strictly use the **Observer Pattern**. The `Match` object is the Subject. `ScoreBoard`, `MobileApp`, and `WebWidget` are Observers. \n\nThe data model is hierarchical: `Series` -> `Match` -> `Innings` -> `Over` -> `Ball`. \nA `Ball` is the atomic unit containing data (runs, wicket, extra). \n\nWe use the **Strategy Pattern** for commentary generation or 'Player of the Match' calculation algorithms.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Key Classes:**\n- `Match`: Team A, Team B, TossResult, Status.\n- `Scorecard`: Maintains total runs, wickets, overs.\n- `Ball`: bowler, batsman, runScored, isWicket.\n\n**Flow:**\n1. Scorer inputs: \"4 runs\".\n2. `Match` object updates state.\n3. `notifyObservers()` is called.\n4. `ScoreBoard` refreshes display.\n5. `CommentaryService` generates \"Four runs to the offside!\"\n\n**Stats:**\nPlayer stats (Strike Rate, Economy) are derived attributes calculated on the fly or cached.",
+      "examples": "**Scenario:**\n- Ball 1: 1 run. Score 1/0.\n- Ball 2: Wicket. Score 1/1.\n- Observers notified. UI turns red to indicate wicket."
+    },
+    {
+      "id": 25,
+      "question": "Design a Digital Wallet",
+      "answer": "A Digital Wallet (like PayPal/Paytm) manages `UserAccounts`, `BankIntegration`, and `Transactions`. \n\nConcurrency and Data Integrity are vital. We use a **Double Entry Ledger** system pattern for the database design: every transaction has a source and destination. Money is never just 'updated'; rows are inserted. \n\nWe use the **Strategy Pattern** for adding money (CreditCardStrategy, UPIStrategy, NetBankingStrategy). Security uses `Tokenization` for card details.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Core Concepts:**\n- **ACID Transactions:** Money transfer must be atomic.\n- **Idempotency:** Retrying a failed payment shouldn't deduct money twice.\n\n**Class Design:**\n- `Wallet`: balance, currency.\n- `Transaction`: sourceId, destId, amount, type (P2P, P2M), status.\n- `Ledger`: Record of every movement.\n\n**Flow:**\n`transfer(A, B, 100)`\n1. Check A balance > 100.\n2. Start Transaction.\n3. Debit A (Insert Debit Record).\n4. Credit B (Insert Credit Record).\n5. Commit.",
+      "examples": "**Scenario:**\n- A pays B $50.\n- System creates Transaction ID 999.\n- If system crashes after Debiting A but before Crediting B:\n- On restart, Transaction 999 is 'Pending'.\n- Reconciliation service rolls back A's debit or completes B's credit."
+    },
+    {
+      "id": 26,
+      "question": "Design an Online Shopping Cart",
+      "answer": "We need to model `Cart`, `CartItem`, `Product`, and `User`. \n\nThe complex logic lies in **Price Calculation** (Discounts, Tax, Coupons). This is a perfect fit for the **Decorator Pattern** (wrapping the cart with a tax wrapper) or **Strategy Pattern** (Apply `PercentageDiscount` vs `FixedAmountDiscount`). \n\nThe Cart state management (Active, Merged, Abandoned) is important. When a guest logs in, their 'Guest Cart' must merge with their 'User Cart'.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Classes:**\n- `Product`: id, price, stock.\n- `CartItem`: product, quantity.\n- `Cart`: List<CartItem>. methods: `add()`, `remove()`, `checkout()`.\n- `Coupon`: code, logic.\n\n**Pricing Logic:**\n`calculateTotal()` iterates items, sums price. Then applies Coupon Strategy. Then applies Tax Strategy.\n\n**Inventory Lock:**\nWhen `checkout()` initiates, we should temporarily reserve stock to prevent 'Out of Stock' errors during payment.",
+      "examples": "**Scenario:**\n- Cart has Laptop ($1000).\n- User applies '10% OFF'.\n- Strategy calculates $900.\n- User adds Mouse ($50).\n- Total: $950.\n- Checkout."
+    },
+    {
+      "id": 27,
+      "question": "Design a Task Scheduler",
+      "answer": "A Task Scheduler runs jobs at specific times or intervals. \n\nWe use a **PriorityQueue** (Min-Heap) to store tasks ordered by `executionTime`. \nA background thread (Poller) checks `queue.peek()`. If `head.time <= now`, it extracts and executes. \nIf `head.time > now`, it sleeps for `head.time - now`. \n\nWe need a **ThreadPool** (Worker Threads) to execute the tasks so the Poller isn't blocked. This implements the **Producer-Consumer** pattern.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Key Classes:**\n- `Task`: Runnable, executionTime, interval (for recurring).\n- `SchedulerService`: PriorityQueue<Task>.\n- `WorkerPool`: ExecutorService.\n\n**Recurring Tasks:**\nIf a task is recurring, after execution, calculate next time and add back to PriorityQueue.\n\n**Concurrency:**\nAccess to the PriorityQueue must be synchronized. \n\n**Durability:**\nIf system restarts, tasks in memory are lost. Real systems persist tasks to a DB and load them into the Heap on startup.",
+      "examples": "**Scenario:**\n- T1 runs at 10:00. T2 runs at 10:05.\n- Clock is 09:55. Scheduler sleeps 5 mins.\n- Wakes up at 10:00. Pops T1. Sends to ThreadPool.\n- Peeks T2. Sleeps 5 mins."
+    },
+    {
+      "id": 28,
+      "question": "Design a Unix File Search API",
+      "answer": "We need to design a flexible search API (like the `find` command). We use the **Specification Pattern** (or Filter Pattern). \n\nWe define an interface `FileFilter` with method `isValid(File file)`. Concrete implementations: `NameFilter`, `SizeFilter`, `ExtensionFilter`. \n\nTo combine filters (AND, OR), we use **Combinators**: `AndFilter` takes two filters and returns true only if both are true. This allows complex queries like: `Name=\"*.txt\" AND Size>5MB`.",
+      "difficulty": "Medium",
+      "section": "Design Patterns",
+      "explanation": "**Interface:**\n`interface Specification { boolean isSatisfiedBy(File f); }`\n\n**Implementations:**\n- `SizeSpec(minSize)`\n- `ExtensionSpec(ext)`\n- `AndSpec(Spec a, Spec b)`\n\n**Recursion:**\nThe search method takes a Directory and a Specification. It iterates files. If `spec.isSatisfiedBy(file)` is true, add to results. If directory, recurse.\n\n**Clean Code:**\nThis avoids a massive function with 10 arguments (`search(name, size, date, owner, ...)`).",
+      "examples": "**Scenario:**\n- User wants: Files > 1MB AND (Ending in .jpg OR .png).\n- Construct: `new AndSpec(new SizeSpec(1MB), new OrSpec(new ExtSpec(.jpg), new ExtSpec(.png)))`.\n- Pass to searcher."
+    },
+    {
+      "id": 29,
+      "question": "Design a Jigsaw Puzzle Solver",
+      "answer": "This models a physical puzzle. Entities: `Piece`, `Edge`, `Side`. \n\nA `Piece` has 4 sides. Each side has a shape (Inward, Outward, Flat). \nThe core logic is `fitsWith(Piece other)`. Two pieces fit if one has an Outward tab and the other has a matching Inward hole (and colors/patterns match, but usually in LLD we check shape). \n\nWe categorize pieces: \n- **Corners** (2 Flat sides).\n- **Borders** (1 Flat side).\n- **Middle** (0 Flat sides).\nSolving starts by identifying corners and borders.",
+      "difficulty": "Medium",
+      "section": "Algorithms",
+      "explanation": "**Classes:**\n- `Side`: Shape (IN, OUT, FLAT).\n- `Piece`: Side[4] (Top, Right, Bottom, Left).\n- `Board`: Grid of Pieces.\n\n**Algorithm:**\n1. Bucket pieces into Corner, Border, Inner.\n2. Place Corners.\n3. Find Borders that fit corners.\n4. Fill center.\n\n**Method `fits(Side a, Side b)`:**\nReturns true if `a.shape` is opposite of `b.shape` (e.g., IN vs OUT).",
+      "examples": "**Scenario:**\n- Piece A has Right Side: OUT.\n- Piece B has Left Side: IN.\n- Check if they lock.\n- If yes, join them."
+    },
+    {
+      "id": 30,
+      "question": "Design a Locker Service (Amazon Locker)",
+      "answer": "The system manages `Lockers` of different sizes (S, M, L, XL) at various `Locations`. \n\nFlow: \n1. Courier delivers package. System finds free locker of size >= Package.\n2. System generates `Code` and sends to User.\n3. User enters Code. Locker opens. \n\nWe use the **Strategy Pattern** for locker allocation (e.g., First Fit vs Best Fit). We need to handle **Expiration**: if user doesn't pick up in 3 days, generate 'Return' request.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Entities:**\n- `LockerLocation`: Set of Lockers.\n- `Locker`: id, Size, State (Free, Occupied).\n- `Package`: dimensions, owner.\n- `NotificationService`.\n\n**Logic:**\n`assignLocker(Package p)`:\nFind lockers where `locker.size >= p.size` AND `locker.isFree`.\nBest Fit: Choose smallest available locker that fits.\n\n**Security:**\nThe Code is a temporary token associated with the specific order, valid only until pickup.",
+      "examples": "**Scenario:**\n- Package Size: Small.\n- Loc A has only Large lockers free.\n- System assigns Large locker (Best Fit strategy logic).\n- User gets code '1234'.\n- User enters '1234'. Locker opens.\n- System marks Locker as Free."
+    },
+    {
+      "id": 31,
+      "question": "Design a Text Editor (Undo/Redo)",
+      "answer": "The core challenge in a Text Editor is managing the document state and supporting Undo/Redo operations. This is the textbook use case for the **Memento Pattern** (saving state snapshots) or the **Command Pattern** (storing actions as objects). \n\nWe typically use a **Gap Buffer** or **Rope** data structure for efficient text insertion and deletion, as standard Strings are immutable and slow for large edits. \n\nFor Undo/Redo, we maintain two Stacks: `UndoStack` and `RedoStack`. When a user types, we push the action (e.g., `Insert 'a' at pos 5`) to the UndoStack. If they hit Undo, we pop the action, reverse it, and push it to the RedoStack.",
+      "difficulty": "Hard",
+      "section": "Design Patterns",
+      "explanation": "**Data Structures:**\n- **Rope:** A tree structure for strings. Cheap concatenation.\n- **Gap Buffer:** Array with a 'gap' (empty space) at the cursor. Moving cursor moves the gap.\n\n**Design Patterns:**\n- **Command Pattern:** `interface Command { execute(); unexecute(); }`.\n- **Flyweight:** If storing formatting for every character (font, size), use Flyweight to save memory.\n\n**Class Structure:**\n- `Document`: Holds content.\n- `Cursor`: Row, Col.\n- `Action`: Abstract (Insert, Delete, Paste).\n- `EditorController`: Manages input and stacks.",
+      "examples": "**Scenario:**\n- User types \"Hello\". `InsertCommand` pushed to UndoStack.\n- User presses Undo. `InsertCommand.unexecute()` removes \"Hello\". Pushed to RedoStack.\n- User presses Redo. `InsertCommand.execute()` restores \"Hello\"."
+    },
+    {
+      "id": 32,
+      "question": "Design an Online Stock Brokerage",
+      "answer": "This system handles `Users`, `Portfolios`, `Stocks`, and `Orders`. \n\nThe critical component is the **Order Matching System** (though often an external service, in LLD we design the order creation and state). We use an `Order` class with types: `MarketOrder` (execute immediately) and `LimitOrder` (execute at price X). \n\nConcurrency is vital; we cannot sell stock the user doesn't own. We use **Optimistic Locking** on the `Portfolio` table. The `Watchlist` feature uses the **Observer Pattern** to update real-time prices.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Key Classes:**\n- `Account`: balance, portfolio.\n- `Stock`: symbol, currentPrice.\n- `Order`: type (Buy/Sell), status (Open, Filled, Cancelled), limitPrice.\n- `ExchangeConnector`: Interface to talk to NASDAQ/NYSE.\n\n**Concurrency:**\nWhen placing a Sell Order:\n1. Transaction Start.\n2. Lock Portfolio Row.\n3. Check `quantity >= order.quantity`.\n4. Deduct quantity (move to 'Escrow').\n5. Create Order record.\n6. Transaction Commit.\n\n**Pattern:**\n- **Factory:** To create Limit vs Market orders.",
+      "examples": "**Scenario:**\n- User wants to buy 10 AAPL at $150 (Limit).\n- System checks Cash Balance.\n- Freezes $1500 cash.\n- Creates Open Order.\n- Market hits $150. Order executes.\n- $1500 deducted. 10 AAPL added to Portfolio."
+    },
+    {
+      "id": 33,
+      "question": "Design a Chess Game",
+      "answer": "Chess is complex due to the movement rules. We use an abstract `Piece` class with a method `canMove(Board b, Start s, End e)`. Concrete classes (`King`, `Rook`, `Knight`) implement specific logic. \n\nThe `Board` is an 8x8 grid of `Spot` objects. A `Spot` can hold a Piece or be null. \n\nThe `Game` class manages the turn-based loop and checks for `Checkmate` or `Stalemate`. We often use the **Singleton Pattern** for the Game settings and **Command Pattern** for moves to allow recording the game history (PGN format).",
+      "difficulty": "Hard",
+      "section": "Game Design",
+      "explanation": "**Logic Details:**\n- **Knight:** Checks if `(dx == 2 && dy == 1)` or `(dx == 1 && dy == 2)`.\n- **Rook:** Checks `(dx == 0 || dy == 0)` AND path is clear.\n- **King:** Checks `max(dx, dy) == 1`.\n\n**Checkmate Algorithm:**\nAfter Player A moves, check if Player B's King is under attack. If yes, check if B has ANY valid move that removes the threat. If no moves -> Checkmate.\n\n**Special Moves:**\n- Castling (King + Rook move).\n- En Passant (Pawn special capture).\n- Promotion (Pawn reaches end).",
+      "examples": "**Scenario:**\n- White moves Pawn e2 -> e4.\n- Validated (First move can be 2 steps).\n- Board updates. Turn switches to Black.\n- Black tries Bishop c8 -> e4.\n- Validated (Diagonal, path clear). Capture!"
+    },
+    {
+      "id": 34,
+      "question": "Design a URL Shortener (LLD Focus)",
+      "answer": "While often a System Design question, the LLD focuses on the **Base62 Encoding Algorithm** and the Database Schema. \n\nWe need a `ShorteningService` with a method `shorten(longURL)`. The algorithm maps an Integer ID (database auto-increment) to a Base62 string (a-z, A-Z, 0-9). \n- ID 1 -> \"a\"\n- ID 100 -> \"dF\"\n- ID 10000 -> \"z9A\"\n\nWe also need a `RetrievalService` that takes a short code, converts it back to the ID (`base62Decode`), and looks up the DB.",
+      "difficulty": "Medium",
+      "section": "Algorithms",
+      "explanation": "**Algorithm (Base62):**\ncharacters = \"012...abc...ABC...\"\n`while (id > 0) { remainder = id % 62; str += characters[remainder]; id /= 62; }`\n\n**Classes:**\n- `URLService`: Main interface.\n- `KeyGenerator`: Handles the ID generation (Snowflake or DB Sequence).\n- `Cache`: LRU Cache to store hot URLs (Short -> Long).\n\n**Database:**\nTable `urls`:\n- `id` (PK, Auto Inc)\n- `long_url` (Text)\n- `short_code` (Index, Unique)\n- `created_at`",
+      "examples": "**Scenario:**\n- User sends \"google.com\".\n- DB inserts, returns ID 125.\n- Base62(125) -> \"cb\".\n- Return \"app.com/cb\".\n- User visits \"app.com/cb\". System decodes \"cb\" -> 125. Selects DB. Redirects."
+    },
+    {
+      "id": 35,
+      "question": "Design a Social Network (LinkedIn)",
+      "answer": "We model `Member`, `Connection`, `Post`, and `Profile`. \n\nThe core data structure is a **Graph**. Each Member is a Node; a Connection is an Edge. \n- `getConnections(Member m)` returns adjacent nodes. \n- `getSecondDegree(Member m)` performs a BFS (Breadth-First Search) to find friends-of-friends. \n\nWe use the **Observer Pattern** for the News Feed: when a connection posts, it is pushed to the user's feed (or pulled on refresh).",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Search Logic (BFS):**\nTo find connection distance between A and B:\n1. Queue Q. Enqueue A.\n2. Visited Set V.\n3. While Q not empty:\n   - Dequeue current.\n   - If current == B, return distance.\n   - For each neighbor, if not in V, enqueue.\n\n**Classes:**\n- `Member`: id, profileDetails, List<Connection>.\n- `Post`: text, media, likes, comments.\n- `ConnectionRequest`: status (Pending, Accepted).\n\n**Privacy:**\nDecorator pattern can be used for Profile viewing permissions (PublicProfile, ConnectedProfile).",
+      "examples": "**Scenario:**\n- User A sends request to User B.\n- Created `ConnectionRequest` object.\n- User B accepts.\n- System creates Edge A->B and Edge B->A (Undirected graph).\n- A can now see B's private posts."
+    },
+    {
+      "id": 36,
+      "question": "Design a Web Crawler",
+      "answer": "The Crawler fetches pages, extracts links, and visits them. LLD components: `URLFrontier` (Queue), `HTMLParser`, `Fetcher`, and `Datastore`. \n\nWe must handle **Politeness** (not hitting a server too fast). We use a `Map<Hostname, Queue>` where each hostname has its own delay timer. \n\nTo avoid infinite loops, we need a `VisitedSet`. Since URLs are long, storing them all in memory is hard. In LLD, we discuss using a **Bloom Filter** for space-efficient membership testing.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Component Breakdown:**\n- **URLFrontier:** A Priority Queue deciding which URL to fetch next (based on priority/freshness).\n- **Fetcher:** Multi-threaded worker. Downloads content.\n- **Parser:** Extracts `href` tags.\n- **Dedup:** Checks hash of content to avoid duplicates.\n\n**Robots.txt:**\nWe need a `RobotsParser` class to respect exclusion rules.\n\n**Threading:**\nProducer-Consumer pattern. The Parser produces URLs; The Fetcher consumes them.",
+      "examples": "**Scenario:**\n- Seed: \"cnn.com\".\n- Fetcher downloads page.\n- Parser finds link \"cnn.com/news\".\n- Bloom Filter checks if visited. No.\n- Add to Frontier.\n- Repeat."
+    },
+    {
+      "id": 37,
+      "question": "Design a Leaderboard",
+      "answer": "A Leaderboard shows top players. The key requirement is efficient `updateScore()` and `getTopK()`. \n\nStandard SQL sorting is slow (`O(N log N)`). The optimal LLD data structure is a **Skip List** or a **Balanced BST** (like Red-Black Tree), or utilizing **Redis Sorted Sets** (ZSET) if external tools are allowed. \n\nIn pure code (Java/C++), we use a `Map<Player, Score>` for O(1) lookups and a `TreeMap<Score, List<Player>>` (sorted map) to maintain order. Updating a score involves removing from the old position in TreeMap and inserting at the new.",
+      "difficulty": "Medium",
+      "section": "Data Structures",
+      "explanation": "**Data Structure Choice:**\n- **HashMap:** Fast lookup of user's current score.\n- **Balanced Tree / Skip List:** Fast retrieval of range / rank.\n\n**Operations:**\n1. `update(user, score)`:\n   - `oldScore = map.get(user)`\n   - `tree.remove(oldScore, user)`\n   - `tree.insert(newScore, user)`\n   - `map.put(user, newScore)`\n   - Complexity: O(log N).\n\n2. `getRank(user)`:\n   - Tree traversal counting nodes > user score.\n   - Complexity: O(log N).",
+      "examples": "**Scenario:**\n- User A (Score 100), User B (Score 200).\n- Tree: [200: B] -> [100: A].\n- A gains 150 points. Total 250.\n- Remove [100: A].\n- Insert [250: A].\n- Tree: [250: A] -> [200: B].\n- A is now Rank 1."
+    },
+    {
+      "id": 38,
+      "question": "Design a Hotel Management System",
+      "answer": "Similar to Airline/Movie, but with distinct features like `RoomType` (Suite, King, Twin) and `HousekeepingStatus`. \n\nWe use the **Decorator Pattern** for amenities (Extra Bed, Breakfast, Spa Access). \nWe use the **State Pattern** for the Room (Available, Booked, Occupied, Cleaning, Repair). \n\nKey search logic: `findRooms(startDate, endDate, type)`. This involves checking the `Reservation` table for overlaps.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Classes:**\n- `Hotel`: Name, Address, List<Room>.\n- `Room`: Number, Floor, Type, Status.\n- `Reservation`: Guest, Room, Start, End, Status.\n- `Guest`: Profile, History.\n\n**Concurrency:**\nMust prevent double booking. Use database constraints or application-level locks on the `Room` entity for the specific dates.\n\n**Pricing:**\nStrategy Pattern for Seasonal Pricing (High season vs Low season).",
+      "examples": "**Scenario:**\n- User books Room 101 for Dec 1-5.\n- System creates Reservation.\n- User checks in Dec 1. Room Status -> Occupied.\n- User checks out Dec 5. Room Status -> Cleaning.\n- Housekeeping finishes. Room Status -> Available."
+    },
+    {
+      "id": 39,
+      "question": "Design a Cab Booking System (Uber/Lyft)",
+      "answer": "We focus on `Rider`, `Driver`, `Ride`, and the `GeoLocation`. \n\nThe core logic is **Driver Matching**. We need a `GeoSpatialIndex` (like a QuadTree) to efficiently query \"Drivers within 2km\". \n\nWe use the **State Pattern** for the Ride (Requested, Matched, Started, Ended, Cancelled). \nWe use the **Observer Pattern** to track driver location updates on the rider's screen.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Geo-Spatial Design:**\n- **QuadTree:** Splits map into 4 quadrants recursively. Efficient for searching nearby points.\n- **DriverService:** `updateLocation(lat, long)`.\n\n**Matching Strategy:**\n- Simple: Broadcast to all nearby (Flood fill).\n- Smart: Prioritize high-rated drivers or those heading in that direction.\n\n**Classes:**\n- `Rider`, `Driver` (extends User).\n- `Ride`: source, dest, fare.\n- `Cab`: license, model, currentLoc.",
+      "examples": "**Scenario:**\n- Rider requests ride from A to B.\n- System queries QuadTree for drivers within 1km. Found D1, D2.\n- System sends request to D1. D1 accepts.\n- Ride Created (State: Matched).\n- D1 drives to A. State: Started."
+    },
+    {
+      "id": 40,
+      "question": "Design a Payment Gateway",
+      "answer": "A Payment Gateway acts as an adapter between a Merchant and a Bank. \n\nWe use the **Adapter Pattern** heavily. \n- `IPaymentProvider` interface (`pay`, `refund`).\n- `StripeAdapter`, `PayPalAdapter` implement this interface. \n\nWe use the **Strategy Pattern** for Routing (e.g., if amount < $10 use PayPal, if > $1000 use WireTransfer). \n**Resiliency** is key: we need a `CircuitBreaker` if a bank is down.",
+      "difficulty": "Hard",
+      "section": "Design Patterns",
+      "explanation": "**Components:**\n- **Merchant:** API Key, Secret.\n- **PaymentRequest:** Amount, Currency, CardDetails (Tokenized).\n- **Router:** Decides which Bank to use (Least Cost Routing).\n\n**Security:**\nThe Gateway never stores raw card numbers (PCI-DSS compliance). It forwards them to the Bank and stores a `token`.\n\n**Idempotency:**\nThe `requestId` header ensures we don't charge the user twice if the network times out.",
+      "examples": "**Scenario:**\n- User pays $50.\n- Router selects Stripe.\n- `StripeAdapter.pay($50)` called.\n- Stripe returns `Success`.\n- Gateway updates DB: `Status=PAID`.\n- Webhook sent to Merchant."
+    },
+    {
+      "id": 41,
+      "question": "Design a Traffic Signal Control System",
+      "answer": "This controls lights at an intersection. We use the **State Pattern**: `RedState`, `YellowState`, `GreenState`. \n\nThe `TrafficController` manages the duration. It can be:\n1. **Fixed Timing:** Simple Timer.\n2. **Dynamic:** Uses sensors (`CarDetectedObserver`). If no cars on Side A, switch Side A to Red immediately.\n\nWe need a `Mediator` if controlling multiple intersections to synchronize 'Green Waves'.",
+      "difficulty": "Easy",
+      "section": "Object-Oriented Design",
+      "explanation": "**States:**\n- **Green:** Timer runs. If timer ends -> Yellow.\n- **Yellow:** Short timer. -> Red.\n- **Red:** Waits for other roads to finish.\n\n**Classes:**\n- `SignalLight`: Direction (North, South...), CurrentColor.\n- `Intersection`: List<SignalLight>.\n- `Sensor`: Detects presence of cars.\n\n**Safety:**\nCritical logic ensures North and East cannot be Green simultaneously. `if (North.isGreen) East.mustBeRed`.",
+      "examples": "**Scenario:**\n- North: Green (60s).\n- Sensor on East detects ambulance.\n- Controller interrupts North.\n- North -> Yellow (3s) -> Red.\n- East -> Green."
+    },
+    {
+      "id": 42,
+      "question": "Design a Music Player (Spotify)",
+      "answer": "We model `Song`, `Playlist`, `Album`, `Artist`, and `Player`. \n\nThe `Player` is a **Singleton** (only one song plays at a time). It maintains a `Queue` of songs. \nWe use the **State Pattern** for the Player: `Playing`, `Paused`, `Stopped`. \n\nHandling 'Shuffle' involves Algorithm logic (Fisher-Yates Shuffle) on the queue. \nHandling 'Repeat' involves circular queue logic.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Classes:**\n- `Track`: title, duration, fileUrl.\n- `Library`: Collection of Tracks.\n- `UserManager`: Playlists, Favorites.\n- `AudioEngine`: Low-level decoder.\n\n**Design Patterns:**\n- **Proxy Pattern:** Use a proxy for the `Track`. Only load the heavy audio file when `play()` is clicked, not when listing the playlist (Lazy Loading).\n- **Observer:** UI updates progress bar as `AudioEngine` emits time updates.",
+      "examples": "**Scenario:**\n- User clicks 'Shuffle Play' on Playlist A.\n- System copies Playlist A tracks to `PlayQueue`.\n- Shuffles `PlayQueue`.\n- `Player.play(queue.head())`.\n- State -> Playing."
+    },
+    {
+      "id": 43,
+      "question": "Design a Distributed ID Generator (Snowflake)",
+      "answer": "We need to generate unique, roughly sortable 64-bit IDs without a central DB. \n\n**Snowflake Algorithm (Twitter):**\n- 1 bit: Sign bit (unused).\n- 41 bits: Timestamp (milliseconds).\n- 10 bits: Machine ID (Data Center ID + Worker ID).\n- 12 bits: Sequence Number (for IDs generated in the same millisecond).\n\nThe class `SnowflakeGenerator` creates IDs by bitwise shifting these components. It requires handling **Clock Move Backwards** scenarios (NTP drift) by throwing an error or waiting.",
+      "difficulty": "Hard",
+      "section": "System Design",
+      "explanation": "**Bitwise Logic:**\n`id = (timestamp << 22) | (datacenterId << 17) | (workerId << 12) | sequence`\n\n**Why?**\n- **Sortable:** Time is the MSB, so newer IDs are numerically larger.\n- **Decentralized:** Each machine generates IDs independently. No collisions.\n\n**Components:**\n- `lastTimestamp`: Track usage.\n- `sequence`: Increments if current call is in same ms as last call. Resets to 0 if new ms.",
+      "examples": "**Scenario:**\n- Time: T1. Machine: 5.\n- Req 1: `(T1 << 22) | (5 << 12) | 0`.\n- Req 2 (same ms): `(T1 << 22) | (5 << 12) | 1`.\n- IDs are unique and ordered."
+    },
+    {
+      "id": 44,
+      "question": "Design a Content Management System (CMS)",
+      "answer": "A CMS (like WordPress) manages `Pages`, `Posts`, and `Media`. \n\nWe use the **Composite Pattern** for the Page structure. A `Page` consists of `Components` (Header, Body, Footer). The `Body` contains `Widgets` (TextWidget, ImageWidget). \n\nWe use the **Bridge Pattern** to separate the `Content` (what to render) from the `Renderer` (how to render: HTML, AMP, Mobile App JSON).",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Classes:**\n- `Page`: slug, title, status (Published/Draft), List<Component>.\n- `Component`: Abstract. `render()`.\n- `Theme`: Controls styling.\n\n**Version Control:**\nWe need a `Revision` class to store history.\n`Post` has-many `Revisions`. `CurrentRevision` points to the active one.\n\n**RBAC:**\nRole-Based Access Control (Admin, Editor, Viewer) is essential for publishing permissions.",
+      "examples": "**Scenario:**\n- User edits 'About Us'.\n- Adds 'ImageWidget'.\n- Clicks Save.\n- System creates new `Revision`.\n- Clicks Publish.\n- System updates `LivePointer` to new Revision.\n- Cache Invalidated."
+    },
+    {
+      "id": 45,
+      "question": "Design a Calendar Application",
+      "answer": "The complexity lies in **Recurring Events** (e.g., \"Every Monday\", \"Every 2nd Friday\"). \n\nWe store events as:\n1. `SingleEvent`: Fixed start/end.\n2. `RecurringEvent`: Start, Pattern (CRON or RRule), Duration. \n\nWhen querying \"Get events for June\", we expand the Recurring Events dynamically. We don't store infinite future events in the DB. \nWe use the **Builder Pattern** for creating complex events.",
+      "difficulty": "Hard",
+      "section": "Object-Oriented Design",
+      "explanation": "**Classes:**\n- `Event`: title, owner, location.\n- `RecurrenceRule`: freq (DAILY, WEEKLY), interval, count, until.\n- `CalendarView`: logic to flatten events for a date range.\n\n**Conflict Detection:**\nStandard interval overlap check. For recurring events, we must first 'project' the event instances into the query window, then check overlap.\n\n**Timezones:**\nAll stored in UTC. Converted to user's local time on display.",
+      "examples": "**Scenario:**\n- Event: Daily Standup. 10:00 AM. Rule: Daily.\n- Query: Show June 1st.\n- System calculates: Does June 1st match Rule? Yes.\n- Display 10:00 AM."
+    },
+    {
+      "id": 46,
+      "question": "Design a Blackjack Game",
+      "answer": "Entities: `Deck`, `Card`, `Hand`, `Player`, `Dealer`. \n\nLogic: \n- `Deck` is a collection of 52 cards. `shuffle()` and `deal()`. \n- `Hand` calculates score. Aces are tricky (1 or 11). Logic: `value = sum. if (value > 21 && hasAce) value -= 10`. \n\nThe `Game` follows strict steps: Bets -> Deal -> Player Turn (Hit/Stand) -> Dealer Turn (must hit until >= 17) -> Payout.",
+      "difficulty": "Easy",
+      "section": "Game Design",
+      "explanation": "**Classes:**\n- `Card`: Suit, Rank, Value.\n- `Shoe`: Multiple Decks combined.\n- `Hand`: List<Card>. `getScore()`.\n- `BlackjackGame`: Manages flow.\n\n**State Pattern:**\n- `BettingState`\n- `DealingState`\n- `PlayerTurnState`\n- `DealerTurnState`\n- `ResolveState`\n\n**Extensibility:**\nEasy to add side bets or rules (Split, Double Down) by extending the `Action` class.",
+      "examples": "**Scenario:**\n- Player Hand: King, 6 (16).\n- Dealer Upcard: 10.\n- Player hits. Gets 7. Total 23. Bust.\n- Dealer wins immediately."
+    },
+    {
+      "id": 47,
+      "question": "Design a Calorie Tracker",
+      "answer": "System to log `Food`, `Exercise`, and `Weight`. \n\nWe use the **Factory Pattern** for Food entries: `BarcodeFood`, `CustomFood`, `Recipe`. \nThe `Recipe` is a **Composite**: it contains other Foods. \n\nCalculation: `NetCalories = FoodIn - ExerciseOut`. \nWe need a `Goal` class (Lose 1lb/week) which calculates the `DailyBudget`.",
+      "difficulty": "Medium",
+      "section": "Object-Oriented Design",
+      "explanation": "**Classes:**\n- `User`: BMR (Basal Metabolic Rate), ActivityLevel.\n- `LogEntry`: timestamp, type (Breakfast, Lunch).\n- `FoodItem`: protein, carbs, fat, calories.\n- `DailyLog`: Aggregation of entries.\n\n**Composite Pattern (Recipe):**\nA 'Sandwich' consists of Bread (Food) + Cheese (Food) + Ham (Food). The `getCalories()` of Sandwich sums the children.\n\n**Observer:**\nNotify user if they exceed daily budget.",
+      "examples": "**Scenario:**\n- Target: 2000 kcal.\n- Breakfast: Eggs (150).\n- Lunch: Sandwich (500).\n- Run: -300.\n- Remaining: 2000 - 150 - 500 + 300 = 1650."
+    },
+    {
+      "id": 48,
+      "question": "Design an Expression Evaluator",
+      "answer": "This solves strings like `(5 + 3) * 2`. \nWe use the **Composite Pattern**. \n- `Expression` (Interface). `evaluate()`. \n- `NumberExpression` (Leaf). Returns value. \n- `OperationExpression` (Node). Has left and right Expressions. Returns `left.eval() op right.eval()`. \n\nTo parse the string, we use the **Shunting Yard Algorithm** (Stacks) to convert Infix to Postfix, or build the Expression Tree directly.",
+      "difficulty": "Hard",
+      "section": "Algorithms",
+      "explanation": "**Class Structure:**\n- `Node` interface: `int evaluate()`.\n- `ValueNode`: returns int.\n- `AddNode`: returns `left.evaluate() + right.evaluate()`.\n- `MulNode`: returns `left.evaluate() * right.evaluate()`.\n\n**Parsing:**\nUse two stacks: `Values` and `Operators`.\nHandle precedence ( * > + ).\n\n**Design Pattern:**\n**Interpreter Pattern** is the formal name for this in GoF.",
+      "examples": "**Scenario:**\n- Input: `2 + 3 * 4`.\n- Tree: `Add( Val(2), Mul( Val(3), Val(4) ) )`.\n- Mul evals to 12.\n- Add evals to 2 + 12 = 14."
+    },
+    {
+      "id": 49,
+      "question": "Design a Thread-Safe Singleton",
+      "answer": "A Singleton ensures only one instance exists. \n\nNaive approach: `static instance`. Lazy loading needs checks. \nThread-Safe approach: **Double-Checked Locking**. \n1. Check if null. \n2. `synchronized` block. \n3. Check if null again. \n4. Create. \n\nWe must use the `volatile` keyword in Java/C++ to prevent instruction reordering issues. \nAlternatively, use **Bill Pugh Singleton** (Static Inner Class) or **Enum Singleton** (Simplest, prevents reflection attacks).",
+      "difficulty": "Medium",
+      "section": "Design Patterns",
+      "explanation": "**Code (Double Checked):**\n`private static volatile Singleton instance;`\n`public static Singleton getInstance() {`\n  `if (instance == null) {`\n    `synchronized (Singleton.class) {`\n       `if (instance == null) instance = new Singleton();`\n    `}`\n  `}`\n  `return instance;`\n`}`\n\n**Why Volatile?**\nWithout it, a thread might see a partially constructed object due to compiler optimizations.\n\n**Enum Approach:**\n`public enum Singleton { INSTANCE; }`\nHandles serialization and reflection automatically.",
+      "examples": "**Scenario:**\n- Thread A and B call `getInstance()` simultaneously.\n- Both pass first null check.\n- A acquires lock. Creates instance. Releases lock.\n- B acquires lock. Fails second null check. Returns A's instance."
+    },
+    {
+      "id": 50,
+      "question": "Design a Custom Iterator",
+      "answer": "We want to iterate over a custom collection (e.g., a `SocialGraph` or `Playlist`) using a `foreach` loop. \n\nWe implement the **Iterator Pattern**. \nInterface `Iterator`: `hasNext()`, `next()`. \nInterface `Iterable`: `iterator()`. \n\nFor a `Playlist`, the Iterator maintains a cursor `currentTrackIndex`. \nFor a `Graph` (BFS Iterator), the Iterator maintains a `Queue` of nodes to visit next. This allows lazy traversal of a massive graph.",
+      "difficulty": "Medium",
+      "section": "Design Patterns",
+      "explanation": "**Classes:**\n- `MyCollection` implements `Iterable`.\n- `MyIterator` implements `Iterator`.\n\n**Internal Logic:**\n- `MyIterator` holds a reference to the Collection and a pointer/cursor.\n- `hasNext()` checks `cursor < size`.\n- `next()` returns `data[cursor++]`.\n\n**Fail-Fast:**\nIf the collection is modified (element added) while iterating, the Iterator should throw `ConcurrentModificationException`. We track this with a `modCount` variable.",
+      "examples": "**Scenario:**\n- Collection: [A, B, C].\n- Iterator created. Cursor = 0.\n- `hasNext()`? True. `next()` returns A. Cursor=1.\n- `hasNext()`? True. `next()` returns B. Cursor=2.\n- ...\n- `hasNext()`? False."
+    }
+  ]
+}
