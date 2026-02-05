@@ -267,7 +267,9 @@ class PDFGenerator:
 
         # Description
         description = item.get("Description", "No description provided")
-        elements.append(Paragraph(self._escape_html(description), self.styles["DMDescription"]))
+        elements.append(
+            Paragraph(self._escape_html(description), self.styles["DMDescription"])
+        )
 
         # Add spacing
         elements.append(Spacer(1, 0.12 * inch))
