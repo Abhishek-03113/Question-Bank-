@@ -77,9 +77,7 @@ class SupabaseResource(Enum):
     INTERVIEW_QUESTIONS_BACKEND = ResourceConfig(
         table_name="interview_questions_backend",
         select="id,question,answer,difficulty,section",
-        filters={"section": "eq.Backend Developer"},
-        offset=5,
-        limit=100,
+        filters={"section": "eq.backend"},
     )
 
     INTERVIEW_QUESTIONS_AI = ResourceConfig(

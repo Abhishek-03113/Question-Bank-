@@ -2,8 +2,359 @@
   "metadata": {
     "resource": "interview_questions_backend",
     "file_id": 1,
-    "timestamp": "2026-02-05T13:24:52.638971",
-    "record_count": 0
+    "timestamp": "2026-02-05T13:29:14.736364",
+    "record_count": 50
   },
-  "data": []
+  "data": [
+    {
+      "id": 201,
+      "question": "What are the core principles of RESTful API design?",
+      "answer": "A RESTful API should adhere to statelessness, rate resource-based endpoints, and leverage HTTP methods (GET, POST, PUT, DELETE) semantically. Stateless interactions mean each request contains all context; the server does not store client session state. Resources are identified by URIs and can return representations in JSON or XML. Proper use of status codes for error handling and hypermedia links (HATEOAS) enhances discoverability. Consistent versioning and idempotent operations prevent unintended side effects during retries.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 202,
+      "question": "How do you optimize database query performance in high-traffic environments?",
+      "answer": "Optimizing database queries involves indexing frequently queried columns, profiling slow queries with EXPLAIN plans, and rewriting joins or subqueries for efficiency. Use covering indexes to avoid lookups, partition large tables by date or range, and implement read replicas for horizontal scaling. Caching results at the application or distributed layer (Redis, Memcached) reduces database load. Connection pooling and limiting transaction scope further minimize contention. Regular maintenance tasks like index rebuilds and statistics updates sustain performance.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 203,
+      "question": "Explain the concept of database normalization and its trade-offs.",
+      "answer": "Database normalization organizes tables to reduce redundancy via normal forms. First normal form enforces atomic fields; second normal form removes partial dependencies; third normal form eliminates transitive dependencies. Normalization improves data integrity and simplifies updates but can incur performance overhead from additional joins. In high-read scenarios, denormalization or materialized views may be applied selectively. Balancing normalization and denormalization depends on access patterns, consistency requirements, and acceptable maintenance complexity.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 204,
+      "question": "How would you implement pagination in a REST API?",
+      "answer": "Implement pagination using limit and offset parameters or cursor-based approaches. Offset-based pagination accepts page and size parameters, but performance degrades on large offsets. Cursor-based pagination returns a token referencing the last item, enabling efficient retrieval of the next page without scanning skipped rows. Include metadata like nextCursor or hasMore in responses. Ensure stable sort ordering to prevent missing or duplicate records when underlying data changes during pagination.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 205,
+      "question": "What strategies ensure secure authentication for backend services?",
+      "answer": "Use JSON Web Tokens (JWT) or opaque tokens with short lifespans to authenticate API clients, transmitting tokens via secure headers. Implement refresh tokens for session persistence, stored securely, and rotate them periodically. Protect credentials with salted, hashed passwords using bcrypt or Argon2. Enforce HTTPS/TLS to encrypt data in transit. Employ multi-factor authentication, role-based access control, and OAuth2 flows when integrating third-party identity providers. Regularly audit and revoke compromised tokens.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 206,
+      "question": "Describe how you would design a logging and monitoring system.",
+      "answer": "A robust logging system centralizes structured logs (JSON) from services into a log aggregator like ELK or Splunk. Include contextual metadata (request IDs, user IDs, timestamps) for traceability. Monitor metrics (latency, error rates) with time-series databases like Prometheus and visualize dashboards in Grafana. Set alerts on thresholds and anomalies (e.g., high 5xx rates). Implement distributed tracing (Jaeger, Zipkin) to follow requests across microservices. Retain logs per compliance requirements and archive older data periodically.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 207,
+      "question": "Explain the difference between optimistic and pessimistic locking.\"",
+      "answer": "Optimistic locking assumes minimal conflict, allowing concurrent transactions to read data and check a version or timestamp before committing updates. If the version changed, the transaction retries. It suits low-contention scenarios, maximizing throughput. Pessimistic locking acquires row or table locks to prevent other transactions from reading or writing until the lock is released. It ensures data integrity under high contention but can cause deadlocks and reduce concurrency. Choose based on conflict frequency and performance requirements.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 208,
+      "question": "What is CQRS and when would you use it?",
+      "answer": "Command Query Responsibility Segregation separates read and write operations into distinct models. Commands modify state through write models and event stores; queries fetch read models optimized for retrieval. CQRS suits complex domains with divergent read/write workloads, enabling independent scaling, performance optimizations (e.g., denormalized read views), and event-driven architecture. It adds complexity via event handling and eventual consistency, so apply when system demands high throughput, clear separation of concerns, or integration with event sourcing.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 209,
+      "question": "How do you handle file uploads in a backend application?",
+      "answer": "Handle file uploads by streaming data directly to object storage (e.g., AWS S3) to avoid server memory bloat. Generate pre-signed URLs for clients to upload securely. Validate file types and size limits. Scan for viruses or malicious content. Store metadata (filename, size, content type, storage path) in the database. Implement chunked uploads and resumable sessions for large files. Delete unused or expired files via scheduled jobs to manage storage costs.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 210,
+      "question": "Describe how webhooks work and how to implement retry logic.\"",
+      "answer": "Webhooks push events to external URLs via HTTP POST. Upon a triggering event, the backend serializes payload and HTTP headers, sending to subscriber endpoints. Implement idempotent receivers to handle repeated deliveries safely. Use a retry policy with exponential backoff for transient failures (5xx or timeouts) and dead-letter queues or administrative alerts for persistent errors. Sign payloads with HMAC to verify authenticity on the receiver side and prevent spoofing.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 211,
+      "question": "What considerations are important when designing microservices?",
+      "answer": "Microservices should be loosely coupled and bounded by business capabilities. Design clear, versioned APIs with backward compatibility. Choose appropriate communication patterns: synchronous HTTP/gRPC for real-time needs, asynchronous messaging (Kafka, RabbitMQ) for decoupling. Implement centralized configuration, service discovery, and distributed tracing. Use containerization and orchestrators (Kubernetes) for deployment. Ensure data ownership per service to avoid shared databases, enforcing eventual consistency through events. Monitor and handle failure gracefully with circuit breakers.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 212,
+      "question": "How do you implement rate limiting for APIs?",
+      "answer": "Rate limiting throttles client requests to protect backend resources. Use token bucket or leaky bucket algorithms implemented in the API gateway (e.g., Kong, NGINX) or middleware. Define quotas per client API key or IP, such as requests per minute, and return HTTP 429 on exceedance. Maintain counters in distributed caches (Redis) with expiration. Provide headers indicating remaining quota and reset time. Rate limiting prevents abuse, ensures fair usage, and maintains service stability under load.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 213,
+      "question": "Explain ACID properties in the context of relational databases.\"",
+      "answer": "ACID stands for Atomicity (transactions fully commit or rollback), Consistency (transactions move the database from one valid state to another respecting constraints), Isolation (concurrent transactions do not interfere, controlled via isolation levels), and Durability (once committed, changes persist even on crashes). These properties guarantee reliable transaction processing. In distributed systems, full ACID may conflict with availability and partition tolerance, leading to eventual consistency choices like BASE models.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 214,
+      "question": "How would you secure communication between microservices?",
+      "answer": "Secure microservice communication via mutual TLS to authenticate both client and server, encrypting data in transit. Use service mesh (Istio) for centralized certificate management and observability. Employ JWT or mTLS-based identity tokens for authorization at each service boundary. Encrypt sensitive payload fields at the application layer. Rotate certificates regularly and enforce least-privilege network policies. Audit access logs and monitor for unauthorized attempts or expired credentials.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 215,
+      "question": "What is database sharding and when would you use it?",
+      "answer": "Sharding partitions a database horizontally by splitting data across multiple servers based on shard keys (e.g., user ID ranges). Each shard handles a subset of data, enabling horizontal scaling for write-heavy workloads. Sharding reduces hotspots and improves capacity but adds complexity in cross-shard transactions, joins, and rebalancing shards when data distribution changes. Use when single-node resources are insufficient and strong partitioning keys exist with minimal cross-shard interactions.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 216,
+      "question": "Describe how you would manage environment-specific configurations.\"",
+      "answer": "Manage configurations using environment variables or a configuration service (Consul, etcd). Store secrets encrypted in vault services (HashiCorp Vault) and inject at runtime. Use separate configuration files per environment (development, staging, production) with hierarchical overrides. Automate configuration deployment via CI/CD pipelines. Validate configuration schemas at startup to catch errors early. Version control non-sensitive defaults and ensure secret rotation policies are in place.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 217,
+      "question": "How do you implement transactional workflows spanning multiple services?\"",
+      "answer": "Implement distributed transactions via Saga pattern: orchestrate local transactions across services, compensating on failure to undo partial work. Two variants include choreography (events trigger next steps) and orchestration (a central coordinator manages the workflow). Use idempotent operations and persistent state machines to track progress. Avoid two-phase commit due to blocking and single point of failure in microservices. Ensure visibility with audit logs and monitoring dashboards.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 218,
+      "question": "What is a circuit breaker and how is it implemented?",
+      "answer": "A circuit breaker prevents calls to failing services to avoid cascading failures. It tracks failure and success rates; if failures exceed thresholds, it “opens” the circuit, short-circuiting requests and returning defaults or errors immediately. After a timeout, it transitions to “half-open” to test service health. Implement in client libraries or gateways (Resilience4j, Hystrix). Configure thresholds, timeouts, and fallback handlers to maintain resilience under partial outages.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 219,
+      "question": "Explain the CAP theorem and its implications for distributed systems.\"",
+      "answer": "The CAP theorem states a distributed system can ensure only two of Consistency (all nodes see same data simultaneously), Availability (every request receives a response), and Partition tolerance (system operates despite network failures). In practice, systems choose CP (strong consistency, reduced availability during partitions) or AP (always available, eventual consistency). Understanding application requirements guides trade-offs between immediate correctness and uptime during network splits.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 220,
+      "question": "How do you handle schema migrations in production databases?\"",
+      "answer": "Handle schema migrations using versioned migration scripts managed by tools like Flyway or Liquibase. Write forward and backward-compatible changes: adding nullable columns, creating new tables, or triggers. Perform phased deployments: deploy code first, then apply migrations during low-traffic windows. Use blue-green or rolling deployments to minimize downtime. Validate migrations in staging, backfill data in batches, and monitor metrics post-migration. Include rollback scripts for emergency recovery.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 221,
+      "question": "What is middleware in web frameworks and how is it used?",
+      "answer": "Middleware in web frameworks sits between the request and response phases, processing requests before they reach route handlers and responses before they return to clients. Common uses include authentication, logging, validation, and CORS handling. Middleware functions can be chained, executing sequentially based on configuration. In Express.js, for example, you register middleware with app.use(), enabling global or route-specific behavior. Proper ordering and error-handling middleware ensure robust pipelines that can short-circuit or augment processing as needed.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 222,
+      "question": "How does HTTP caching work and which headers control it?",
+      "answer": "HTTP caching reduces redundant network traffic by storing responses client-side or in proxies. The Cache-Control header specifies directives like max-age, no-cache, and must-revalidate. Expires provides absolute expiration timestamps. ETag and Last-Modified allow conditional requests via If-None-Match and If-Modified-Since, enabling 304 Not Modified responses. Cache invalidation strategies include URL versioning, cache busting query parameters, and purge APIs. Proper caching improves performance but requires careful header configuration to maintain freshness and consistency.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 223,
+      "question": "Explain REST vs. GraphQL and trade-offs.",
+      "answer": "REST exposes fixed endpoints per resource, using HTTP verbs for operations, while GraphQL offers a single endpoint accepting queries specifying required data shapes. GraphQL minimizes over-fetching and under-fetching but adds complexity with schema definition, resolver performance tuning, and caching challenges. REST benefits from HTTP caching and simplicity, whereas GraphQL excels in flexibility for clients needing varied data. Choose based on API consumer needs: REST for straightforward CRUD operations, GraphQL when clients require dynamic, nested data fetching.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 224,
+      "question": "What is CORS and how do you configure it?",
+      "answer": "Cross-Origin Resource Sharing (CORS) controls which origins can access resources via browsers. Servers set Access-Control-Allow-Origin to whitelist domains or use wildcards. Additional headers like Access-Control-Allow-Methods and Access-Control-Allow-Headers specify allowed operations. Preflight OPTIONS requests validate permissions before actual requests. Misconfigured CORS can expose APIs to unauthorized origins, while overly restrictive settings block legitimate clients. Use middleware or proxy configurations to manage CORS, dynamically reflecting allowed origins from environment configurations or databases.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 225,
+      "question": "How do you secure sensitive data at rest?",
+      "answer": "Securing data at rest involves encrypting files and database records using AES-256 or other strong algorithms. Use Transparent Data Encryption (TDE) for databases, encrypt filesystem volumes with OS-level tools like LUKS or BitLocker, and manage keys via Hardware Security Modules (HSMs) or cloud key management services. Access controls, database roles, and column-level encryption for personally identifiable information ensure only authorized processes can decrypt. Regularly rotate keys and audit access logs for compliance and breach detection.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 226,
+      "question": "What is a reverse proxy and why use one?",
+      "answer": "A reverse proxy sits between clients and backend servers, forwarding incoming requests to appropriate services. It provides load balancing, SSL termination, caching, and request routing. Popular reverse proxies include NGINX and HAProxy. SSL offloading reduces backend load, while caching static assets improves performance. Reverse proxies also enforce security via Web Application Firewalls (WAFs), hide internal infrastructure, and enable seamless blue-green or canary deployments through hostname-based routing.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 227,
+      "question": "Explain JSON Web Tokens (JWT) structure.\"",
+      "answer": "A JWT consists of three base64-encoded parts separated by dots: header, payload, and signature. The header specifies the signing algorithm (e.g., HS256), the payload contains claims like issuer, subject, and expiration, and the signature is the HMAC or RSA hash of header and payload using a secret or private key. Clients send JWTs in Authorization headers. Servers verify signature integrity and validate claims to authenticate and authorize requests. JWTs enable stateless, scalable session management across distributed services.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 228,
+      "question": "What is connection pooling and its benefits?",
+      "answer": "Connection pooling maintains a cache of open database connections that can be reused by incoming requests, eliminating overhead of establishing new connections. Pools enforce a maximum number of connections, improving resource utilization and preventing exhaustion. Idle connections are reused to serve queries quickly, reducing latency. Settings like min, max, and idleTimeout allow tuning for workload patterns. Connection pooling improves throughput under high concurrency but requires proper configuration to avoid deadlocks or long wait times.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 229,
+      "question": "Describe JSON vs. Protobuf for data serialization.",
+      "answer": "JSON is human-readable, text-based, and flexible but larger in size and slower to parse. Protobuf is a binary serialization format with schema definitions, offering compact messages, faster serialization/deserialization, and backward/forward compatibility via optional fields. Protobuf requires code generation, whereas JSON works with dynamic typing. Use JSON for public APIs and debugging ease; choose Protobuf for high-performance internal RPC protocols where bandwidth and speed are critical.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 230,
+      "question": "What is TLS handshake and its purpose?",
+      "answer": "The TLS handshake establishes a secure session by negotiating protocol versions, cipher suites, and authenticating endpoints. It begins with ClientHello and ServerHello messages exchanging supported cryptographic parameters. The server sends its certificate; the client verifies it against trusted CAs. Both parties derive shared session keys via Diffie-Hellman or RSA. A Finished message from each side confirms key integrity. The handshake ensures confidentiality, integrity, and authenticity for subsequent encrypted application data.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 231,
+      "question": "How would you implement health checks for microservices?",
+      "answer": "Implement health checks by exposing endpoints (e.g., /health or /ping) that return statuses of service dependencies like databases, caches, and third-party APIs. Use liveness probes to detect crash loops and readiness probes to signal traffic-safe states. For Kubernetes, configure YAML specs to poll these endpoints, enabling automatic restarts or disabling service endpoints during cold starts. Include granular checks (disk usage, thread pool status) for deeper diagnostics and integrate with monitoring dashboards for real-time visibility.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 232,
+      "question": "What are the differences between monolithic and microservice architectures?",
+      "answer": "A monolith packages all application components into a single deployable unit, simplifying development and testing but hindering scalability and continuous deployment. Microservices decompose functionality into independently deployable services, enabling polyglot tech stacks, decentralized ownership, and fine-grained scaling. However, microservices introduce complexity in service discovery, inter-service communication, data consistency, and operational overhead. Choose monoliths for smaller teams or simpler domains; adopt microservices when scalability, resilience, and rapid iteration demand autonomy.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 233,
+      "question": "Explain the role of message brokers in backend systems.\"",
+      "answer": "Message brokers (e.g., RabbitMQ, Kafka) decouple producers and consumers via asynchronous messaging. Producers publish events to queues or topics, and consumers subscribe to receive messages, enabling event-driven architectures. Brokers provide durability, retry policies, and flow control to handle spikes. Use message brokers for integrations, background job processing, and reliable communication across microservices. Design idempotent consumers and dead-letter queues for failed messages to maintain consistency and fault tolerance.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 234,
+      "question": "How do you ensure database migrations are zero-downtime?",
+      "answer": "Achieving zero-downtime migrations involves adding non-breaking changes first (e.g., new columns), updating application code to use both old and new schema, backfilling data, and then dropping deprecated structures. Use online schema change tools (gh-ost, pt-online-schema-change) to apply ALTER statements without table locks. Deploy in phases: apply migration in maintenance windows or via rolling updates. Monitor replication lag and application logs to catch anomalies early and roll back if needed.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 235,
+      "question": "What is event sourcing and how does it differ from CRUD?",
+      "answer": "Event sourcing persists state changes as an immutable sequence of events instead of storing current state. The application replays events to reconstruct state, enabling audit trails, time travel, and CQRS integration. CRUD operations overwrite state, losing history unless explicitly logged. Event sourcing demands careful event schema design, storage scaling, and projection management. It excels in complex domains needing full change history and supports powerful features like event replay for debugging or reprocessing.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 236,
+      "question": "Explain the concept of eventual consistency.\"",
+      "answer": "Eventual consistency guarantees that, if no new updates occur, all replicas of data will converge to the same state after a period. It trades immediate consistency for higher availability and partition tolerance. Systems like DynamoDB and Cassandra use gossip protocols and vector clocks to replicate updates asynchronously. Clients may read stale data until convergence. Applications requiring strict correctness should implement additional protocols (read-after-write consistency) or use strongly consistent storage for critical operations.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 237,
+      "question": "Describe how OAuth2 authorization flows work.\"",
+      "answer": "OAuth2 defines flows like Authorization Code (for server-side apps), Implicit (deprecated), Client Credentials (machine-to-machine), and Resource Owner Password (legacy). In Authorization Code flow, the client redirects users to an authorization server for login and consent. The server returns an authorization code, which the backend exchanges for access and refresh tokens. Access tokens grant resource access; refresh tokens obtain new access tokens. Proper token storage, scope limitations, and rotating secrets ensure secure authorization.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 238,
+      "question": "How do you prevent SQL injection vulnerabilities?",
+      "answer": "Prevent SQL injection by using parameterized queries or prepared statements where query structure and data are separated. ORMs typically handle parameterization automatically. Avoid dynamic query building with string concatenation. Employ input validation and whitelisting for known formats. Use least-privilege database users, custom stored procedures, and Web Application Firewalls (WAFs) to add defense layers. Regularly scan code and dependencies with SAST tools to identify injection risks early.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 239,
+      "question": "What is the role of API gateways in microservice ecosystems?",
+      "answer": "API gateways act as single entry points for clients, routing requests to multiple microservices. They perform functions like authentication, rate limiting, request/response transformation, and aggregation. Gateways enable versioned public APIs and shield internal service complexity. Common implementations include Kong, Tyk, and AWS API Gateway. Deploy gateways alongside service meshes for unified security and observability, ensuring consistent policies and simplified client integration across evolving microservice landscapes.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 240,
+      "question": "Explain the concept of idempotency and its importance in REST APIs.\"",
+      "answer": "Idempotency ensures that repeated requests with the same idempotency key produce the same result without side effects, critical for safely retrying operations after network failures. In REST APIs, GET is idempotent by definition, while POST requires explicit idempotency tokens in headers or payload. Servers store processed keys and responses to detect duplicates. Idempotent design prevents duplicate resource creation or unintended state changes, improving user experience and system resilience.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 241,
+      "question": "How do you implement database read replicas and sync strategies?",
+      "answer": "Database read replicas asynchronously copy data from a primary database for load distribution of read queries. Replication can be statement-based or row-based, with eventual consistency between replicas. Configure primary to ship write-ahead logs to replicas, applying them in near real-time. Use load balancers to direct read traffic. Monitor replication lag and configure failover mechanisms. For multi-region setups, consider write forwarding or distributed consensus protocols to maintain availability.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 242,
+      "question": "What is container orchestration and why use Kubernetes?",
+      "answer": "Container orchestration automates deployment, scaling, and management of containerized applications. Kubernetes provides features like self-healing, rolling updates, service discovery, and horizontal pod autoscaling. It abstracts infrastructure via declarative manifests (Deployments, Services) and manages workloads across clusters. Kubernetes enables consistent environments, resource isolation, and multi-cloud portability. Operators and Custom Resource Definitions extend its capabilities for specialized workflows like databases and AI workloads.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 243,
+      "question": "Describe how you would handle long-running background jobs.\"",
+      "answer": "Handle long-running tasks using background job queues (e.g., Sidekiq, Celery) processed by worker services. Jobs serialize payloads into persistent queues, ensuring retries on failures with exponential backoff. Track job status in dedicated stores or dashboards. For extremely long tasks, break them into smaller chunks or use orchestrators like Temporal for stateful workflows. Monitor job metrics, dead-letter queues, and apply concurrency controls to prevent resource exhaustion.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 244,
+      "question": "Explain symbolic links and their use in deployment.\"",
+      "answer": "Symbolic links are filesystem aliases pointing to target directories or files. In deployments, symlink current releases to a stable path, enabling atomic rollbacks by switching links. For example, have /app/current point to /app/releases/<timestamp>. After uploading a new release, update the symlink, and restart services. This decouples deployment and symlink update, minimizes downtime, and allows quick reversion by relinking to a previous release without moving files.",
+      "difficulty": "easy",
+      "section": "backend"
+    },
+    {
+      "id": 245,
+      "question": "What is the purpose of feature flags and how do you implement them?",
+      "answer": "Feature flags enable toggling functionality on or off at runtime without redeploying code. Implement via configuration files, environment variables, or specialized services (LaunchDarkly). Wrap features with conditional checks evaluating flags per user, environment, or percentage rollout. Use flags for canary releases, A/B testing, and gradual rollouts to mitigate risk. Maintain flag hygiene: retire obsolete flags and monitor flag-related performance impacts to prevent code complexity.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 246,
+      "question": "How do you manage transactional integrity across NoSQL databases?",
+      "answer": "NoSQL databases often sacrifice multi-document ACID transactions for scalability. To maintain transactional integrity, implement patterns like two-phase commits at the application level or use databases supporting limited transactions (MongoDB multi-document sessions). Employ distributed saga patterns with compensating actions to handle failures. Design idempotent operations and maintain durable logs. For critical invariants, consider using relational stores or hybrid approaches for specific parts of the domain requiring strict consistency.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 247,
+      "question": "Explain how HTTP/2 improves performance over HTTP/1.1.\"",
+      "answer": "HTTP/2 multiplexes multiple streams over a single TCP connection, reducing head-of-line blocking present in HTTP/1.1. It uses binary framing for efficient parsing and supports header compression (HPACK) to lower overhead. Server push enables preemptive resource delivery, while stream prioritization optimizes critical content. These features yield lower latency, better throughput, and improved resource utilization, particularly over mobile and high-latency networks.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 248,
+      "question": "What is service mesh and when would you use it?",
+      "answer": "A service mesh is a dedicated infrastructure layer managing service-to-service communication via sidecar proxies. It provides traffic management (load balancing, retries), security (mutual TLS, authentication), and observability (metrics, tracing) without altering application code. Service meshes like Istio, Linkerd, and Consul enhance microservice resilience at scale. Use service meshes when you need consistent policies, zero-trust security, and detailed telemetry across complex distributed environments.",
+      "difficulty": "hard",
+      "section": "backend"
+    },
+    {
+      "id": 249,
+      "question": "How do you implement graceful shutdown in backend services?",
+      "answer": "Graceful shutdown handles in-flight requests before terminating services. On receiving a shutdown signal, stop accepting new requests and signal health check failures. Allow existing connections to finish within a timeout, and flush background tasks or open transactions. After the timeout, forcefully close remaining connections. In container orchestrations, configure preStop hooks and terminationGracePeriod to align with application shutdown logic, ensuring minimal disruption and data integrity during deployments or scaling events.",
+      "difficulty": "medium",
+      "section": "backend"
+    },
+    {
+      "id": 250,
+      "question": "Describe best practices for API versioning.\"",
+      "answer": "API versioning prevents breaking changes for clients. Common strategies include URI versioning (/v1/resource), header versioning (Accept header), or custom query parameters. Ensure backward compatibility by deprecating endpoints gradually and providing clear migration guides. Maintain multiple versions in parallel with automated routing and deprecation warnings. Use semantic versioning for version numbers, and communicate timelines for sunset dates. Automate tests across versions to ensure consistency and detect regressions early.",
+      "difficulty": "medium",
+      "section": "backend"
+    }
+  ]
 }
