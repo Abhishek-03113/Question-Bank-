@@ -1,0 +1,563 @@
+{
+  "metadata": {
+    "resource": "interview_questions_data_analyst",
+    "file_id": 1,
+    "timestamp": "2026-02-05T13:08:12.860150",
+    "record_count": 79
+  },
+  "data": [
+    {
+      "id": 251,
+      "question": "What are the key steps in the data analysis process?",
+      "answer": "The data analysis process begins with defining objectives and hypotheses based on business needs. Next, data acquisition involves sourcing and collecting relevant datasets from databases, APIs, or external files. Data cleaning addresses missing values, duplicates, and inconsistencies using imputation or filtering. Exploratory data analysis employs summary statistics and visualizations to uncover patterns and anomalies. Modeling applies statistical or machine learning techniques to test hypotheses. Finally, interpretation and communication involve presenting insights via dashboards or reports to drive decision-making.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 253,
+      "question": "How do you handle missing data and what techniques can you use?",
+      "answer": "Handling missing data begins with assessing the missingness mechanism: MCAR, MAR, or NMAR. Techniques include listwise deletion for completely random gaps, mean, median, or mode imputation for simplicity, and k-nearest neighbors or MICE for multivariate patterns. Advanced methods leverage model-based imputation (e.g., regression). For time series, forward or backward fill preserves temporal sequences. Document assumptions and perform sensitivity analysis to ensure imputations do not bias results or distort distributions in downstream analyses.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 254,
+      "question": "Describe how you would detect and handle outliers in a dataset.\"",
+      "answer": "Outlier detection combines statistical and visual methods. Use boxplots to identify values beyond 1.5×IQR, z-scores for extreme deviations, or isolation forests for multivariate detection. Investigate context: genuine variability, data entry errors, or measurement anomalies. Handle outliers by capping (winsorization), transforming (log or Box-Cox), or excluding if erroneous. Document decisions and assess impact through sensitivity tests. In modeling, robust algorithms (random forests) mitigate outlier influence, while standard models may require explicit handling.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 255,
+      "question": "What is the purpose of data normalization and standardization?",
+      "answer": "Normalization scales features to a specific range (e.g., ) using min-max transformation, ensuring uniform units and preventing dominance by large-scale variables. Standardization scales to zero mean and unit variance, preserving outlier effects but centering data for algorithms like k-means or PCA. Both techniques improve model convergence in gradient-based methods, distance calculations in clustering, and interpretability. Choose normalization for bounded ranges and standardization for normally distributed data or when preserving relative differences is important.",
+      "difficulty": "easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 256,
+      "question": "How do you choose between a bar chart and a histogram?",
+      "answer": "Use a bar chart to display categorical data frequencies or proportions, where each bar represents a distinct category. Bars are separated by spaces to emphasize discrete nature. A histogram visualizes continuous numerical distributions by grouping data into bins, shown as adjacent bars without gaps to indicate continuity. Choose the number of bins based on data size and variability. Histograms reveal distribution shapes, skewness, and modes, while bar charts compare categories or time-series aggregates clearly.",
+      "difficulty": "easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 257,
+      "question": "Explain the concept of p-value in hypothesis testing.\"",
+      "answer": "A p-value quantifies the probability of observing data as extreme or more so under the null hypothesis. It measures evidence against the null: a small p-value (below significance level, often 0.05) suggests that the observed effect is unlikely due to random chance, leading to rejection of the null. However, p-values do not measure effect size or practical significance. Proper interpretation considers study design, sample size, and multiple testing corrections to avoid false positives.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 258,
+      "question": "What is multicollinearity and how can you detect it?",
+      "answer": "Multicollinearity occurs when independent variables in regression are highly correlated, inflating coefficient variances and making parameter estimates unstable. Detect it via correlation matrices, high Variance Inflation Factor (VIF) values above thresholds (commonly 5 or 10), or condition number analysis. Address multicollinearity by removing or combining correlated features using PCA, regularization techniques (Ridge), or domain-driven feature selection. Ensuring orthogonality among predictors improves model interpretability and stability.",
+      "difficulty": "hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 259,
+      "question": "Describe how you would design an A/B test.\"",
+      "answer": "Design an A/B test by randomly assigning users to control (A) and treatment (B) groups to minimize bias. Define primary metrics (e.g., click-through rate) and calculate required sample size for statistical power. Run the experiment for a predetermined duration to gather sufficient data. Use hypothesis testing (t-test or chi-square) to compare group outcomes, controlling for multiple comparisons. Monitor real-time metrics and stop early only for safety concerns. Post-test analysis examines confidence intervals and segment effects before rollout.",
+      "difficulty": "hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 260,
+      "question": "How do you create a dashboard for business stakeholders?",
+      "answer": "First, identify key performance indicators aligned with business objectives. Choose appropriate visualizations: line charts for trends, bar charts for comparisons, and gauges for targets. Organize dashboard layout hierarchically with high-level summaries at the top and drill-down details below. Ensure interactivity—filters, date pickers, and tooltips—for exploratory analysis. Design for accessibility with clear labels, consistent color schemes, and mobile compatibility. Deploy via BI platforms (Tableau, Power BI) and schedule automated data refreshes for up-to-date insights.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 261,
+      "question": "Explain the difference between supervised and unsupervised learning.\"",
+      "answer": "Supervised learning trains models using labeled data to predict outcomes, addressing classification (categorical targets) and regression (continuous targets). Examples include decision trees and linear regression. Unsupervised learning explores unlabeled data to discover hidden patterns through clustering (k-means) or dimensionality reduction (PCA). It aids segmentation, anomaly detection, and visualization. Choose algorithms based on whether targets are known. Model evaluation differs: supervised uses accuracy metrics, unsupervised relies on silhouette scores and domain validation.",
+      "difficulty": "easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 262,
+      "question": "How do you perform time series forecasting?",
+      "answer": "Time series forecasting involves decomposing data into trend, seasonality, and residual components using methods like STL. For statistical models, apply ARIMA or ETS, selecting parameters via ACF/PACF analysis. For machine learning, create lag features, rolling statistics, and calendar variables, then train algorithms like XGBoost or LSTM networks. Validate with rolling cross-validation, preserving temporal order. Use metrics like MAPE or RMSE to evaluate forecasts. Monitor drift and retrain models as underlying patterns evolve.",
+      "difficulty": "hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 263,
+      "question": "What is the role of data warehousing in analytics?",
+      "answer": "Data warehouses consolidate structured data from multiple sources into a central repository optimized for reporting and analytics. They use ETL pipelines to extract, transform, and load data into star or snowflake schemas, supporting complex queries and aggregations. Data warehouses provide historical insights with time-variant data, ensuring consistency and compliance. Tools like Snowflake or Amazon Redshift offer scalability and separation of storage and compute, enabling simultaneous workloads and high concurrency without impacting transactional systems.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 264,
+      "question": "Describe how you would implement data validation in ETL pipelines.\"",
+      "answer": "Data validation in ETL ensures data quality at ingestion and transformation stages. Implement checks for schema conformity, data type consistency, and null or unique constraints. Validate business rules like date ranges and referential integrity. Use tools like Great Expectations to define expectations as code, running tests at each pipeline stage. Log validation results, send alerts on failures, and support data correction workflows. Automated validation prevents corrupt data from reaching downstream analytics.",
+      "difficulty": "hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 265,
+      "question": "How do you calculate customer churn rate and analyze drivers?",
+      "answer": "Customer churn rate equals (Customers lost during period) / (Customers at period start). Calculate weekly or monthly to monitor trends. Analyze drivers via cohort analysis segmented by acquisition channel, demographic, or usage frequency. Build logistic regression or survival models with features like tenure, engagement metrics, and support interactions to predict churn. Visualize key predictors through feature importance plots. Implement targeted retention campaigns based on high-risk segments identified by models.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 266,
+      "question": "What are window functions and how are they used in SQL?",
+      "answer": "Window functions perform calculations across sets of rows related to the current row without collapsing results. Examples include ROW_NUMBER(), RANK(), LAG(), and SUM() OVER(PARTITION BY … ORDER BY …). They enable running totals, moving averages, and gap detection within partitions. Unlike GROUP BY, window functions preserve row-level detail while adding aggregated or relative metrics. Use window functions for complex analytics like cohort retention or time-based calculations directly in SQL.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 267,
+      "question": "Explain the use of regular expressions in data cleaning.\"",
+      "answer": "Regular expressions (regex) define patterns for matching and manipulating text. In data cleaning, use regex to validate formats (emails, phone numbers), extract substrings, and replace or remove unwanted characters. For example, \\d{4}-\\d{2}-\\d{2} matches date strings. Regex enables bulk transformations in spreadsheets, programming languages, and ETL tools. Properly testing patterns prevents erroneous matches. Regex skills streamline cleaning of messy text fields, log parsing, and feature engineering for NLP tasks.",
+      "difficulty": "easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 268,
+      "question": "How do you assess model performance for classification tasks?",
+      "answer": "Assess classification models using confusion matrix-derived metrics: accuracy, precision, recall, and F1-score. For imbalanced datasets, prioritize precision-recall curves and PR-AUC over ROC-AUC. Evaluate calibration with reliability diagrams or Brier scores. Use cross-validation to estimate generalization performance and detect overfitting. Analyze errors via confusion analysis and feature importance to uncover bias or data issues. Document performance in reproducible notebooks and share with stakeholders for transparency.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 269,
+      "question": "What is clustering and when is it useful?",
+      "answer": "Clustering groups similar data points without predefined labels. Algorithms like k-means partition data by minimizing within-cluster variance, while hierarchical clustering builds nested clusters. DBSCAN identifies arbitrary shapes and outliers. Clustering is useful for customer segmentation, anomaly detection, and pattern discovery in marketing or finance. Evaluate cluster quality using silhouette scores, Davies–Bouldin index, or domain knowledge. Preprocess with scaling and dimensionality reduction to improve clustering accuracy.",
+      "difficulty": "medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 270,
+      "question": "Describe how you would communicate complex data insights to non-technical stakeholders.\"",
+      "answer": "Communicating insights begins with understanding stakeholder goals and context. Use clear narratives supported by key metrics, avoiding jargon. Visualizations—annotated charts, infographics, or dashboards—highlight trends and comparisons. Provide executive summaries with bullet points and actionable recommendations. Use analogies and real-world examples to explain statistical concepts. Encourage interactive sessions for Q&A and feedback. Share documentation and dashboards with accessible annotations for future reference and iterative understanding.",
+      "difficulty": "easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 381,
+      "question": "What is the fundamental difference between data mining and data analysis in a business context?",
+      "answer": "Data analysis focuses on testing hypotheses and answering specific business questions using known data. It's about describing the present. Data mining, on the other hand, is more about exploration; it involves sifting through large datasets to discover hidden patterns, anomalies, and correlations *without* a predefined hypothesis. It's more about 'knowledge discovery' that can be used for future predictions.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 382,
+      "question": "Explain the core difference between structured and unstructured data, providing a clear example of each.",
+      "answer": "Structured data is highly organized, conforms to a strict schema, and is easily stored in relational database tables. Examples include Excel files, SQL databases, or a table of user information with columns like 'UserID', 'Name', and 'Email'. Unstructured data has no predefined format or organization. Examples include text from emails, social media posts, video files, audio recordings, and images, which require more advanced techniques to process.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 383,
+      "question": "What is SQL, and why is it considered the most fundamental and essential language for a Data Analyst to master?",
+      "answer": "SQL (Structured Query Language) is a programming language used to communicate with and manipulate relational databases. It's essential for a Data Analyst because most of a company's valuable, transactional data is stored in these databases. An analyst *must* be proficient in SQL to perform the core tasks of their job: retrieving data, filtering it, joining different data sources, and performing aggregations to answer business questions.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 384,
+      "question": "Can you explain the difference between the 'mean', 'median', and 'mode' and in what situation you would prefer using the median?",
+      "answer": "'Mean' is the average of a set of numbers. 'Median' is the middle value in a sorted dataset. 'Mode' is the most frequently occurring value. You would strongly prefer using the 'median' over the 'mean' when your data has significant outliers (e.g., in a dataset of 'salaries'). A few very high salaries can dramatically skew the mean, making it a poor representation of the 'typical' salary, whereas the median is robust to these outliers.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 385,
+      "question": "What is data cleaning, and why is it one of the most important and time-consuming steps in the data analysis process?",
+      "answer": "Data cleaning, or data wrangling, is the process of identifying and correcting (or removing) errors, inconsistencies, and inaccuracies from a dataset. This includes handling missing values, removing duplicates, correcting data types, and standardizing formats. It's crucial because 'garbage in, garbage out' (GIGO); no analysis, no matter how sophisticated, can be accurate if it's based on flawed, 'dirty' data. It is time-consuming because real-world data is almost always messy.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 386,
+      "question": "What is a primary key in a relational database, and how does it differ from a foreign key?",
+      "answer": "A 'primary key' is a column (or set of columns) in a table that uniquely identifies each row. It cannot have `NULL` values, and all values must be unique (e.t., a `UserID` in a 'Users' table). A 'foreign key' is a column in one table that links to the primary key in another table. It creates a relationship between the two tables. For example, a `UserID` column in an 'Orders' table would be a foreign key pointing to the `UserID` primary key in the 'Users' table.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 387,
+      "question": "What is the purpose of a 'dashboard' in business intelligence, and what are some common tools used to create them?",
+      "answer": "A dashboard is a data visualization tool that provides a real-time, at-a-glance view of a company's key performance indicators (KPIs) and metrics. Its purpose is to consolidate complex data from multiple sources into a single, easy-to-understand visual summary. This helps stakeholders monitor business health, track goals, and make faster, more informed decisions. Common tools used to create dashboards include Tableau, Microsoft Power BI, and Looker (Google Data Studio).",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 388,
+      "question": "What is the difference between a histogram and a bar chart? When would you use each one?",
+      "answer": "A bar chart is used for comparing a numerical value across different *categorical* groups (e.g., 'Total Sales' for different 'Product Categories' like 'Electronics' or 'Clothing'). A histogram is used to visualize the *distribution* of a single *continuous* variable. It groups numbers into 'bins' or ranges (e.g., 'Age' grouped into '20-29', '30-39') and shows the frequency of data points falling into each bin.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 389,
+      "question": "Explain what a 'null' value represents in a database and how it is different from a zero or an empty string.",
+      "answer": "A `NULL` value represents the *absence* of data. It means the value is unknown or missing. It is fundamentally different from a zero (0), which is a specific numerical value, or an empty string (''), which is a specific character value of zero length. For example, a `PhoneNumber` column that is `NULL` means 'we do not know their number', while an empty string might mean 'they explicitly have no number'.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 390,
+      "question": "What are the `SELECT`, `FROM`, and `WHERE` clauses in a SQL query, and what is the function of each?",
+      "answer": "These are the most basic and essential components of a SQL query. The `SELECT` clause specifies the *columns* you want to retrieve data from. The `FROM` clause specifies the *table* you are pulling that data from. The `WHERE` clause is used to *filter* the rows based on a specific condition, so you only get the rows that match the criteria you are interested in (e.g., `WHERE Country = 'USA'`).",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 391,
+      "question": "What is the difference between quantitative and qualitative data? Please provide a clear example for each type.",
+      "answer": "Quantitative data is numerical and measurable, representing 'how much' or 'how many'. It can be used in mathematical calculations. Examples include 'age' (25 years), 'temperature' (72 degrees), or 'revenue' ($1500). Qualitative data (or categorical data) is descriptive and non-numerical, representing 'what kind' or 'type'. It's used for categorization. Examples include 'eye color' (blue, brown), 'product category' (electronics, apparel), or 'customer feedback' (a text review).",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 392,
+      "question": "What is the main purpose of the `GROUP BY` clause in a SQL query, and which function is it commonly used with?",
+      "answer": "The `GROUP BY` clause is used to collect and group rows that have the same value in a specified column, allowing you to run aggregate functions on those groups. It's almost always used with SQL aggregate functions like `COUNT()`, `SUM()`, `AVG()`, or `MAX()`. For example, you would use it to find the `SUM(Sales)` *grouped by* `Region`, to get the total sales for each region.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 393,
+      "question": "In the context of data analysis, what is a 'time-series' analysis, and why is it useful for businesses?",
+      "answer": "Time-series analysis involves analyzing a sequence of data points collected over a period of time (e.g., daily sales, monthly website traffic, hourly stock prices). It's useful for businesses because it helps identify trends, seasonal patterns, and cycles in the data. This allows analysts to understand past performance and, more importantly, to *forecast* future values, which is critical for planning, budgeting, and inventory management.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 394,
+      "question": "What is the `COUNT()` function in SQL, and how does `COUNT(*)` differ from `COUNT(column_name)`?",
+      "answer": "The `COUNT()` function is an aggregate function that returns the total number of rows that match a specified criterion. `COUNT(*)` counts all rows in the table or group, including `NULL` values. `COUNT(column_name)` counts the number of rows where the specified *column* has a non-NULL value. This is a key difference; `COUNT(column_name)` will *ignore* any rows where that specific column is `NULL`.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 395,
+      "question": "What is a 'KPI' (Key Performance Indicator), and can you provide an example for an e-commerce business?",
+      "answer": "A KPI is a measurable value that demonstrates how effectively a company is achieving its key business objectives. KPIs are specific, measurable metrics that are critical to an organization's success. For an e-commerce business, a common KPI would be 'Conversion Rate' (the percentage of website visitors who make a purchase) or 'Average Order Value' (the average amount of money spent per order).",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 396,
+      "question": "What are 'outliers' in a dataset, and why is it important for a data analyst to identify them?",
+      "answer": "Outliers are data points that are abnormally distant from other values in a dataset. They can be legitimate, rare data points or they can be the result of errors (like a data entry typo). It's crucial for an analyst to identify them because they can have a disproportionately large effect on statistical calculations, especially the 'mean' and 'standard deviation'. They can skew the results of an analysis and lead to misleading conclusions or poor model performance.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 397,
+      "question": "What is the purpose of the `ORDER BY` clause in a SQL query, and how do you specify the sorting direction?",
+      "answer": "The `ORDER BY` clause is used to sort the result set of a query in either ascending or descending order based on one or more columns. By default, it sorts in ascending order. You can explicitly specify the direction using the `ASC` (ascending) or `DESC` (descending) keywords after the column name. For example, `ORDER BY Sales DESC` would return the rows with the highest sales first.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 398,
+      "question": "What is Microsoft Excel's 'VLOOKUP' function used for, and what are its main limitations?",
+      "answer": "'VLOOKUP' (Vertical Lookup) is a function used to find a value in the first column of a table array and return a corresponding value from another column in the same row. It's used for merging data from two different tables. Its main limitations are that it can only look up values in the *leftmost* column of the table, and it can be slow and performance-heavy on very large datasets. It has largely been superseded by the more flexible `XLOOKUP` or `INDEX/MATCH` functions.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 399,
+      "question": "In Python's Pandas library, what is the fundamental difference between a 'Series' and a 'DataFrame'?",
+      "answer": "A Pandas 'Series' is a one-dimensional, labeled array, similar to a single column in a spreadsheet. It can hold any data type. A 'DataFrame' is a two-dimensional, labeled data structure with columns of potentially different types. It is the most commonly used object in Pandas and is analogous to a full spreadsheet, an SQL table, or a dictionary of Series objects. You can think of a DataFrame as a collection of Series that share a common index.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 400,
+      "question": "What is a 'pie chart', and what is the main criticism of using it for data visualization?",
+      "answer": "A pie chart is a circular chart used to show 'part-to-whole' relationships, where the 'slices' of the pie represent the proportions of different categories that make up a whole (100%). The main criticism is that humans are not good at accurately comparing the sizes of angles or areas. When there are many slices, or when slices are of similar size, it becomes very difficult to read. A 'bar chart' is almost always a clearer and more effective alternative.",
+      "difficulty": "Easy",
+      "section": "data_analyst"
+    },
+    {
+      "id": 401,
+      "question": "What is the precise difference between 'correlation' and 'causation', and why is it critical for an analyst to not confuse them?",
+      "answer": "'Correlation' simply means that two variables tend to move together (e.g., when one goes up, the other goes up). 'Causation' means that a change in one variable *directly causes* a change in another. The critical difference is that correlation does not imply causation. For example, ice cream sales and shark attacks are correlated (both rise in summer), but ice cream sales do not *cause* shark attacks. A hidden third variable, 'warm weather', causes both. Confusing them can lead to disastrous business decisions.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 402,
+      "question": "Explain the difference between a LEFT JOIN and an INNER JOIN in SQL, providing a business scenario where you would use a LEFT JOIN.",
+      "answer": "An `INNER JOIN` returns only the rows that have a matching value in *both* the 'left' and 'right' tables. A `LEFT JOIN` returns *all* rows from the 'left' table, and only the matched rows from the 'right' table. If there is no match, the columns from the 'right' table will be filled with `NULL`. **Scenario:** You would use a `LEFT JOIN` to find *all customers* (left table) and any *orders* they may have placed (right table). This query would also show you which customers have placed `NULL` (zero) orders, which an `INNER JOIN` would filter out.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 403,
+      "question": "What is a p-value in the context of hypothesis testing, and what does a p-value of 0.03 typically signify to an analyst?",
+      "answer": "A p-value is the probability of observing your data (or something more extreme) *if the null hypothesis is true*. The 'null hypothesis' is the default assumption (e.g., 'this new feature has no effect'). A p-value of 0.03 (which is less than the common significance level of 0.05) means there is only a 3% chance of seeing this result by random chance if the feature truly had no effect. Therefore, the analyst would 'reject the null hypothesis' and conclude that the new feature *does* have a statistically significant effect.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 404,
+      "question": "How would you approach handling a dataset with a large amount of missing values (e.g., 30%) in a critical column before performing analysis?",
+      "answer": "First, I would investigate *why* the data is missing; is it random, or is there a systematic reason? Based on that, I have several options: **1. Deletion:** If the dataset is large, I might drop the rows with missing values (row-wise deletion) or the entire column (column-wise deletion) if it's not critical. **2. Imputation:** I could fill the missing values. For numerical data, I could use the mean, median, or a regression model. For categorical data, I could use the mode or a classification model. **3. Flagging:** I could create a new binary column called 'is_missing' to see if the fact that the data is missing is itself a predictive signal.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 405,
+      "question": "What is a 'Common Table Expression' (CTE) in SQL, and what is the primary advantage of using one over a traditional subquery?",
+      "answer": "A CTE, or 'Common Table Expression', is a temporary, named result set that you define within a query, using the `WITH` keyword. The primary advantage is **readability and modularity**. It allows you to break down a very long, complex query into smaller, logical, and more understandable 'blocks'. You can then reference this named block (the CTE) multiple times in your main query, which is much cleaner than writing the same complex subquery over and over again.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 406,
+      "question": "Explain the concept of an A/B test and the main steps you would follow to design and execute one for a new website feature.",
+      "answer": "An A/B test is a randomized experiment with two variants, 'A' (the control, or old version) and 'B' (the treatment, or new version). **Steps:** **1. Hypothesis:** Form a clear hypothesis (e.g., 'Changing the 'Buy' button from blue to green will increase conversion rate'). **2. Randomization:** Randomly split incoming users into two groups. Group A sees the blue button; Group B sees the green button. **3. Collection:** Run the test for a predetermined time (based on sample size calculations) and collect data on the key metric. **4. Analysis:** Use statistical testing (like a t-test) to see if the difference in conversion rates is statistically significant (e.t., not due to random chance).",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 407,
+      "question": "What is the difference between the `WHERE` clause and the `HAVING` clause in a SQL query?",
+      "answer": "Both `WHERE` and `HAVING` are used for filtering, but they operate at different stages of the query. The `WHERE` clause filters *individual rows* **before** they are grouped and aggregated. The `HAVING` clause is used to filter *groups* of rows **after** they have been aggregated by a `GROUP BY` clause. You must use `HAVING` if you want to filter on an aggregate function (e.g., `HAVING SUM(Sales) > 1000`).",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 408,
+      "question": "What are some of the key principles of effective data visualization? Name at least three.",
+      "answer": "Effective data visualization is about communicating complex information clearly and efficiently. **1. Choose the Right Chart:** Use a bar chart for categorical comparisons, a line chart for time-series data, a scatter plot for correlations, etc. **2. Maximize Data-Ink Ratio:** Coined by Edward Tufte, this means removing all non-essential visual elements (like heavy gridlines, borders, or 3D effects) so that the 'ink' on the page is dedicated to showing the data. **3. Provide Clear Context:** A chart is useless without a descriptive title, clear axis labels, and a legend (if needed). The viewer should understand the chart's message without needing verbal explanation.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 409,
+      "question": "In Python's Pandas library, how would you merge two DataFrames, and what is the difference between an 'inner' and 'outer' merge?",
+      "answer": "You would merge two DataFrames, `df1` and `df2`, using the `pd.merge()` function, specifying the key columns to join on (e.g., `pd.merge(df1, df2, on='user_id')`). An **'inner' merge** (the default) is just like an SQL `INNER JOIN`; it returns only the rows where the key exists in *both* DataFrames. An **'outer' merge** is like an SQL `FULL OUTER JOIN`; it returns *all* rows from *both* DataFrames and fills in `NaN` (Not a Number) for any data that is missing in one of the tables.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 410,
+      "question": "What is the purpose of a 'confidence interval', and how would you explain a '95% confidence interval' to a non-technical manager?",
+      "answer": "A confidence interval is a range of values that likely contains an unknown population parameter (like the 'true' average user spending). I would explain it like this: 'We ran a survey and found that our users spend an average of $50. However, since we can't survey *everyone*, our '95% confidence interval' is $45 to $55. This means we are 95% confident that the *true* average spending for *all* our users falls somewhere within that $45 to $55 range.'",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 411,
+      "question": "What is 'web scraping', and what are some of the common Python libraries used to perform it?",
+      "answer": "Web scraping is the automated process of extracting large amounts of data from websites. The code (a 'bot' or 'spider') simulates a human browsing the web, fetches the HTML content of a page, and then parses that HTML to extract the specific pieces of data it needs (e.g., product names, prices, reviews). Common Python libraries include **Requests** (to fetch the web page) and **Beautiful Soup** or **Scrapy** (to parse the HTML and extract the data).",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 412,
+      "question": "What are 'window functions' in SQL, and how do they differ from standard `GROUP BY` aggregations?",
+      "answer": "`GROUP BY` aggregations (like `SUM()`) collapse all the individual rows into a single row per group. **Window functions** (like `SUM() ... OVER()`) also perform calculations across a set of rows (a 'window'), but they do *not* collapse the rows. This allows you to show both the individual row's value *and* the aggregated value in the same row. For example, you could show each employee's salary alongside the *average* salary of their entire department.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 413,
+      "question": "How would you identify and remove duplicate rows from a dataset using both SQL and Python Pandas?",
+      "answer": "**In SQL:** You would use a Common Table Expression (CTE) with the `ROW_NUMBER()` window function. You would partition by the columns that define a duplicate (e.g., `PARTITION BY user_id, order_id`) and then `DELETE` all rows where the `row_number` is greater than 1. **In Python Pandas:** It's much simpler. You would use the `DataFrame.drop_duplicates()` method. You can specify the `subset` of columns to consider for identifying duplicates and use the `keep` parameter (e.g., 'first' or 'last') to decide which duplicate to keep.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 414,
+      "question": "What is 'data normalization' in the context of relational databases (e.g., 3NF)? Why is it important?",
+      "answer": "Database normalization is the process of organizing a database's tables and columns to reduce data redundancy and improve data integrity. 'Third Normal Form' (3NF) is a common standard. It's important because it prevents data anomalies. For example, by storing a customer's address in a separate 'Customers' table (not duplicating it in every 'Orders' row), you only have to update the address in *one place* if it changes, ensuring the data remains consistent.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 415,
+      "question": "What is a 'pivot table' in Excel or Pandas, and for what kind of analysis is it particularly useful?",
+      "answer": "A pivot table is a data summarization tool that allows you to 'pivot' or reorganize data from a flat table into a new table with a different layout. It's particularly useful for cross-tabulation and exploring multi-dimensional data. For example, you could take a flat list of sales transactions and quickly summarize it into a matrix showing 'Total Sales' with 'Product Category' as the rows and 'Region' as the columns.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 416,
+      "question": "You are given a dataset of customer transactions. How would you perform an 'RFM' analysis, and what does it tell you?",
+      "answer": "RFM stands for **Recency**, **Frequency**, and **Monetary**. It's a customer segmentation technique. **1. Recency:** How recently did the customer purchase? (e.g., days since last order). **2. Frequency:** How often do they purchase? (e.g., total number of orders). **3. Monetary:** How much do they spend? (e.g., total revenue). You would calculate these three values for each customer and then segment them into groups (e.g., 'Best Customers' who are high on all three, or 'At-Risk Customers' who were high but have low recency).",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 417,
+      "question": "What is the difference between a 't-test' and a 'chi-squared test' in statistics? When would you use each?",
+      "answer": "A **t-test** is used to compare the *means* of two groups to see if they are statistically different. It is used with a *continuous* dependent variable (e.t., 'average purchase amount') and a *categorical* independent variable (e.t., 'Group A' vs. 'Group B'). A **chi-squared test** is used to determine if there is a significant association between two *categorical* variables. For example, you would use it to see if 'Product Category' (e.g., 'Electronics', 'Clothing') is associated with 'Customer Gender' (e.g., 'Male', 'Female').",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 418,
+      "question": "Explain the 'bias-variance trade-off' in machine learning. What does it mean for a model to have high bias or high variance?",
+      "answer": "The bias-variance trade-off is a fundamental concept in predictive modeling. **High Bias** (Underfitting): This is a simple model that makes strong assumptions and fails to capture the underlying patterns in the data (e.g., using a straight line to fit a complex curve). It has high error on both training and test data. **High Variance** (Overfitting): This is a complex model that 'memorizes' the training data, including its noise. It performs perfectly on training data but fails miserably on new, unseen test data. The 'trade-off' is that increasing model complexity usually *decreases* bias but *increases* variance.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 419,
+      "question": "What is the 'central limit theorem', and why is it so important in statistics and hypothesis testing?",
+      "answer": "The Central Limit Theorem (CLT) states that if you take a sufficiently large number of random samples from *any* population (regardless of its original distribution), the distribution of the *sample means* will be approximately normally distributed (a bell curve). This is incredibly important because it allows us to use statistical tests (like t-tests) that assume a normal distribution, even if our underlying data is not normal. It's the foundation for most hypothesis testing.",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 420,
+      "question": "What is 'Big Data', and what are the '3 V's' (or 5 V's) that are commonly used to define it?",
+      "answer": "'Big Data' refers to datasets that are so large or complex that traditional data processing application software is inadequate to deal with them. The '3 V's' are the classic definition: **1. Volume:** The sheer scale of the data (terabytes or petabytes). **2. Velocity:** The speed at which new data is generated and must be processed (e.g., real-time streaming). **3. Variety:** The different types of data (e.g., structured SQL, unstructured text, video, JSON). Later definitions added **Veracity** (the messiness or trustworthiness of the data) and **Value** (the potential to turn data into business value).",
+      "difficulty": "Medium",
+      "section": "data_analyst"
+    },
+    {
+      "id": 421,
+      "question": "You are tasked with investigating a sudden 15% drop in daily active users for a mobile app. What is your step-by-step analytical approach?",
+      "answer": "First, I would **segment the drop** to isolate the problem: is it affecting new or returning users? A specific geography? A specific device (iOS vs. Android)? A specific app version? Second, I would **check data integrity**; is this a real drop or a tracking/ETL error? Third, I would **form hypotheses** based on the segments. If it's only 'new users on Android', I'd check the Google Play Store for a bad app release or a broken sign-up flow. If it's 'all users', I'd look for external events (e.g., a competitor's launch, a holiday) or internal changes (e.g., a new marketing campaign ending). Finally, I'd test these hypotheses with data.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 422,
+      "question": "Explain what 'selection bias' is in data analysis and provide a real-world example of how it could lead to incorrect conclusions.",
+      "answer": "Selection bias is a systematic error that occurs when the sample data you collect is *not* representative of the population you are trying to analyze. This happens when the process of selecting participants is non-random. **Example:** An online poll about internet usage. The poll will inherently *exclude* people who do not have internet access, leading to a sample that is biased towards being more 'tech-savvy' than the general population. Any conclusions drawn about the 'general population' from this poll would be incorrect.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 423,
+      "question": "How would you explain the business implications of a 'Type I error' versus a 'Type II error' to a non-technical product manager?",
+      "answer": "I would use a simple analogy. **Type I Error (False Positive):** 'This is like our test telling us a *bad* feature is *good*. We launch a feature that we *think* works, but it actually hurts user engagement. We waste resources, and the product gets worse.' **Type II Error (False Negative):** 'This is like our test telling us a *good* feature is *bad*. We *fail* to launch a feature that *actually* would have improved the product. We miss a valuable opportunity.' The business implications (wasting resources vs. missing opportunities) determine which error is more costly to the company.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 424,
+      "question": "Your analysis shows that a recently launched, expensive marketing campaign had no statistically significant impact on sales. How do you communicate this finding to stakeholders?",
+      "answer": "This requires sensitivity. I would **lead with the facts**, not opinions. I'd present the analysis clearly, showing the 'control' group (who didn't see the campaign) versus the 'treatment' group, and explain that the difference in sales was not statistically significant, meaning it was likely due to random chance. Then, I would immediately **pivot to actionable insights**. I would offer to do a 'deep dive' to understand *why* it didn't work. By segmenting the data, we might find it *did* work for a small, specific audience, which could inform a more targeted (and cheaper) campaign in the future.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 425,
+      "question": "What is logistic regression, and how does it differ from linear regression? Provide a business problem where you would use it.",
+      "answer": "Linear regression is used to predict a *continuous* value (e.g., 'price' or 'temperature'). Logistic regression is used to predict a *categorical* or *binary* outcome (e.g., 'Yes/No', 'True/False', '0/1'). It models the *probability* of an event occurring. A key business problem would be **customer churn prediction**. You would feed the model various customer attributes (e.g., 'age', 'monthly spending', 'support tickets'), and the logistic regression model would output a probability (e.g., '75%') that this customer will churn (cancel their subscription) next month.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 426,
+      "question": "How would you use SQL window functions, such as `ROW_NUMBER()`, `RANK()`, and `DENSE_RANK()`, to find the top 3 highest-paid employees in each department?",
+      "answer": "You would use a Common Table Expression (CTE). Inside the CTE, you'd select the employee name, department, and salary. You would also use a window function like `RANK() OVER(PARTITION BY Department ORDER BY Salary DESC) as rank`. The `PARTITION BY` clause resets the rank for each new department. Then, in the main query, you would simply `SELECT * FROM CteName WHERE rank <= 3`. The difference is that `RANK()` would skip numbers (1, 2, 2, 4), while `DENSE_RANK()` would not (1, 2, 2, 3).",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 427,
+      "question": "You need to build a predictive model but your dataset is highly imbalanced (e.g., 99% of transactions are 'not fraud' and 1% are 'fraud'). Why is 'accuracy' a poor metric here?",
+      "answer": "'Accuracy' is a poor metric because a lazy model that *always* predicts 'not fraud' would be 99% accurate, but it would be completely useless because it fails to identify the 1% of cases we actually care about. For imbalanced datasets, we must use better metrics like **Precision** (of the 'fraud' predictions, how many were correct?) and **Recall** (of all *actual* fraud cases, how many did we find?). The **F1-Score** (a balance of Precision and Recall) is often the best single metric to use.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 428,
+      "question": "What is the difference between an ETL (Extract, Transform, Load) process and an ELT process? What are the pros and cons of ELT?",
+      "answer": "**ETL (Extract, Transform, Load):** This is the traditional approach. Data is *extracted* from a source, *transformed* into the correct format on a separate processing server, and then *loaded* into the data warehouse. **ELT (Extract, Load, Transform):** This is the modern, cloud-native approach. Data is *extracted* and *loaded* directly into the data warehouse (like Snowflake or BigQuery). The *transformation* logic is then run *inside* the warehouse using its powerful SQL engine. **Pros of ELT:** It's much faster (no separate processing server), more flexible (you store the raw data), and leverages the scalability of modern cloud data warehouses.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 429,
+      "question": "How would you define the key metrics (KPIs) for a new subscription-based SaaS product? Name at least three.",
+      "answer": "I would focus on the entire customer lifecycle. **1. Customer Acquisition Cost (CAC):** How much does it cost in marketing and sales to get one new paying customer? **2. Monthly Recurring Revenue (MRR):** The total predictable revenue generated by all active subscriptions in a month. This is the lifeblood of the business. **3. Churn Rate (Monthly):** What percentage of your paying customers (or revenue) did you *lose* this month? A high churn rate is a 'leaky bucket' and is the biggest killer of subscription businesses. You must also track Customer Lifetime Value (LTV) to ensure LTV > CAC.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 430,
+      "question": "What is 'Simpson's Paradox', and how could it lead an analyst to make a wrong recommendation?",
+      "answer": "Simpson's Paradox is a statistical phenomenon where a trend appears in several different groups of data but disappears or *reverses* when these groups are combined. It's an aggregation bias. **Example:** A university might have a *higher* acceptance rate for women in *both* the Engineering and Humanities departments individually, but when the data is combined, it *looks* like the university has a *lower* acceptance rate for women overall. This could happen if women overwhelmingly apply to the more competitive department (e.g., Engineering). An analyst who doesn't segment the data might incorrectly recommend an investigation into gender bias.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 431,
+      "question": "How would you calculate the 'Customer Lifetime Value' (CLTV or LTV), and why is it a critical metric for a business?",
+      "answer": "A simple way to calculate LTV is: `(Average Revenue Per User) x (Average Customer Lifespan)`. A more common method for subscription businesses is: `(Average Revenue Per Account) / (Customer Churn Rate)`. LTV is critical because it tells you the *total* predicted value a customer will bring to your business. This, in turn, tells you how much you *can afford* to spend to acquire a new customer (your Customer Acquisition Cost, or CAC). For a business to be sustainable, its `LTV` must be significantly higher than its `CAC` (e.g., a 3:1 ratio).",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 432,
+      "question": "What is the difference between a lagging indicator and a leading indicator? Provide a business example for each.",
+      "answer": "A **lagging indicator** is an output-oriented metric that measures past performance. It's easy to measure but hard to influence (e.g., 'Monthly Revenue' or 'Customer Churn Rate'). A **leading indicator** is an input-oriented metric that is predictive of future success. It's harder to measure but easier to influence (e.g., 'Daily Active Users' or 'Number of Support Tickets'). A good analyst tracks leading indicators to *influence* the lagging indicators. For example, if 'Daily Active Users' (leading) goes down, you know 'Monthly Revenue' (lagging) will also go down *before* it happens.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 433,
+      "question": "You are given a large, messy dataset with addresses in a single text column. What steps would you take to clean and standardize this data?",
+      "answer": "This is a complex text-parsing problem. First, I would look for common patterns using regular expressions (regex) to extract components like 'Street Number', 'Street Name', 'City', 'State', and 'Zip Code'. Second, I would standardize the 'State' (e.g., convert 'California', 'CA', 'Calif.' all to 'CA'). Third, I would standardize 'Street Name' (e.g., 'St.' to 'Street', 'Ave' to 'Avenue'). Finally, I would use a third-party address validation API (like Google Maps) to verify the standardized addresses and correct any remaining errors.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 434,
+      "question": "What is 'linear regression', and what are the key assumptions that must be met for the model to be reliable?",
+      "answer": "Linear regression is a statistical model used to predict a continuous variable (the 'dependent' variable) based on one or more 'independent' variables, by fitting a straight line to the data. **Key Assumptions:** **1. Linearity:** The relationship between the variables must be linear. **2. Independence:** The 'errors' (residuals) of the model must be independent of each other. **3. Homoscedasticity:** The variance of the errors must be constant across all levels of the independent variables. **4. Normality:** The errors must be normally distributed. If these assumptions are violated, the model's predictions and p-values will be unreliable.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 435,
+      "question": "What is the difference between a 'data lake' and a 'data warehouse'? When would a company need both?",
+      "answer": "A **data warehouse** (e.g., Snowflake, Redshift) stores *structured*, *filtered*, and *processed* data that has been transformed for a specific purpose (like business intelligence). It has a predefined schema (schema-on-write). A **data lake** (e.g., S3, HDFS) is a massive, low-cost repository that stores *all* of a company's data in its raw, unprocessed form—structured, semi-structured, and unstructured. It has a flexible schema (schema-on-read). A company needs both: data scientists use the data lake for exploration and model training, while business analysts use the data warehouse for clean, fast dashboarding.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 436,
+      "question": "Explain the 'cohort analysis' technique. How would you use it to analyze user retention for a mobile app?",
+      "answer": "A cohort analysis groups users based on a shared characteristic, typically their 'join date'. For example, you would create a 'January 2024' cohort (all users who first signed up in Jan 2024), a 'February 2024' cohort, and so on. You would then track what percentage of *each cohort* returns to the app in subsequent months ('Month 1', 'Month 2', etc.). This allows you to see if your app's retention is getting *better* or *worse* over time. For example, you can see if a product change in March led to the 'March' cohort having better 'Month 3' retention than the 'January' cohort.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 437,
+      "question": "What is 'statistical power' in the context of A/B testing, and what are the consequences of running a test that is 'underpowered'?",
+      "answer": "'Statistical power' is the probability that your test will detect a statistically significant effect, *assuming a real effect exists*. A common standard is 80% power. An 'underpowered' test is one with too small of a sample size. The consequence is that you have a high risk of a **Type II Error (False Negative)**. This means your new feature *might actually be better*, but your test is 'blind' to the effect due to the lack of data, so you incorrectly conclude it had 'no effect' and scrap a good idea.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 438,
+      "question": "What is the difference between 'K-Means' and 'Hierarchical' clustering? What are the pros and cons of K-Means?",
+      "answer": "Both are unsupervised clustering algorithms. **K-Means** requires you to *pre-specify* the number of clusters (K). It's computationally fast and works well on large, spherical datasets. **Hierarchical clustering** does *not* require a pre-specified K; it builds a 'tree' of clusters (a dendrogram) that you can cut at any level. **Pros of K-Means:** Fast, scalable, and simple to interpret. **Cons of K-Means:** You must choose K, and it's sensitive to the initial starting 'centers'. It also struggles to find non-spherical or irregularly shaped clusters.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 439,
+      "question": "How would you use SQL to find the 'median' value of a column, given that there is no built-in `MEDIAN()` function in standard SQL?",
+      "answer": "This is a classic advanced SQL problem. You would use a window function, specifically `PERCENTILE_CONT(0.5)`. The query would look something like: `SELECT DISTINCT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY YourColumn ASC) OVER () as median_value FROM YourTable`. This `PERCENTILE_CONT(0.5)` function (which means 50th percentile) calculates the median value, and the `OVER ()` clause applies it across the entire table. `DISTINCT` is needed because the window function returns the same median value for every row.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    },
+    {
+      "id": 440,
+      "question": "Describe the 'funnel analysis' technique and how a data analyst would use it to improve a product's user experience.",
+      "answer": "A funnel analysis tracks the step-by-step journey a user takes to complete a specific goal (e.g., 'Visit Homepage' -> 'Search for Product' -> 'Add to Cart' -> 'Purchase'). An analyst visualizes this as a funnel, showing the 'conversion rate' (percentage of users who move to the next step) and 'drop-off rate' at each stage. This is incredibly valuable for improving UX because it pinpoints *exactly* where the friction is. For example, a 90% drop-off at the 'Add to Cart' step tells the product team to investigate *that specific step* for bugs or design flaws.",
+      "difficulty": "Hard",
+      "section": "data_analyst"
+    }
+  ]
+}

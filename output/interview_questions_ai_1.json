@@ -1,0 +1,1109 @@
+{
+  "metadata": {
+    "resource": "interview_questions_ai",
+    "file_id": 1,
+    "timestamp": "2026-02-05T13:08:11.915281",
+    "record_count": 157
+  },
+  "data": [
+    {
+      "id": 102,
+      "question": "Explain the bias-variance trade-off and why it matters.",
+      "answer": "The bias-variance trade-off describes how model error decomposes into bias, variance, and irreducible noise. High bias models are too simple and underfit, missing important patterns. High variance models are too complex and overfit, capturing noise. Effective generalization requires balancing these forces, often via regularization, cross-validation, appropriate model complexity, and sufficient data to minimize expected test error.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 103,
+      "question": "What is overfitting? How do you detect and mitigate it?",
+      "answer": "Overfitting happens when a model learns noise and idiosyncrasies in training data, hurting generalization. Detection signals include a large gap between training and validation performance, high variance in cross-validation folds, and unstable predictions. Mitigation techniques include stronger regularization, early stopping, dropout, data augmentation, ensembling, simpler architectures, more training data, and better cross-validation and hyperparameter tuning.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 104,
+      "question": "How does gradient descent work and what are common variants?",
+      "answer": "Gradient descent updates parameters by moving them in the negative gradient direction of the loss to minimize it. Batch gradient descent uses all data per step, stochastic uses one example, and mini-batch balances speed and stability. Adaptive variants like Adam, RMSProp, and Adagrad adjust learning rates per parameter. Proper step size scheduling and momentum improve convergence and stability.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 105,
+      "question": "Explain L1 and L2 regularization and when to use each.",
+      "answer": "L1 regularization (Lasso) adds absolute weight penalties, inducing sparsity and aiding feature selection. L2 regularization (Ridge) adds squared weight penalties, shrinking parameters smoothly to reduce variance and improve generalization. Elastic Net combines both. Choose L1 when interpretability and sparsity matter, L2 for stability with multicollinearity, and Elastic Net for correlated features and balanced shrinkage.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 106,
+      "question": "What is a confusion matrix and which metrics derive from it?",
+      "answer": "A confusion matrix tabulates true positives, false positives, true negatives, and false negatives for classification. From it, compute accuracy, precision, recall, specificity, F1, and balanced accuracy. For imbalanced classes, prioritize precision-recall, F1, and ROC-AUC or PR-AUC. The matrix also reveals asymmetric error patterns that guide threshold tuning, cost-sensitive learning, or data rebalancing strategies.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 107,
+      "question": "How do ROC-AUC and PR-AUC differ and when to prefer each?",
+      "answer": "ROC-AUC evaluates true positive rate versus false positive rate across thresholds, robust when classes are balanced. PR-AUC evaluates precision versus recall, focusing on positive class performance and is more informative with class imbalance and rare positives. Prefer PR-AUC for anomaly detection or skewed datasets; use ROC-AUC when both classes are reasonably represented.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 108,
+      "question": "Describe cross-validation strategies and their trade-offs.",
+      "answer": "K-fold cross-validation splits data into k folds, training on k-1 and validating on the remainder, averaging performance for stability. Stratified k-fold preserves class ratios. Time series CV respects temporal order using rolling or expanding windows. Leave-one-out reduces bias but increases variance and compute. Nested CV prevents leakage during model selection by nesting hyperparameter tuning within outer evaluation.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 109,
+      "question": "What is feature scaling and why is it important?",
+      "answer": "Feature scaling normalizes input ranges so models converge faster and behave predictably. Standardization rescales to zero mean and unit variance, while min-max scaling maps to a fixed interval. Distance-based models, gradient-based optimization, and regularization are sensitive to feature scales. Always fit scalers on training data only and apply to validation and test sets to avoid leakage.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 110,
+      "question": "Explain feature selection methods and why they help.",
+      "answer": "Feature selection reduces dimensionality, improves generalization, and enhances interpretability. Methods include filter approaches (mutual information, correlation), wrapper methods (recursive feature elimination), and embedded methods (L1 regularization, tree-based importance). Good selection combats overfitting, reduces compute, and can highlight meaningful predictors. Validate choices with cross-validation to prevent optimistic bias and ensure stability.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 111,
+      "question": "What are decision trees and how do they split data?",
+      "answer": "Decision trees partition feature space using hierarchical rules to minimize impurity, typically measured by Gini impurity or entropy for classification and variance reduction for regression. Splits are chosen greedily to best separate target values. Trees are interpretable but prone to overfitting; pruning, depth limits, and ensembling (Random Forest, Gradient Boosting) improve generalization.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 112,
+      "question": "Compare Random Forest and Gradient Boosting.",
+      "answer": "Random Forest averages many deep, decorrelated trees trained on bootstrap samples and random feature subsets, reducing variance. Gradient Boosting builds trees sequentially, each correcting prior residuals, reducing bias but increasing risk of overfitting. Random Forests are robust with fewer tuning needs; Gradient Boosting can reach higher accuracy with careful learning rate, depth, and regularization tuning.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 114,
+      "question": "Explain k-means clustering and its limitations.",
+      "answer": "K-means partitions data into k clusters by minimizing within-cluster variance, iteratively updating centroids and assignments. It assumes spherical, similarly sized clusters and uses Euclidean distance, making it sensitive to initialization, scaling, and outliers. Choosing k requires heuristics like the elbow or silhouette score. Alternatives include Gaussian Mixture Models and DBSCAN for arbitrary shapes.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 115,
+      "question": "What is PCA and how is it used in ML pipelines?",
+      "answer": "Principal Component Analysis finds orthogonal directions (principal components) capturing maximum variance via eigen decomposition or SVD. It reduces dimensionality, de-noises features, and mitigates multicollinearity. In pipelines, fit PCA on training data and transform all splits. Note that PCA is linear and may obscure interpretability; nonlinear variants (kernel PCA, autoencoders) handle complex manifolds.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 116,
+      "question": "Describe the architecture of a feedforward neural network.",
+      "answer": "A feedforward neural network consists of an input layer, one or more hidden layers, and an output layer. Each layer applies affine transformations followed by nonlinear activations like ReLU or GELU. Training uses backpropagation with gradient-based optimizers. Depth and width control capacity; normalization, residual connections, and proper initialization improve trainability and performance.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 118,
+      "question": "What is batch normalization and how does it help?",
+      "answer": "Batch normalization normalizes layer activations using batch statistics, stabilizing distributions across layers. It accelerates training, enables higher learning rates, and acts as a regularizer. It can reduce sensitivity to initialization and depth. However, behavior differs between training and inference, and for sequence models or very small batches, LayerNorm or GroupNorm may be preferable.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 119,
+      "question": "Explain dropout and when to use it.",
+      "answer": "Dropout randomly zeros a fraction of activations during training to prevent co-adaptation, acting as an effective regularizer in fully connected layers. It reduces overfitting and improves generalization. At inference, activations are scaled accordingly or dropout is disabled. In modern architectures with batch normalization and residual connections, careful tuning or alternative regularizers may be more effective.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 120,
+      "question": "How do you initialize neural network weights and why does it matter?",
+      "answer": "Good initialization keeps activation and gradient magnitudes stable across layers, aiding convergence. Xavier/Glorot initialization suits tanh/sigmoid, while He initialization fits ReLU-like activations. Poor initialization leads to vanishing or exploding gradients. Pair initialization with normalization, residual connections, and appropriate optimizer settings for deeper networks to train reliably and efficiently.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 121,
+      "question": "What is the vanishing/exploding gradient problem?",
+      "answer": "In deep networks, gradients can shrink or grow exponentially through layers due to repeated multiplications, hindering training. Symptoms include stalled learning or numerical instability. Solutions include careful initialization, ReLU-like activations, residual connections, normalization layers, gradient clipping, and optimizers like Adam. Architectural choices, such as transformers with skip connections, also mitigate these issues.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 122,
+      "question": "Explain convolutional neural networks (CNNs) and their key components.",
+      "answer": "CNNs exploit spatial locality using convolutional layers with learnable kernels, followed by nonlinearities, pooling to reduce spatial dimensions, and often fully connected heads. Weight sharing reduces parameters and improves translation invariance. Modern variants use residual blocks, dilated convolutions, attention, and depthwise separable convolutions to boost efficiency and accuracy for vision tasks.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 123,
+      "question": "What is transfer learning and how do you apply it?",
+      "answer": "Transfer learning adapts a model pretrained on a large dataset to a related downstream task. Typical steps include loading a backbone (e.g., ResNet, BERT), freezing initial layers, replacing the head, fine-tuning with a low learning rate, and gradually unfreezing. It reduces data needs and training time, often improving performance on limited-data tasks significantly.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 124,
+      "question": "Describe data augmentation for vision and text.",
+      "answer": "Data augmentation increases effective training data by applying label-preserving transformations. For vision, use flips, crops, color jitter, CutMix, or RandAugment. For text, apply synonym replacement, back-translation, or masked token perturbations. Augmentation combats overfitting, improves robustness to distribution shifts, and should be tuned to maintain semantic validity and avoid harmful artifacts.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 125,
+      "question": "What are word embeddings and why are they useful?",
+      "answer": "Word embeddings map tokens to dense vectors capturing semantic similarity. Methods like Word2Vec and GloVe learn from co-occurrence statistics, placing related words close in vector space. Embeddings improve downstream model performance by encoding context and relationships. Modern transformer models produce contextual embeddings that vary by sentence, further enhancing representational power.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 126,
+      "question": "Explain attention mechanisms and self-attention.",
+      "answer": "Attention weights the relevance of inputs when producing outputs, enabling models to focus on important parts. Self-attention computes relationships within a sequence by comparing queries, keys, and values, capturing long-range dependencies efficiently. It underpins transformers, allowing parallel sequence processing and superior performance in NLP, vision, and speech tasks versus recurrent architectures.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 127,
+      "question": "What is the transformer architecture at a high level?",
+      "answer": "Transformers stack encoder and/or decoder blocks comprising multi-head self-attention, feedforward layers, residual connections, and normalization. Positional encodings inject order information. They scale well with data and compute, enabling large language models. Training uses teacher forcing for decoders, and pretraining objectives like masked language modeling or next-token prediction.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 128,
+      "question": "How do you fine-tune large language models effectively?",
+      "answer": "Effective fine-tuning involves selecting an appropriate base model, preparing high-quality task-aligned data, using techniques like LoRA or adapters for parameter efficiency, and careful hyperparameter tuning with small learning rates. Regular evaluation, early stopping, prompt engineering, and guardrails for safety are essential. Consider RLHF or preference optimization when aligning models to human feedback.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 129,
+      "question": "Describe common NLP evaluation metrics.",
+      "answer": "For classification and token tasks, use accuracy, precision, recall, F1, and macro/micro averaging for class imbalance. For generation, BLEU, ROUGE, METEOR, and BERTScore compare outputs to references. For embeddings and retrieval, use recall@k, MRR, and nDCG. Always validate with human evaluation for fluency, coherence, and factuality to complement automatic metrics.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 130,
+      "question": "What is class imbalance and how do you handle it?",
+      "answer": "Class imbalance arises when one class dominates, causing biased learning. Address it using resampling (oversampling minority, undersampling majority, SMOTE), adjusted class weights, threshold tuning, cost-sensitive learning, and appropriate metrics like PR-AUC or F1. Collecting more minority data and creating robust validation splits further improves fairness and generalization.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 131,
+      "question": "Explain data leakage and how to prevent it.",
+      "answer": "Data leakage occurs when information from outside the training process influences the model, inflating performance. Examples include fitting scalers on entire datasets, target leakage through features, or temporal leakage in time series. Prevent leakage with strict train/validation/test separation, pipeline transformations fit only on training data, and time-aware cross-validation for sequential data.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 132,
+      "question": "How do you design a train/validation/test split?",
+      "answer": "Ensure splits are representative and independent. Use stratified splits for classification to preserve class ratios. For time series, split chronologically to respect temporal order. Maintain a hold-out test set untouched until final evaluation. When data is scarce, use k-fold cross-validation for robust estimates and nested CV for unbiased model selection and assessment.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 133,
+      "question": "What is hyperparameter tuning and which methods are effective?",
+      "answer": "Hyperparameter tuning optimizes settings controlling model behavior, such as learning rates or tree depth. Methods include grid search, random search, Bayesian optimization, Hyperband, and population-based training. Random and Bayesian approaches often find good configurations faster. Always perform tuning with cross-validation and track results reproducibly using seeds and experiment management.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 134,
+      "question": "Explain SHAP and LIME for model interpretability.",
+      "answer": "SHAP uses game-theoretic Shapley values to attribute feature contributions consistently across predictions, offering global and local interpretability. LIME approximates complex models locally with interpretable surrogates. SHAP provides stronger theoretical guarantees but can be costly; LIME is faster but less stable. Use them to debug models, satisfy compliance, and build stakeholder trust.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 135,
+      "question": "How do you evaluate and mitigate algorithmic bias?",
+      "answer": "Evaluate performance across demographic slices, using fairness metrics like demographic parity, equalized odds, and equal opportunity. Investigate data sources for representation gaps and label bias. Mitigate via reweighting, resampling, constrained optimization, calibrated thresholds, and post-processing. Establish governance with audits, documentation, and human oversight to ensure responsible and equitable AI outcomes.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 136,
+      "question": "What is A/B testing in the context of ML deployment?",
+      "answer": "A/B testing compares two system variants in production to measure causal impact on predefined metrics, controlling for confounders via randomized assignment. For ML, it validates model changes under real traffic, checks calibration and fairness, and monitors guardrails. Proper sample sizing, duration, and sequential testing controls ensure statistically sound decisions before full rollout.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 137,
+      "question": "Describe the ML lifecycle from data to deployment.",
+      "answer": "The lifecycle includes problem framing, data collection, labeling, and exploration; preprocessing and feature engineering; model selection and training; validation and tuning; offline evaluation; deployment via APIs or batch jobs; monitoring for drift, performance, and fairness; and continuous improvement with retraining. MLOps tooling, CI/CD, and observability underpin reliable, scalable operations.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 138,
+      "question": "What is concept drift and how do you handle it?",
+      "answer": "Concept drift occurs when the statistical relationship between features and target changes over time, degrading performance. Detect it via performance monitoring, distribution tests, and drift detectors. Mitigate with scheduled retraining, online learning, adaptive thresholds, robust features, and champion-challenger setups. Data versioning and shadow deployments support safe updates and quick recovery.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 139,
+      "question": "How do you design a recommendation system?",
+      "answer": "Combine collaborative filtering (user-item interactions) and content-based methods (item attributes). Use matrix factorization or neural recommenders, and incorporate implicit feedback. Address cold start with content features and popularity priors. Optimize top-k relevance, diversity, and serendipity. Evaluate with offline metrics like MAP and NDCG and validate with online A/B tests before scaling.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 140,
+      "question": "Explain anomaly detection approaches.",
+      "answer": "Anomaly detection identifies rare, unusual patterns. Approaches include statistical thresholds, density-based methods (LOF), isolation forests, one-class SVMs, and autoencoders. Choose methods based on data characteristics and labels. Evaluate using PR-AUC due to imbalance, calibrate alerting thresholds, and incorporate feedback loops for human-in-the-loop refinement in operational settings.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 141,
+      "question": "What is reinforcement learning and where is it applied?",
+      "answer": "Reinforcement learning optimizes behavior through interactions with an environment by maximizing cumulative reward. Core elements include states, actions, rewards, policies, and value functions. It powers applications in robotics, game playing, resource allocation, and recommendation sequencing. Key challenges include sample efficiency, exploration, reward design, and safe deployment in dynamic environments.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 142,
+      "question": "Compare Q-learning and policy gradient methods.",
+      "answer": "Q-learning learns action-value estimates and derives a policy by acting greedily, suitable for discrete action spaces. Policy gradients directly optimize policy parameters, handling continuous actions and stochastic policies. Actor-critic methods combine both for stability and efficiency. Choice depends on action space, environment stochasticity, and function approximation requirements.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 143,
+      "question": "How do you approach explainability for deep models in production?",
+      "answer": "Use a layered approach: global model insights with feature importance, partial dependence, and SHAP summaries; local explanations with SHAP or LIME; and task-specific tools like Grad-CAM for vision. Combine with documentation, model cards, and user-facing summaries. Monitor explanation drift and ensure explanations are faithful, stable, and comprehensible to stakeholders.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 144,
+      "question": "What is data versioning and why is it critical?",
+      "answer": "Data versioning tracks datasets, schemas, and labels over time to ensure reproducibility and auditability. It enables consistent training, rollback during incidents, and compliance reporting. Tools like DVC or LakeFS integrate with experiment tracking. Version raw data, processed features, and metadata, and tie versions to model artifacts to create reliable lineage.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 145,
+      "question": "How do you choose evaluation metrics for imbalanced data?",
+      "answer": "Accuracy can be misleading; prefer precision, recall, F1, PR-AUC, and cost-sensitive metrics aligned with business impact. Calibrate probabilities and choose operating thresholds based on utility curves. Perform per-segment analysis to uncover failures. Use stratified cross-validation and confidence intervals to understand variance and make robust decisions under class imbalance.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 146,
+      "question": "Describe a robust ML system monitoring strategy.",
+      "answer": "Monitor input data distributions, feature health, and drift; model performance via live labels or proxies; calibration, latency, and throughput; and fairness across cohorts. Set SLOs with alerts, dashboards, and anomaly detection. Use canary and shadow deployments to test changes safely. Establish incident response playbooks and feedback loops for continuous improvement.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 147,
+      "question": "What is prompt engineering and why does it matter for LLMs?",
+      "answer": "Prompt engineering crafts instructions and context to guide large language models toward desired behavior. Techniques include few-shot examples, chain-of-thought prompting, and tool-augmented prompts. Good prompts improve accuracy, safety, and reliability without retraining. Iterative prompt evaluation with realistic test sets and guardrails is essential for production-grade LLM applications.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 148,
+      "question": "Explain retrieval-augmented generation (RAG).",
+      "answer": "RAG systems combine a retriever that fetches relevant documents with a generator (LLM) that conditions on retrieved context to produce factual, grounded answers. They reduce hallucinations, improve freshness, and allow domain adaptation without full fine-tuning. Key components include indexing (e.g., vector databases), retrieval quality, context formatting, and evaluation for faithfulness.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 149,
+      "question": "How do you ensure data quality for ML?",
+      "answer": "Adopt rigorous data contracts, schema validation, and automated checks for missingness, ranges, and anomalies. Track lineage and provenance. Implement robust labeling processes with consensus and audit trails. Continuously profile production data for drift and outliers. Align data definitions with stakeholders to prevent semantic mismatches and costly downstream errors.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 150,
+      "question": "Describe end-to-end steps to take a model from notebook to production.",
+      "answer": "Harden code into modular components, package with dependency management, and add tests. Build reproducible training pipelines with versioned data and artifacts. Containerize for portability, deploy behind reliable APIs or batch jobs, and integrate CI/CD. Add monitoring, logging, and alerting. Establish rollback strategies, documentation, and governance for sustainable operations.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 151,
+      "question": "How does federated learning preserve data privacy and what are its challenges?",
+      "answer": "Federated learning trains a shared global model across decentralized devices by transmitting only model updates instead of raw data. This preserves privacy since personal data never leaves client devices. Challenges include non-iid data distributions leading to biased updates, communication overhead across unreliable networks, heterogeneous device compute capabilities, and ensuring robust aggregation against adversarial or poisoned model contributions. Effective compression, secure aggregation, and adaptive update schedules help mitigate these issues.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 152,
+      "question": "Explain the concept of meta-learning and its application in AI.",
+      "answer": "Meta-learning, or “learning to learn,” optimizes models to rapidly adapt to new tasks with limited data by training over a distribution of related tasks. Common approaches include model-based, metric-based, and optimization-based methods like MAML. Applications range from personalized recommendation engines to robotics where agents must quickly adjust to novel environments. Key challenges are overfitting to task distributions and computational cost of inner–outer loop optimizations.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 153,
+      "question": "What is differential privacy and how is it implemented in ML systems?",
+      "answer": "Differential privacy provides formal guarantees that individual training data contributions cannot be reverse-engineered from model outputs. Implementation involves adding calibrated noise to gradients or objective functions during training (e.g., DP-SGD), enforcing privacy budgets (epsilon), and clipping per-example gradients to bound sensitivity. Balancing noise magnitude with model utility is critical; excessive noise harms accuracy, while insufficient noise weakens privacy guarantees. Privacy accounting tools help monitor cumulative privacy loss.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 154,
+      "question": "Describe multi-task learning and its benefits.",
+      "answer": "Multi-task learning trains a single model on multiple related tasks by sharing representations, improving generalization through inductive transfer. Shared layers capture common features, while task-specific heads handle individual outputs. Benefits include reduced overfitting on smaller datasets, efficient use of shared knowledge, and faster deployment of unified architectures. Challenges include conflicting gradients between tasks requiring careful weighting, and designing appropriate architectures to balance shared vs. task-specific capacity.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 155,
+      "question": "How do you perform hyperparameter optimization at scale?",
+      "answer": "At scale, hyperparameter optimization leverages distributed frameworks like Ray Tune or Optuna to parallelize search across compute clusters. Techniques include Bayesian optimization for sample efficiency, asynchronous successive halving (ASHA) for resource allocation, and population-based training (PBT) for continuous adaptation. Integrate with experiment tracking to manage trials, metric logging, early stopping on low-performing jobs, and autoscaling compute resources based on queue workloads for efficient batch processing.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 156,
+      "question": "What is curriculum learning and when should it be applied?",
+      "answer": "Curriculum learning trains models with data or tasks ordered from easy to hard, mimicking human learning. It accelerates convergence and improves final performance by initializing parameters on simpler distributions before tackling complex cases. Applications include language model pretraining, reinforcement learning in games, and structured prediction tasks. Designing effective curricula and automated progression criteria is non-trivial and may require task-specific heuristics or automated difficulty estimation.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 157,
+      "question": "Explain continual learning and strategies to prevent catastrophic forgetting.",
+      "answer": "Continual learning enables models to learn sequential tasks without forgetting prior knowledge. Strategies include regularization-based methods like Elastic Weight Consolidation that penalize changes to important weights, replay-based approaches storing synthetic or real exemplars to rehearse prior tasks, and parameter isolation where task-specific modules are dynamically allocated. Balancing capacity, memory constraints, and forward/backward transfer remains challenging for scalable deployment.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 158,
+      "question": "How is model quantization performed and why is it important?",
+      "answer": "Model quantization reduces precision of weights and activations (e.g., from 32-bit floats to 8-bit integers) to shrink model size and accelerate inference on edge devices. Techniques include post-training quantization and quantization-aware training that simulates low precision during optimization to minimize accuracy loss. Careful calibration of ranges and per-channel quantization reduces error. Quantization improves latency, memory footprint, and energy efficiency for production systems.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 159,
+      "question": "What are GANs and how do they work?",
+      "answer": "Generative adversarial networks consist of a generator producing synthetic samples and a discriminator distinguishing real from fake data. They train adversarially: the generator improves to fool the discriminator, while the discriminator refines features to detect fakes. This minimax game converges when generator outputs match data distribution. GANs enable high-fidelity image synthesis, data augmentation, and style transfer, but face instability, mode collapse, and evaluation challenges.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 160,
+      "question": "Describe transformer-based architectures beyond NLP applications.",
+      "answer": "Transformers apply self-attention to process spatial and temporal data in parallel. Beyond NLP, they power Vision Transformers (ViT) for image classification, where images are split into patches; Time-series Transformers for forecasting; and Graph Transformers incorporating relational structures. Benefits include scalable context modeling and transfer learning. Challenges include high compute and memory overhead for large inputs, prompting sparse and hierarchical attention variants.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 161,
+      "question": "Explain the concept of model distillation and its benefits.",
+      "answer": "Model distillation transfers knowledge from a large “teacher” model to a smaller “student” model by training the student to match the teacher’s soft output distributions. Benefits include compressed model size, faster inference, and often improved generalization compared to training the student directly. Distillation can be applied across modalities and architectures, with variants like self-distillation and online distillation for continual learning contexts.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 162,
+      "question": "What is the role of attention heads in multi-head attention?",
+      "answer": "Multi-head attention projects queries, keys, and values into multiple subspaces, allowing the model to attend to diverse relationships simultaneously. Each head learns distinct patterns, enriching representation capacity. Outputs are concatenated and linearly transformed to integrate information. Multi-head attention stabilizes training, enhances expressivity, and enables capturing both local and global dependencies in sequences across different semantic or spatial scales.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 163,
+      "question": "How do you implement early stopping and why is it useful?",
+      "answer": "Early stopping monitors validation loss or other metrics during training and halts when improvements plateau beyond a patience threshold. It prevents overfitting by saving the model at the best validation state. Implementation requires tracking best metric, counter for non-improving epochs, and rollback upon stopping. Early stopping reduces training time, simplifies hyperparameter tuning, and balances bias-variance without explicit regularization.",
+      "difficulty": "easy",
+      "section": "ai"
+    },
+    {
+      "id": 164,
+      "question": "Describe the role of positional encodings in transformer models.",
+      "answer": "Transformers lack inherent sequential information. Positional encodings inject token order by adding deterministic or learned vectors representing positions. Sinusoidal encodings use distinct frequencies to generalize to longer sequences, while learned embeddings adapt to data. Proper encoding ensures models capture relative and absolute positions, vital for tasks like translation, time-series forecasting, and structural data modeling.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 165,
+      "question": "What are embedding visualizations and why are they useful?",
+      "answer": "Embedding visualizations project high-dimensional vectors into 2D or 3D spaces using techniques like t-SNE or UMAP. They reveal semantic clusters, detect outliers, and qualitatively evaluate representation learning. Visualizations aid model debugging, fairness audits for demographic group separation, and feature engineering by highlighting latent structures. Interpret results cautiously due to distortions inherent in low-dimensional embeddings.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 166,
+      "question": "Explain the concept of beam search in sequence generation.",
+      "answer": "Beam search is a heuristic algorithm retaining top-k partial hypotheses at each decoding step rather than only the highest probability token. It balances exploration of multiple sequences, improving generation quality over greedy decoding. Beam width controls breadth, but larger beams increase computation and risk generic outputs. Incorporate length normalization and diverse beam search to mitigate short or repetitive sequences.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 167,
+      "question": "What is reservoir sampling and where is it used?",
+      "answer": "Reservoir sampling selects k items uniformly at random from a stream of unknown length with constant memory. Initially fill the reservoir, then for the i-th item (i>k), replace a random reservoir element with probability k/i. This technique is essential for streaming data scenarios in ML pipelines where full dataset access is infeasible, enabling uniform sampling for quick prototyping and online analytics.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 168,
+      "question": "How do you measure calibration of probabilistic models?",
+      "answer": "Calibration assesses if predicted probabilities reflect true outcome frequencies. Techniques include reliability diagrams plotting predicted probability bins against actual frequencies, and metrics like Expected Calibration Error (ECE) or Brier score measuring deviations. Post-processing methods like isotonic regression or Platt scaling adjust scores. Well-calibrated models support risk-sensitive decisions, thresholding, and meaningful confidence estimates in production.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 169,
+      "question": "Describe the role of skip connections in deep networks.",
+      "answer": "Skip connections, as in ResNets, add identities or projections between non-adjacent layers, enabling gradient flow directly through shallow paths. They mitigate vanishing gradients, facilitate training of very deep architectures, and allow networks to learn residual functions instead of full mappings. Skip connections also improve feature reuse and robustness, fostering faster convergence and higher accuracy.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 170,
+      "question": "What is hierarchical clustering and its types?",
+      "answer": "Hierarchical clustering builds nested clusters through agglomerative (bottom-up) or divisive (top-down) approaches. Agglomerative starts with individual points merging closest pairs iteratively; divisive splits clusters recursively. Dendrograms visualize hierarchy, and linkage criteria (single, complete, average) guide merges. Hierarchical clustering does not require predefined k but is sensitive to noise and compute-intensive for large datasets.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 171,
+      "question": "Explain the difference between synchronous and asynchronous distributed training.",
+      "answer": "Synchronous training waits for all worker gradients before updating parameters and ensures consistent model state but suffers from stragglers. Asynchronous training updates parameters immediately when a worker completes and may improve throughput, but introduces stale gradients leading to convergence issues. Hybrid approaches like stale-synchronous balance efficiency and stability, requiring careful tuning of staleness bounds and learning rates.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 172,
+      "question": "How do you protect AI models from adversarial attacks?",
+      "answer": "Defenses include adversarial training by augmenting data with adversarial examples, gradient masking techniques to hide model sensitivities, input preprocessing (e.g., denoising), and certified robust methods providing provable bounds. Monitoring prediction inconsistency and deploying ensemble models with diverse vulnerabilities reduce risks. Ongoing research into provable defenses and runtime detection complements these mitigation strategies.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 173,
+      "question": "What is multi-agent reinforcement learning and its challenges?",
+      "answer": "Multi-agent reinforcement learning involves multiple agents interacting in shared environments, requiring coordination, competition, or cooperation. Challenges include non-stationary environments as agents learn simultaneously, scalability with increasing agent count, credit assignment for team rewards, and ensuring stable convergence. Approaches like centralized training with decentralized execution, opponent modeling, and communication protocols address these complexities.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 174,
+      "question": "Describe batch inference vs. real-time inference considerations.",
+      "answer": "Batch inference processes large data volumes offline on scheduled intervals, optimizing throughput and resource utilization. Real-time inference serves single or small batches with low latency demands, requiring optimized model architectures, efficient serialization, and edge deployment or low-latency serving frameworks. Design trade-offs include consistency, cost, scalability, and data freshness depending on use case requirements.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 175,
+      "question": "Explain the use of gradient clipping in training deep models.",
+      "answer": "Gradient clipping bounds gradient norms to prevent exploding gradients, stabilizing training of deep or recurrent networks. Techniques include global norm clipping where gradients exceeding a threshold are scaled, and value clipping limiting individual components. Clipping ensures controlled updates and smoother convergence, particularly in RNNs and Transformer training, where gradient spikes can derail optimization.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 176,
+      "question": "What is the role of curriculum learning in reinforcement learning?",
+      "answer": "Curriculum learning in RL organizes training tasks from simple to complex to guide agents gradually toward difficult objectives. By starting with easier environments or reward shaping, agents bootstrap basic behaviors before tackling full tasks. This accelerates convergence and enhances stability but requires careful curriculum design, automated progression heuristics, and ensuring adequate exploration to avoid suboptimal policies.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 177,
+      "question": "How do you handle missing data in large-scale ML pipelines?",
+      "answer": "Strategies include simple imputation (mean, median), model-based imputation (KNN, MICE), and carrying forward last known values for time-series. Pipeline frameworks like sklearn’s ColumnTransformer ensure imputation occurs only on training data to prevent leakage. For high missingness, feature engineering flags missingness, or models robust to missing inputs like tree-based algorithms and deep learning architectures with masking handle sparse patterns.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 178,
+      "question": "Describe the role of self-supervised learning in modern AI.",
+      "answer": "Self-supervised learning leverages unlabeled data by creating proxy tasks (e.g., masked token prediction, contrastive learning) to learn representations that transfer to downstream tasks with limited labels. It reduces labeling costs and boosts performance in vision and NLP. Challenges include designing effective pretext tasks and preventing negative transfer. Frameworks like SimCLR and BERT exemplify this paradigm.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 179,
+      "question": "What is the purpose of a model registry in MLOps?",
+      "answer": "A model registry centralizes versioned model artifacts, metadata, and deployment status, enabling traceability, reproducibility, and governance. It tracks lineage from training data and code to production deployments, supports approval workflows, rollback capabilities, and integration with CI/CD. Registries facilitate collaboration between data scientists and engineers, enforcing compliance and accelerating safe model promotion.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 180,
+      "question": "Explain the concept of zero-shot and few-shot learning.\"",
+      "answer": "Zero-shot learning enables models to generalize to new tasks without explicit examples, often using semantic embeddings or instruction-based prompts in large language models. Few-shot learning leverages a handful of labeled examples to adapt via in-context learning or parameter-efficient fine-tuning. Both require robust pretraining and can struggle with domain shift or ambiguous task definitions without careful prompt engineering or adapter tuning.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 181,
+      "question": "How do you implement secure data pipelines for AI applications?",
+      "answer": "Secure data pipelines enforce encryption at rest and in transit, role-based access control, and audit logging for compliance. Integrate data validation and schema checks early, and sanitize inputs to prevent injection attacks. Use isolated compute environments with strict network policies and secrets management. Regular security assessments, vulnerability scanning, and patching are vital to maintain end-to-end protection.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 182,
+      "question": "What is transfer reinforcement learning and where is it applied?",
+      "answer": "Transfer reinforcement learning reuses knowledge or policies learned in one environment to accelerate learning in another, related environment. Techniques include policy distillation, feature mapping, and initializing networks with pretrained weights. Applications range from robotics sim-to-real transfer, where simulated policies bootstrap real-world tasks, to game AI adapting strategies across levels or variants.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 183,
+      "question": "Describe how to evaluate fairness in AI systems.\"",
+      "answer": "Fairness evaluation involves measuring disparate impact and performance gaps across demographic groups using metrics like demographic parity difference, equalized odds difference, and disparate treatment. Conduct intersectional analysis for multiple protected attributes, and visualize results with fairness dashboards. Use bias mitigation algorithms iteratively and involve stakeholder feedback to align fairness definitions with legal and ethical standards.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 184,
+      "question": "What are the challenges of deploying AI at the edge?\"",
+      "answer": "Edge deployment contends with constrained compute, memory, and power budgets, requiring model compression, quantization, and optimized libraries. Network connectivity may be intermittent, necessitating offline capabilities and local inference. Security concerns include tamper resistance and data encryption on devices. Balancing accuracy, latency, and resource constraints demands hardware-aware architecture design and dynamic model adaptation.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 185,
+      "question": "Explain the role of data drift detection in production.\"",
+      "answer": "Data drift detection monitors shifts in input feature distributions over time using statistical tests like KL divergence, population stability index, or concept drift detectors. Early detection triggers retraining or alerts to data engineers. Coupling drift detection with performance monitoring ensures rapid identification of model degradation due to evolving data patterns, enabling timely remediation and model maintenance.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 186,
+      "question": "How do you apply causal inference methods in AI?\"",
+      "answer": "Causal inference methods, such as propensity score matching, instrumental variables, and causal graphs, identify cause-effect relationships beyond correlations. In AI, they improve policy learning in RL, fairness audits by disentangling spurious associations, and A/B testing interpretation. Challenges include unobserved confounders, correct model specification, and scalability. Integrating causal reasoning with ML pipelines enhances decision-making robustness in high-stakes domains.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 187,
+      "question": "What is contrastive learning and its applications?\"",
+      "answer": "Contrastive learning trains encoders by pulling positive pairs together and pushing negative pairs apart in embedding space. Positive pairs can be augmented views of the same example, while negatives are different examples. Applications include unsupervised representation learning for vision (SimCLR, MoCo), NLP (SimCSE), and multimodal tasks, enabling efficient pretraining for downstream classification, retrieval, and clustering with limited labels.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 188,
+      "question": "Explain multi-head cross-attention in transformer decoders.\"",
+      "answer": "Multi-head cross-attention in decoders attends from decoder queries to encoder outputs, integrating source information into generation. Multiple heads enable capturing diverse alignment patterns between input and output tokens. The resulting context vectors are concatenated and projected, enriching decoder representations. Cross-attention facilitates conditional generation in translation, summarization, and multimodal tasks by fusing encoder and decoder streams effectively.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 189,
+      "question": "What is federated reinforcement learning?\"",
+      "answer": "Federated reinforcement learning extends federated learning to RL where multiple agents collaboratively learn a global policy without sharing raw experience data. Each agent performs local training on environment interactions, sending encrypted policy updates for aggregation. Challenges include heterogeneous environments, non-iid agent experiences, and secure communication. Applications include distributed robotics, IoT orchestration, and personalized recommendation systems preserving privacy.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 190,
+      "question": "How do you design a secure model serving infrastructure?\"",
+      "answer": "Secure model serving infrastructure employs containerization with minimal privileges, network segmentation, and token-based authentication for API access. Enforce TLS encryption, input validation to prevent adversarial payloads, and rate limiting. Integrate monitoring for anomalous requests and metrics, and automate security patches. Secrets management for model keys and feature store access ensures least-privilege principles throughout the serving stack.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 191,
+      "question": "What are disentangled representations and why are they useful?\"",
+      "answer": "Disentangled representations separate underlying generative factors into independent latent dimensions, enhancing interpretability and controllability. Methods like β-VAE and FactorVAE enforce independence through regularization. Useful in fair ML by isolating sensitive attributes, generative modeling for targeted edits, and few-shot learning by recombining factors. Achieving true disentanglement remains challenging due to ambiguous factor definitions and evaluation metrics.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 192,
+      "question": "Explain the concept of neural architecture search (NAS).\"",
+      "answer": "Neural architecture search automates design of network architectures using optimization techniques like reinforcement learning, evolutionary algorithms, or gradient-based methods. It explores configurations for layer types, connections, and hyperparameters to maximize performance. NAS reduces manual trial-and-error but is computationally expensive. Recent advances include weight-sharing supernets and one-shot NAS to accelerate search for practical applications.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 193,
+      "question": "What is curriculum learning in RL?\"",
+      "answer": "In reinforcement learning, curriculum learning structures training by presenting tasks in increasing difficulty, guiding agents from simple environments to complex ones. It enhances sample efficiency and stability by building foundational skills before tackling challenging scenarios. Automated curriculum generation selects tasks based on agent performance metrics. Proper curriculum design balances exploration and exploitation to prevent overfitting to intermediate tasks.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 194,
+      "question": "Describe how you would implement a secure feature store for ML.\"",
+      "answer": "A secure feature store centralizes feature definitions, transformations, and access logs. It enforces RBAC for feature ingestion and retrieval, encrypts data in transit and at rest, and applies schema validation to prevent data poisoning. Versioning tracks feature evolution, while monitoring alerts on anomalous access patterns. Integration with identity providers and audit trails ensures compliance with data governance policies.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 195,
+      "question": "How do you optimize transformer inference latency?\"",
+      "answer": "Optimize transformer inference latency via model quantization, kernel fusion, and layer fusion to minimize compute overhead. Use shorter context windows, dynamic batching, and caching of key/value tensors. Deploy on hardware accelerators with optimized libraries (TensorRT, ONNX Runtime). Apply structured pruning or distillation to reduce model size. Balance throughput and latency through adaptive sequence truncation and mixed-precision computation.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 196,
+      "question": "Explain causal language modeling vs. masked language modeling.\"",
+      "answer": "Causal language modeling predicts next tokens sequentially, suitable for generation tasks. Masked language modeling hides random tokens and predicts them based on surrounding context, used for bidirectional representation learning. Causal models excel at text generation, while masked models like BERT provide strong encoders for classification. Differences in training objectives impact inference strategies and downstream utility.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 197,
+      "question": "What are the considerations for multi-lingual AI model deployment?\"",
+      "answer": "Multi-lingual model deployment requires tokenization strategies that handle varied scripts, efficient subword vocabularies for multiple languages, and language-agnostic architectures. Manage capacity trade-offs between model size and performance across languages. Monitor performance disparities, and implement locale-specific preprocessing. Utilize language adapters or translation layers to scale support, and continually update with localized data to address drift and cultural nuances.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 198,
+      "question": "Describe the role of graph neural networks (GNNs) in AI.\"",
+      "answer": "Graph neural networks process data represented as nodes and edges, learning embeddings through message passing between neighbors. They capture relational inductive biases, making them effective for link prediction, node classification, and graph-level tasks in chemistry, social networks, and recommendation. GNN challenges include scalability to large graphs, handling dynamic structures, and avoiding over-smoothing with deep architectures.",
+      "difficulty": "medium",
+      "section": "ai"
+    },
+    {
+      "id": 199,
+      "question": "How do you ensure model interpretability in critical domains?\"",
+      "answer": "In critical domains like healthcare, ensure interpretability using inherently transparent models (decision trees, linear models) when feasible, and post-hoc explanation methods (SHAP, LIME) for complex models. Combine explanations with domain knowledge through feature importance validation and counterfactual analysis. Engage stakeholders to validate interpretations, and integrate interpretability metrics into model validation pipelines to balance accuracy with trustworthiness.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 200,
+      "question": "What is continual pretraining and its benefits?\"",
+      "answer": "Continual pretraining extends preexisting language or vision models with domain-specific corpora beyond initial pretraining. This adapts foundational models to specialized vocabularies, improving downstream task performance. Benefits include reduced catastrophic forgetting relative to from-scratch training, efficient resource reuse, and better alignment with evolving domain knowledge. Monitor for domain drift and maintain pretraining checkpoints for reproducibility.",
+      "difficulty": "hard",
+      "section": "ai"
+    },
+    {
+      "id": 479,
+      "question": "What is the difference between a 'classification' task and a 'regression' task in supervised learning?",
+      "answer": "Both are types of supervised learning, but they predict different kinds of outputs. A **classification** task predicts a *discrete category* or label (e.g., 'Spam' or 'Not Spam', 'Dog' or 'Cat', 'Fraud' or 'Not Fraud'). A **regression** task predicts a *continuous numerical value* (e.g., the 'price' of a house, the 'temperature' tomorrow, or the 'stock price' next week).",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 442,
+      "question": "Can you explain the fundamental difference between Artificial Intelligence (AI), Machine Learning (ML), and Deep Learning (DL)?",
+      "answer": "AI is the broad, overall concept of building intelligent machines. Machine Learning (ML) is a *subset* of AI; it's the primary technique used today, where systems 'learn' from data to make predictions. Deep Learning (DL) is a further *subset* of ML that uses complex, multi-layered 'deep neural networks' to solve more advanced problems, like image recognition or language translation.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 441,
+      "question": "What is Artificial Intelligence (AI) at a high level, and how does it differ from traditional rules-based programming?",
+      "answer": "Artificial Intelligence (AI) is a broad field of computer science focused on creating systems that can simulate human intelligence to perform tasks like learning, reasoning, and problem-solving. Traditional programming relies on explicit, hard-coded rules ('if-then' logic). AI, especially machine learning, learns patterns and rules *from data* rather than being explicitly programmed for every scenario.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 443,
+      "question": "What is 'training data' in the context of machine learning, and why is the quality of this data so important?",
+      "answer": "Training data is the initial dataset used to 'teach' a machine learning model. It consists of examples, and in supervised learning, these examples are 'labeled' with the correct answers. The quality of this data is paramount because the model learns all its patterns and biases from it. If the training data is 'garbage' (inaccurate, biased, or incomplete), the resulting model will also be 'garbage', no matter how good the algorithm is.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 444,
+      "question": "Explain the core concept of 'supervised learning' and provide a common real-world business example of its use.",
+      "answer": "Supervised learning is a type of machine learning where the model learns from a dataset that is fully 'labeled' with the correct answers. The model's goal is to learn the mapping function between the input features and the output label. A common business example is an email spam filter: the model is 'trained' on thousands of emails that are pre-labeled as either 'spam' or 'not spam'.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 445,
+      "question": "Explain the core concept of 'unsupervised learning' and provide a common real-world business example of its use.",
+      "answer": "Unsupervised learning is a type of machine learning where the model learns from an 'unlabeled' dataset, meaning it has no pre-existing correct answers. The model's goal is to find hidden patterns or intrinsic structures in the data on its own. A common business example is 'customer segmentation', where a clustering algorithm (like K-Means) groups customers into different clusters based on their purchasing behavior, without any prior labels.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 446,
+      "question": "What is 'reinforcement learning' (RL), and how does its learning process differ from supervised or unsupervised learning?",
+      "answer": "Reinforcement learning is a type of machine learning where an 'agent' learns to make optimal decisions by interacting with an environment. It learns through a system of 'rewards' and 'penalties' for its actions, aiming to maximize its cumulative reward over time. This differs from supervised learning (which uses labeled answers) and unsupervised learning (which finds patterns) as RL is focused on a dynamic process of action and feedback. It's famously used in robotics and game-playing AI like AlphaGo.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 447,
+      "question": "What is a 'model' in machine learning, and what does it mean to 'train' a model on a dataset?",
+      "answer": "A machine learning 'model' is a mathematical file or program that has 'learned' to recognize patterns from a dataset. It's the output of the training process. 'Training' is the process of feeding the model a large amount of training data. During training, the model's internal 'parameters' (or weights) are progressively adjusted by an algorithm (like gradient descent) to minimize the difference between its predictions and the actual correct answers.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 448,
+      "question": "What is the difference between a 'classification' task and a 'regression' task in supervised learning?",
+      "answer": "Both are types of supervised learning, but they predict different kinds of outputs. A **classification** task predicts a *discrete category* or label (e.g., 'Spam' or 'Not Spam', 'Dog' or 'Cat', 'Fraud' or 'Not Fraud'). A **regression** task predicts a *continuous numerical value* (e.g., the 'price' of a house, the 'temperature' tomorrow, or the 'stock price' next week).",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 449,
+      "question": "What is 'feature engineering', and why is it considered a critical step in the machine learning pipeline?",
+      "answer": "Feature engineering is the art and science of selecting, transforming, and creating 'features' (input variables) from raw data to make a machine learning model work better. For example, instead of using a 'timestamp' column, you might engineer new features like 'hour_of_day' or 'day_of_week'. It's critical because even the best algorithm cannot make good predictions if its input features are irrelevant or poorly formatted. Often, good feature engineering has more impact than the choice of model.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 450,
+      "question": "Can you explain what a 'feature' and a 'label' (or 'target variable') are in a typical machine learning dataset?",
+      "answer": "In a dataset, a 'feature' is an input variable or an attribute used to make a prediction. It's a 'predictor'. For example, in a dataset to predict house prices, the features would be 'square_footage', 'number_of_bedrooms', and 'location'. The 'label' (or target variable) is the output variable, the thing you are trying to predict. In this case, the label would be the 'price' of the house.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 451,
+      "question": "What is 'Natural Language Processing' (NLP), and what are some common applications of it in today's technology?",
+      "answer": "Natural Language Processing (NLP) is a subfield of AI that gives computers the ability to understand, interpret, and generate human language (both text and speech). It's a complex field because human language is full of ambiguity and context. Common applications include chatbots, virtual assistants (like Siri and Alexa), language translation (like Google Translate), and sentiment analysis (determining if a review is positive or negative).",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 452,
+      "question": "What is 'Computer Vision' (CV), and what are some common tasks that a computer vision model can perform?",
+      "answer": "Computer Vision is a field of AI that enables computers and systems to 'see' and interpret information from digital images, videos, and other visual inputs. It aims to replicate the capabilities of human vision. Common tasks include: **Image Classification** (labeling an image, e.g., 'cat'), **Object Detection** (drawing a box around an object in an image), and **Facial Recognition**. It's used heavily in autonomous vehicles and medical imaging.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 453,
+      "question": "What is the purpose of splitting a dataset into 'training', 'validation', and 'test' sets before building a model?",
+      "answer": "This splitting is crucial to build a model that generalizes to new, unseen data. The **Training Set** (the largest chunk, e.g., 70%) is what the model actually learns from. The **Validation Set** (e.g., 15%) is used to 'tune' the model's hyperparameters and make decisions about the model's architecture. The **Test Set** (e.g., 15%) is held back until the very end. It's used only *once* to get a final, unbiased assessment of the model's performance in the real world.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 454,
+      "question": "What is 'overfitting' in a machine learning model, and why is it a significant problem for AI systems?",
+      "answer": "Overfitting occurs when a model learns the 'noise' and specific details of its training data *too well*. This results in a model that performs perfectly on the training data but fails to generalize to new, unseen data (like the test set). It's a problem because the model has essentially 'memorized' the answers instead of learning the underlying general patterns, making it useless in a real-world production environment.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 455,
+      "question": "What is 'underfitting' in a machine learning model, and what are the common reasons it occurs?",
+      "answer": "Underfitting occurs when a model is *too simple* to capture the underlying patterns in the training data. An underfit model will have poor performance on *both* the training data and the test data. Common reasons include: the model itself is not complex enough (e.g., using a linear model for a complex, non-linear problem) or the model has not been trained for enough 'epochs' (it was stopped too early).",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 456,
+      "question": "Explain what a 'neural network' is at a very high level, using an analogy like the human brain.",
+      "answer": "A neural network is a machine learning model inspired by the structure of the human brain. It's built from interconnected 'nodes' or 'neurons' organized in 'layers'. An 'input layer' receives the data (like your senses), 'hidden layers' process this data by passing it through various mathematical functions, and an 'output layer' produces the final prediction (like your brain's decision). Each connection between neurons has a 'weight' that is adjusted during training, which is similar to how human brains form connections when learning.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 457,
+      "question": "What is the 'accuracy' metric in a classification model, and in what specific scenario can it be a very misleading metric?",
+      "answer": "Accuracy is the most common metric, calculated as (Total Correct Predictions) / (Total Predictions). It tells you what percentage of the time the model was right. However, accuracy can be extremely misleading when you have an **imbalanced dataset**. For example, in a fraud detection dataset where 99% of transactions are 'not fraud', a lazy model that *always* predicts 'not fraud' would have 99% accuracy, but it would be completely useless because it never finds the 1% of fraud cases you care about.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 458,
+      "question": "What is a 'hyperparameter' in machine learning, and how does it differ from a regular model 'parameter'?",
+      "answer": "A **parameter** is a variable *internal* to the model that is learned *automatically* from the data during the training process. The 'weights' in a neural network are a prime example. A **hyperparameter** is a configuration variable that is *external* to the model and must be set *before* the training process begins. Examples include the 'learning rate' in gradient descent, the 'number of trees' in a Random Forest, or the 'K' in K-Means. Hyperparameter tuning is the process of finding the best settings for these.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 459,
+      "question": "What is a 'decision tree' algorithm, and how does it make predictions in a simple classification problem?",
+      "answer": "A decision tree is a simple, flowchart-like algorithm used for both classification and regression. It works by splitting the data into smaller and smaller subsets based on a series of 'if-then' questions about the features. For example, to predict if a person will 'default on a loan', the tree might first ask 'Is their income > $50k?'. If 'Yes', it asks 'Is their credit score > 700?'. It continues this process until it reaches a 'leaf node', which contains the final prediction (e.g., 'Default' or 'No Default').",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 460,
+      "question": "What is a 'clustering' algorithm, and what is the main goal of using one, such as K-Means?",
+      "answer": "Clustering is a type of unsupervised learning where the algorithm's goal is to group a set of unlabeled data points in such a way that objects in the same group (called a 'cluster') are more similar to each other than to those in other clusters. The K-Means algorithm is a popular method where you specify the number of clusters (K) you want, and the algorithm finds the 'center' (centroid) of each cluster and assigns data points to the nearest one.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 461,
+      "question": "Explain the 'bias-variance trade-off' in machine learning and the consequences of a model having high bias or high variance.",
+      "answer": "The bias-variance trade-off is a fundamental concept in supervised learning. **Bias** is error from overly simplistic assumptions in the model (underfitting). A high-bias model misses the relevant patterns. **Variance** is error from sensitivity to small fluctuations in the training data (overfitting). A high-variance model captures noise. **The Trade-off:** Increasing a model's complexity will *decrease* bias but *increase* variance. The goal is to find the 'sweet spot' with the lowest *total* error, which is a balance between the two.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 462,
+      "question": "What are 'Precision' and 'Recall' in a classification context, and why is there often a trade-off between them?",
+      "answer": "**Precision** answers the question: 'Of all the times the model predicted 'positive' (e.g., 'spam'), what percentage was correct?' It measures the quality of the positive predictions. **Recall** answers the question: 'Of all the *actual* positive cases, what percentage did the model correctly identify?' It measures the completeness of the positive predictions. **The Trade-off:** If you tune your model to be 'hyper-cautious' about calling something 'spam', your precision will be 100%, but you'll miss many actual spam emails, so your recall will be low.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 463,
+      "question": "When would you choose to use the 'F1-Score' as an evaluation metric over simple 'accuracy' for a classification model?",
+      "answer": "You would use the F1-Score when you have an **imbalanced dataset** (like fraud detection or medical diagnosis) and you care about the model's performance on the minority class. The F1-Score is the 'harmonic mean' of Precision and Recall. It provides a single, balanced metric that is high *only if* both precision and recall are high. This makes it a much more reliable metric than 'accuracy' when the cost of false positives and false negatives is significant and the classes are uneven.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 464,
+      "question": "Explain the difference between 'linear regression' and 'logistic regression', focusing on their outputs and typical use cases.",
+      "answer": "**Linear Regression** is used for regression tasks. Its output is a *continuous numerical value*. It works by fitting a straight line (or plane) to the data to model the relationship between variables. A typical use case is predicting a 'house price' based on 'square footage'. **Logistic Regression** is used for classification tasks. Its output is a *probability* (between 0 and 1) that is then mapped to a discrete class. It works by fitting a 'sigmoid' (S-shaped) curve to the data. A typical use case is predicting 'will a customer churn?' (Yes/No).",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 465,
+      "question": "What is 'gradient descent', and how does this optimization algorithm work to train a machine learning model?",
+      "answer": "Gradient descent is the 'engine' that powers most modern machine learning. It's an optimization algorithm used to find the 'parameters' (like weights) of a model that *minimize* a 'cost function' (a measure of the model's error). It works iteratively: 1. It calculates the 'gradient' (the slope or derivative) of the cost function. 2. It takes a 'step' in the direction of the *steepest descent* (the negative gradient). 3. It repeats this process, taking small steps 'downhill' until it reaches the 'bottom of the valley'—the point of minimum error.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 466,
+      "question": "What are the main advantages of using a 'Random Forest' algorithm over a single 'Decision Tree'?",
+      "answer": "A Random Forest is an 'ensemble' method that builds *many* decision trees on random subsets of the data and features, and then 'averages' their predictions. Its main advantage is that it is much more **robust against overfitting** than a single decision tree. A single tree can easily grow too complex and memorize the noise in the data. The 'randomness' and 'averaging' of the forest makes it generalize much better to new, unseen data, resulting in higher overall accuracy and stability.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 478,
+      "question": "What is a 'model' in machine learning, and what does it mean to 'train' a model on a dataset?",
+      "answer": "A machine learning 'model' is a mathematical file or program that has 'learned' to recognize patterns from a dataset. It's the output of the training process. 'Training' is the process of feeding the model a large amount of training data. During training, the model's internal 'parameters' (or weights) are progressively adjusted by an algorithm (like gradient descent) to minimize the difference between its predictions and the actual correct answers.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 467,
+      "question": "What is 'K-Nearest Neighbors' (KNN), and what are the main pros and cons of this 'lazy learning' algorithm?",
+      "answer": "KNN is a simple algorithm used for classification and regression. To predict a new data point, it finds the 'K' (a number you choose) closest data points to it in the training set and takes a 'majority vote' (for classification) or 'average' (for regression) of its neighbors. It's a 'lazy learner' because it doesn't really 'train' a model; it just memorizes the entire dataset. **Pros:** Simple to understand and implement. **Cons:** Very slow at prediction time (it has to compare to *every* point) and suffers badly from the 'curse of dimensionality' (doesn't work well with many features).",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 468,
+      "question": "How would you approach handling missing data in a feature column before feeding it into a machine learning model?",
+      "answer": "The best approach depends on *why* the data is missing. First, I'd analyze the *amount* of missing data. If it's a very small percentage, I might just **delete the rows**. If it's a large amount, I would need to **impute** (fill in) the values. For numerical data, I could use the 'mean' or 'median' of the column. For categorical data, I could use the 'mode' (most frequent value). A more advanced method would be to use a regression model to *predict* the missing values based on other features.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 469,
+      "question": "What is 'one-hot encoding', and why is it necessary for handling categorical (non-numeric) features in most machine learning algorithms?",
+      "answer": "Most machine learning algorithms are mathematical and can only work with numbers. 'One-hot encoding' is a technique to convert categorical variables (like a 'Color' column with values 'Red', 'Green', 'Blue') into a numerical format. It works by creating a *new binary column* (0 or 1) for *each* possible category. So, 'Color' would become three columns: 'is_Red', 'is_Green', 'is_Blue'. A 'Red' entry would be represented as [1, 0, 0]. This prevents the model from incorrectly assuming a 'ranking' (e.g., that Blue > Red).",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 470,
+      "question": "What is the 'curse of dimensionality', and how can it negatively impact the performance of machine learning models?",
+      "answer": "The 'curse of dimensionality' refers to the problems that arise when working with very high-dimensional data (datasets with a very large number of features). As the number of features increases, the 'volume' of the feature space grows exponentially. This causes the data to become 'sparse'—data points are very far apart from each other. This negatively impacts models (like KNN) that rely on 'distance' and also makes it much easier for models to overfit, as they can find spurious patterns in the noise.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 471,
+      "question": "Explain the purpose of 'Principal Component Analysis' (PCA) and its primary use case in a machine learning pipeline.",
+      "answer": "Principal Component Analysis (PCA) is an unsupervised 'dimensionality reduction' technique. Its purpose is to take a dataset with many features and *compress* it into a new, smaller set of features called 'principal components'. It does this by finding the 'directions' in the data that account for the *most variance*. Its primary use case is to reduce the 'curse of dimensionality', speed up model training, and filter out noise, all while retaining as much of the original information as possible.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 472,
+      "question": "What is Artificial Intelligence (AI) at a high level, and how does it differ from traditional rules-based programming?",
+      "answer": "Artificial Intelligence (AI) is a broad field of computer science focused on creating systems that can simulate human intelligence to perform tasks like learning, reasoning, and problem-solving. Traditional programming relies on explicit, hard-coded rules ('if-then' logic). AI, especially machine learning, learns patterns and rules *from data* rather than being explicitly programmed for every scenario.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 473,
+      "question": "Can you explain the fundamental difference between Artificial Intelligence (AI), Machine Learning (ML), and Deep Learning (DL)?",
+      "answer": "AI is the broad, overall concept of building intelligent machines. Machine Learning (ML) is a *subset* of AI; it's the primary technique used today, where systems 'learn' from data to make predictions. Deep Learning (DL) is a further *subset* of ML that uses complex, multi-layered 'deep neural networks' to solve more advanced problems, like image recognition or language translation.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 474,
+      "question": "What is 'training data' in the context of machine learning, and why is the quality of this data so important?",
+      "answer": "Training data is the initial dataset used to 'teach' a machine learning model. It consists of examples, and in supervised learning, these examples are 'labeled' with the correct answers. The quality of this data is paramount because the model learns all its patterns and biases from it. If the training data is 'garbage' (inaccurate, biased, or incomplete), the resulting model will also be 'garbage', no matter how good the algorithm is.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 475,
+      "question": "Explain the core concept of 'supervised learning' and provide a common real-world business example of its use.",
+      "answer": "Supervised learning is a type of machine learning where the model learns from a dataset that is fully 'labeled' with the correct answers. The model's goal is to learn the mapping function between the input features and the output label. A common business example is an email spam filter: the model is 'trained' on thousands of emails that are pre-labeled as either 'spam' or 'not spam'.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 476,
+      "question": "Explain the core concept of 'unsupervised learning' and provide a common real-world business example of its use.",
+      "answer": "Unsupervised learning is a type of machine learning where the model learns from an 'unlabeled' dataset, meaning it has no pre-existing correct answers. The model's goal is to find hidden patterns or intrinsic structures in the data on its own. A common business example is 'customer segmentation', where a clustering algorithm (like K-Means) groups customers into different clusters based on their purchasing behavior, without any prior labels.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 477,
+      "question": "What is 'reinforcement learning' (RL), and how does its learning process differ from supervised or unsupervised learning?",
+      "answer": "Reinforcement learning is a type of machine learning where an 'agent' learns to make optimal decisions by interacting with an environment. It learns through a system of 'rewards' and 'penalties' for its actions, aiming to maximize its cumulative reward over time. This differs from supervised learning (which uses labeled answers) and unsupervised learning (which finds patterns) as RL is focused on a dynamic process of action and feedback. It's famously used in robotics and game-playing AI like AlphaGo.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 480,
+      "question": "What is 'feature engineering', and why is it considered a critical step in the machine learning pipeline?",
+      "answer": "Feature engineering is the art and science of selecting, transforming, and creating 'features' (input variables) from raw data to make a machine learning model work better. For example, instead of using a 'timestamp' column, you might engineer new features like 'hour_of_day' or 'day_of_week'. It's critical because even the best algorithm cannot make good predictions if its input features are irrelevant or poorly formatted. Often, good feature engineering has more impact than the choice of model.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 481,
+      "question": "Can you explain what a 'feature' and a 'label' (or 'target variable') are in a typical machine learning dataset?",
+      "answer": "In a dataset, a 'feature' is an input variable or an attribute used to make a prediction. It's a 'predictor'. For example, in a dataset to predict house prices, the features would be 'square_footage', 'number_of_bedrooms', and 'location'. The 'label' (or target variable) is the output variable, the thing you are trying to predict. In this case, the label would be the 'price' of the house.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 482,
+      "question": "What is 'Natural Language Processing' (NLP), and what are some common applications of it in today's technology?",
+      "answer": "Natural Language Processing (NLP) is a subfield of AI that gives computers the ability to understand, interpret, and generate human language (both text and speech). It's a complex field because human language is full of ambiguity and context. Common applications include chatbots, virtual assistants (like Siri and Alexa), language translation (like Google Translate), and sentiment analysis (determining if a review is positive or negative).",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 483,
+      "question": "What is 'Computer Vision' (CV), and what are some common tasks that a computer vision model can perform?",
+      "answer": "Computer Vision is a field of AI that enables computers and systems to 'see' and interpret information from digital images, videos, and other visual inputs. It aims to replicate the capabilities of human vision. Common tasks include: **Image Classification** (labeling an image, e.g., 'cat'), **Object Detection** (drawing a box around an object in an image), and **Facial Recognition**. It's used heavily in autonomous vehicles and medical imaging.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 484,
+      "question": "What is the purpose of splitting a dataset into 'training', 'validation', and 'test' sets before building a model?",
+      "answer": "This splitting is crucial to build a model that generalizes to new, unseen data. The **Training Set** (the largest chunk, e.g., 70%) is what the model actually learns from. The **Validation Set** (e.g., 15%) is used to 'tune' the model's hyperparameters and make decisions about the model's architecture. The **Test Set** (e.g., 15%) is held back until the very end. It's used only *once* to get a final, unbiased assessment of the model's performance in the real world.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 485,
+      "question": "What is 'overfitting' in a machine learning model, and why is it a significant problem for AI systems?",
+      "answer": "Overfitting occurs when a model learns the 'noise' and specific details of its training data *too well*. This results in a model that performs perfectly on the training data but fails to generalize to new, unseen data (like the test set). It's a problem because the model has essentially 'memorized' the answers instead of learning the underlying general patterns, making it useless in a real-world production environment.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 486,
+      "question": "What is 'underfitting' in a machine learning model, and what are the common reasons it occurs?",
+      "answer": "Underfitting occurs when a model is *too simple* to capture the underlying patterns in the training data. An underfit model will have poor performance on *both* the training data and the test data. Common reasons include: the model itself is not complex enough (e.g., using a linear model for a complex, non-linear problem) or the model has not been trained for enough 'epochs' (it was stopped too early).",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 487,
+      "question": "Explain what a 'neural network' is at a very high level, using an analogy like the human brain.",
+      "answer": "A neural network is a machine learning model inspired by the structure of the human brain. It's built from interconnected 'nodes' or 'neurons' organized in 'layers'. An 'input layer' receives the data (like your senses), 'hidden layers' process this data bypassing it through various mathematical functions, and an 'output layer' produces the final prediction (like your brain's decision). Each connection between neurons has a 'weight' that is adjusted during training, which is similar to how human brains form connections when learning.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 488,
+      "question": "What is the 'accuracy' metric in a classification model, and in what specific scenario can it be a very misleading metric?",
+      "answer": "Accuracy is the most common metric, calculated as (Total Correct Predictions) / (Total Predictions). It tells you what percentage of the time the model was right. However, accuracy can be extremely misleading when you have an **imbalanced dataset**. For example, in a fraud detection dataset where 99% of transactions are 'not fraud', a lazy model that *always* predicts 'not fraud' would have 99% accuracy, but it would be completely useless because it never finds the 1% of fraud cases you care about.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 489,
+      "question": "What is a 'hyperparameter' in machine learning, and how does it differ from a regular model 'parameter'?",
+      "answer": "A **parameter** is a variable *internal* to the model that is learned *automatically* from the data during the training process. The 'weights' in a neural network are a prime example. A **hyperparameter** is a configuration variable that is *external* to the model and must be set *before* the training process begins. Examples include the 'learning rate' in gradient descent, the 'number of trees' in a Random Forest, or the 'K' in K-Means. Hyperparameter tuning is the process of finding the best settings for these.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 490,
+      "question": "What is a 'decision tree' algorithm, and how does it make predictions in a simple classification problem?",
+      "answer": "A decision tree is a simple, flowchart-like algorithm used for both classification and regression. It works by splitting the data into smaller and smaller subsets based on a series of 'if-then' questions about the features. For example, to predict if a person will 'default on a loan', the tree might first ask 'Is their income > $50k?'. If 'Yes', it asks 'Is their credit score > 700?'. It continues this process until it reaches a 'leaf node', which contains the final prediction (e.g., 'Default' or 'No Default').",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 491,
+      "question": "What is a 'clustering' algorithm, and what is the main goal of using one, such as K-Means?",
+      "answer": "Clustering is a type of unsupervised learning where the algorithm's goal is to group a set of unlabeled data points in such a way that objects in the same group (called a 'cluster') are more similar to each other than to those in other clusters. The K-Means algorithm is a popular method where you specify the number of clusters (K) you want, and the algorithm finds the 'center' (centroid) of each cluster and assigns data points to the nearest one.",
+      "difficulty": "Easy",
+      "section": "ai"
+    },
+    {
+      "id": 492,
+      "question": "Explain the 'bias-variance trade-off' in machine learning and the consequences of a model having high bias or high variance.",
+      "answer": "The bias-variance trade-off is a fundamental concept in supervised learning. **Bias** is error from overly simplistic assumptions in the model (underfitting). A high-bias model misses the relevant patterns. **Variance** is error from sensitivity to small fluctuations in the training data (overfitting). A high-variance model captures noise. **The Trade-off:** Increasing a model's complexity will *decrease* bias but *increase* variance. The goal is to find the 'sweet spot' with the lowest *total* error, which is a balance between the two.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 493,
+      "question": "What are 'Precision' and 'Recall' in a classification context, and why is there often a trade-off between them?",
+      "answer": "**Precision** answers the question: 'Of all the times the model predicted 'positive' (e.g., 'spam'), what percentage was correct?' It measures the quality of the positive predictions. **Recall** answers the question: 'Of all the *actual* positive cases, what percentage did the model correctly identify?' It measures the completeness of the positive predictions. **The Trade-off:** If you tune your model to be 'hyper-cautious' about calling something 'spam', your precision will be 100%, but you'll miss many actual spam emails, so your recall will be low.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 494,
+      "question": "When would you choose to use the 'F1-Score' as an evaluation metric over simple 'accuracy' for a classification model?",
+      "answer": "You would use the F1-Score when you have an **imbalanced dataset** (like fraud detection or medical diagnosis) and you care about the model's performance on the minority class. The F1-Score is the 'harmonic mean' of Precision and Recall. It provides a single, balanced metric that is high *only if* both precision and recall are high. This makes it a much more reliable metric than 'accuracy' when the cost of false positives and false negatives is significant and the classes are uneven.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 495,
+      "question": "Explain the difference between 'linear regression' and 'logistic regression', focusing on their outputs and typical use cases.",
+      "answer": "**Linear Regression** is used for regression tasks. Its output is a *continuous numerical value*. It works by fitting a straight line (or plane) to the data to model the relationship between variables. A typical use case is predicting a 'house price' based on 'square footage'. **Logistic Regression** is used for classification tasks. Its output is a *probability* (between 0 and 1) that is then mapped to a discrete class. It works by fitting a 'sigmoid' (S-shaped) curve to the data. A typical use case is predicting 'will a customer churn?' (Yes/No).",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 496,
+      "question": "What is 'gradient descent', and how does this optimization algorithm work to train a machine learning model?",
+      "answer": "Gradient descent is the 'engine' that powers most modern machine learning. It's an optimization algorithm used to find the 'parameters' (like weights) of a model that *minimize* a 'cost function' (a measure of the model's error). It works iteratively: 1. It calculates the 'gradient' (the slope or derivative) of the cost function. 2. It takes a 'step' in the direction of the *steepest descent* (the negative gradient). 3. It repeats this process, taking small steps 'downhill' until it reaches the 'bottom of the valley'—the point of minimum error.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 497,
+      "question": "What are the main advantages of using a 'Random Forest' algorithm over a single 'Decision Tree'?",
+      "answer": "A Random Forest is an 'ensemble' method that builds *many* decision trees on random subsets of the data and features, and then 'averages' their predictions. Its main advantage is that it is much more **robust against overfitting** than a single decision tree. A single tree can easily grow too complex and memorize the noise in the data. The 'randomness' and 'averaging' of the forest makes it generalize much better to new, unseen data, resulting in higher overall accuracy and stability.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 498,
+      "question": "What is 'K-Nearest Neighbors' (KNN), and what are the main pros and cons of this 'lazy learning' algorithm?",
+      "answer": "KNN is a simple algorithm used for classification and regression. To predict a new data point, it finds the 'K' (a number you choose) closest data points to it in the training set and takes a 'majority vote' (for classification) or 'average' (for regression) of its neighbors. It's a 'lazy learner' because it doesn't really 'train' a model; it just memorizes the entire dataset. **Pros:** Simple to understand and implement. **Cons:** Very slow at prediction time (it has to compare to *every* point) and suffers badly from the 'curse of dimensionality' (doesn't work well with many features).",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 499,
+      "question": "How would you approach handling missing data in a feature column before feeding it into a machine learning model?",
+      "answer": "The best approach depends on *why* the data is missing. First, I'd analyze the *amount* of missing data. If it's a very small percentage, I might just **delete the rows**. If it's a large amount, I would need to **impute** (fill in) the values. For numerical data, I could use the 'mean' or 'median' of the column. For categorical data, I could use the 'mode' (most frequent value). A more advanced method would be to use a regression model to *predict* the missing values based on other features.",
+      "difficulty": "Medium",
+      "section": "ai"
+    },
+    {
+      "id": 500,
+      "question": "What is 'one-hot encoding', and why is it necessary for handling categorical (non-numeric) features in most machine learning algorithms?",
+      "answer": "Most machine learning algorithms are mathematical and can only work with numbers. 'One-hot encoding' is a technique to convert categorical variables (like a 'Color' column with values 'Red', 'Green', 'Blue') into a numerical format. It works by creating a *new binary column* (0 or 1) for *each* possible category. So, 'Color' would become three columns: 'is_Red', 'is_Green', 'is_Blue'. A 'Red' entry would be represented as [1, 0, 0]. This prevents the model from incorrectly assuming a 'ranking' (e.g., that Blue > Red).",
+      "difficulty": "Medium",
+      "section": "ai"
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "metadata": {
+    "resource": "interview_questions_java",
+    "file_id": 1,
+    "timestamp": "2026-02-05T13:08:12.701682",
+    "record_count": 46
+  },
+  "data": [
+    {
+      "id": 803,
+      "question": "What is the difference between JDK, JRE, and JVM?",
+      "answer": "Think of it like a car factory.\n**JVM (Engine):** This runs the code. It is the engine inside the car.\n**JRE (Car):** This is the engine plus the body and wheels. It lets you *drive* the car (run the program).\n**JDK (Factory):** This is the factory. It has the tools to *build* the car (compiler), fix the car (debugger), and drive the car (JRE).\n\nTo just run Java, you need JRE. To write Java, you need JDK.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 804,
+      "question": "Explain `public static void main` method.",
+      "answer": "This is the front door of your program.\n* **public:** Anyone can enter (the computer needs to find it).\n* **static:** It exists even before you build the house (no object needed).\n* **void:** It doesn't give anything back when it finishes.\n* **main:** The specific name on the doorplate.\n* **String args[]:** A mailbox for any messages you send when starting the program.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 805,
+      "question": "What are the 4 pillars of OOP?",
+      "answer": "**1. Encapsulation (Protection):** Like a capsule. You hide the medicine inside. You protect your data with `private` and only let people touch it safely.\n**2. Inheritance (Family):** A child gets traits from parents. A `Dog` class gets code from `Animal` class.\n**3. Polymorphism (Many Forms):** One button, different actions. Pressing \"Play\" on a CD player is different from pressing \"Play\" on a DVD player, but the button looks the same.\n**4. Abstraction (Hiding Details):** Driving a car. You use the wheel and pedals. You don't need to know how the engine combustion works.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 806,
+      "question": "Difference between `==` and `.equals()`?",
+      "answer": "**`==` (Address Check):** Checks if two things are the *exact same physical object*. Imagine two identical twin brothers. `==` checks \"Is this the exact same person?\".\n**`.equals()` (Content Check):** Checks if two things *look* the same. `equals()` checks \"Do they look exactly alike?\".\n\nAlways use `.equals()` for Strings and Objects.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 807,
+      "question": "Why is String immutable (unchangeable)?",
+      "answer": "**1. Safety:** Strings are used for passwords and file paths. If they could change, a hacker could sneak in and change a filename after you checked it.\n**2. Space:** Java saves space by reusing Strings. If you write \"Hello\" in 5 places, Java only keeps one copy in memory. If one person changed it, everyone else's \"Hello\" would break.\n**3. Speed:** Since it never changes, Java can memorize (cache) its \"fingerprint\" (hashcode) so looking it up is super fast.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 808,
+      "question": "What are Wrapper Classes?",
+      "answer": "Java has two types of data:\n1. **Primitives (Simple):** `int`, `char`. Fast but dumb.\n2. **Objects (Smart):** `Integer`, `Character`. Slow but powerful.\n\nLists like `ArrayList` only accept Smart Objects. Wrapper classes are simply the \"Smart\" version of the \"Simple\" data types so you can put numbers in a List.\n* `int` -> `Integer`\n* `char` -> `Character`",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 809,
+      "question": "What is the `final` keyword?",
+      "answer": "It means \"Cannot Change\".\n* **Final Variable:** Like writing in permanent marker. Once you write it, you can't erase or change it.\n* **Final Method:** \"My rules are final.\" A child class cannot change (override) this method.\n* **Final Class:** \"No kids allowed.\" You cannot create a child class from this class (like the `String` class).",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 810,
+      "question": "What is a Constructor?",
+      "answer": "A Constructor is a special setup method.\nWhen you buy a new phone, you turn it on and set the language and time. That is the **Constructor**.\nIt runs automatically when you create a new object (`new Phone()`). It sets up the starting values.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 811,
+      "question": "StringBuffer vs StringBuilder?",
+      "answer": "Both help you change text without wasting memory.\n* **StringBuffer:** Think of it like a public notebook where only one person can write at a time. It is safe (thread-safe) but slow because everyone waits in line.\n* **StringBuilder:** Like a whiteboard where everyone writes at once. It is fast, but if two people write in the same spot, it gets messy.\n**Rule:** Use `StringBuilder` 99% of the time because it is faster.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 812,
+      "question": "What is the `static` keyword?",
+      "answer": "**Static** means \"Shared by Everyone\".\n* **Instance Variable:** Every person has their *own* name.\n* **Static Variable:** Everyone in the room shares the *same* air conditioner temperature. If one person changes it, it changes for everyone.\nUse `static` for things that should be the same for all objects, like a counter or a constant.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 813,
+      "question": "Overloading vs Overriding?",
+      "answer": "**Overloading (Same Name, Different Options):**\nLike ordering coffee.\n* `order()` -> Regular coffee.\n* `order(sugar)` -> Sweet coffee.\n* `order(milk, sugar)` -> White coffee.\nSame action name, different ingredients.\n\n**Overriding (New Behavior):**\nParent says \"Go to sleep at 9 PM\".\nChild says \"I will go to sleep at 11 PM\".\nThe child *replaces* the parent's rule with their own version.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 814,
+      "question": "What is the Collections Framework?",
+      "answer": "It is a toolbox of containers to store data.\n**List:** Like a grocery list. Order matters. Duplicates allowed. (`ArrayList`)\n**Set:** Like a bag of marbles. Order doesn't matter. No duplicates allowed. (`HashSet`)\n**Map:** Like a dictionary. You look up a word (Key) to find meaning (Value). (`HashMap`)",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 815,
+      "question": "What is an Interface?",
+      "answer": "An Interface is a **Contract** or a **Menu**.\nIt lists *what* options are available (e.g., \"Grill\", \"Fry\"), but it doesn't do the cooking.\nAny class that signs the contract (implements interface) *must* do the work.\nExample: `RemoteControl` interface has a button `powerOn()`. The `TV` class provides the code to actually turn on.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 816,
+      "question": "Abstract Class vs Interface?",
+      "answer": "**Abstract Class (Partial Blueprint):**\nImagine a blueprint for a House. It has walls and a roof (code), but the \"Paint Color\" is blank. You *must* fill in the blank to build it. Used for related things (Dog, Cat).\n\n**Interface (Role):**\nImagine a \"Swimmer\" badge. A Dog can be a Swimmer. A Human can be a Swimmer. A Boat can be a Swimmer. They are not related, but they all do the same thing. Used for abilities.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 817,
+      "question": "What is `this` keyword?",
+      "answer": "**`this`** means \"Me\" or \"My\".\nImagine a boy named Tom holding a ball.\nIf someone says \"Tom, throw the ball\", Tom asks \"Which ball? The one on the floor or the one in my hand?\"\n`this.ball` specifically means \"The ball in *my* hand\".\nIt is used to distinguish your own variables from other variables with the same name.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 818,
+      "question": "What is `super` keyword?",
+      "answer": "**`super`** means \"My Parent\".\nIf you are writing code in a Child class, and you want to use the Parent's code:\n* `super.money` -> Access parent's variable.\n* `super.cook()` -> Call parent's method.\nIt is mostly used to call the Parent's constructor to make sure the parent is set up correctly before the child is.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 819,
+      "question": "Exception Handling keywords?",
+      "answer": "**Try:** \"Attempt to do this risky thing\" (like reading a file).\n**Catch:** \"If it fails, do this instead\" (like showing an error message).\n**Finally:** \"No matter what happens, do this\" (like closing the file).\n**Throw:** \"I found an error! catch this!\"\n**Throws:** \"Warning: This method is dangerous.\"",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 820,
+      "question": "Java Access Modifiers?",
+      "answer": "Think of your house keys.\n**Private:** Only *you* have the key. (Only this class).\n**Default:** Everyone in your *family* has a key. (Same package).\n**Protected:** Family + children living away have keys. (Same package + Subclasses).\n**Public:** The front door is open. *Everyone* can enter. (All classes).",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 821,
+      "question": "Checked vs Unchecked Exceptions?",
+      "answer": "**Checked (The Nanny):**\nThe compiler checks on you. \"Did you pack your lunch?\" \"Did you handle the File Error?\"\nYou *must* handle these (like `IOException`) or the code won't run. Used for external problems.\n\n**Unchecked (The Accident):**\nThe compiler trusts you. But you might slip and fall (like `NullPointerException`).\nThese are usually bugs in your code. You aren't forced to catch them, but you should fix the bug.",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 822,
+      "question": "Break vs Continue?",
+      "answer": "Imagine you are counting cards 1 to 10.\n**Break:** \"Stop counting!\" You throw away the deck and walk away. (Exits loop completely).\n**Continue:** \"Skip this card.\" You ignore card #5 and move straight to card #6. (Skips current turn, keeps looping).",
+      "difficulty": "Easy",
+      "section": "Java"
+    },
+    {
+      "id": 823,
+      "question": "How does HashMap work?",
+      "answer": "It uses a system of **Buckets**.\n1. You give it a Key (\"Apple\").\n2. It calculates a code (Hash) for \"Apple\".\n3. This code tells it exactly which bucket to look in (e.g., Bucket #5).\n4. It puts the value in Bucket #5.\n**Collision:** If \"Banana\" also lands in Bucket #5, they share the bucket using a list (LinkedList).\n**Speed:** Since math tells us exactly which bucket to check, we don't need to search the whole room. It's super fast (O(1)).",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 824,
+      "question": "ArrayList vs LinkedList?",
+      "answer": "**ArrayList (Bookshelf):**\nBooks are packed tight.\n* Finding a book is fast (just count to #5).\n* Adding a book in the middle is slow (you have to shift *every* other book).\n\n**LinkedList (Treasure Hunt):**\nEach book has a note pointing to the next book.\n* Finding a book is slow (you must follow the clues from the start).\n* Adding a book is fast (just change one note to point to the new book).",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 825,
+      "question": "Contract between hashCode and equals?",
+      "answer": "Imagine storing files in folders.\n**hashCode():** Determines which folder to put the file in.\n**equals():** Checks if two files inside the folder are identical.\n\n**The Rule:**\nIf two files are identical (`equals` is true), they **MUST** be in the same folder (`hashCode` is same).\nIf you break this rule, you might put a file in Folder A, but look for it in Folder B and never find it.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 826,
+      "question": "Interface vs Abstract Class (Java 8)?",
+      "answer": "**Abstract Class:** \"I am an Animal.\"\n* Can have body parts (variables).\n* Can have a constructor (birth).\n* You can only be ONE thing (a Dog cannot be a Cat).\n\n**Interface:** \"I can Fly.\"\n* Cannot have body parts (no variables).\n* No constructor.\n* You can do MANY things (a Bird can Fly, Eat, and Sing).\n* **Java 8 Update:** Interfaces can now have instructions (`default` methods), not just empty titles.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 827,
+      "question": "Try-with-resources?",
+      "answer": "Before Java 7, if you opened a file, you had to remember to close it manually. If you forgot, the file stayed locked (Memory Leak).\n**Try-with-resources** is an automatic door closer.\n`try (OpenFile) { ... }`\nWhen the code finishes, Java **automatically** closes the file for you. No memory leaks.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 828,
+      "question": "Philosophy of Checked vs Unchecked?",
+      "answer": "**Checked:** Recoverable.\n\"The internet is down.\" -> You can catch this and try again later.\n**Unchecked:** Fatal.\n\"You tried to access index 10 in a list of size 5.\" -> This is a logic bug. You can't \"recover\", you must fix the code.\n**Modern Trend:** Many programmers hate Checked exceptions because they make code messy, so newer frameworks use Unchecked more.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 829,
+      "question": "Runnable vs Callable?",
+      "answer": "They represent a job for a Thread.\n**Runnable:** \"Go run this.\"\n* It does the job and comes back empty-handed (`void`).\n* It cannot complain (throw exception).\n\n**Callable:** \"Go calculate this.\"\n* It does the job and **returns a result**.\n* If it fails, it brings back an Error (Exception).\n* Used when you need an answer back.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 830,
+      "question": "What is `volatile`?",
+      "answer": "It prevents caching.\nIn a multi-core computer, each CPU has a private notepad (Cache).\nIf Variable A is `volatile`, the CPU is forced to ignore its notepad and write directly to the main whiteboard (RAM).\nThis ensures that if Thread 1 changes the value, Thread 2 sees the new value immediately.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 831,
+      "question": "Stack vs Heap Memory?",
+      "answer": "**Stack (Scratchpad):**\n* Stores temporary variables and method calls.\n* Very fast.\n* Thread-safe (my scratchpad is mine).\n* Cleared automatically when method ends.\n\n**Heap (Warehouse):**\n* Stores actual Objects (`new String()`).\n* Big storage.\n* Shared by everyone (Threads can fight over objects).\n* Cleaned by the Garbage Collector.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 832,
+      "question": "Garbage Collection process?",
+      "answer": "Java has an automatic cleaner.\n1. **Mark:** The cleaner walks through memory and puts a sticker on everything you are still using.\n2. **Sweep:** It looks for things *without* a sticker (Garbage) and deletes them.\n3. **Compact:** It pushes the remaining objects together to make space for new stuff.\nYou don't have to delete objects manually like in C++.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 833,
+      "question": "Java 8 Streams?",
+      "answer": "Think of a factory assembly line.\n**Collection:** A warehouse full of parts.\n**Stream:** The conveyor belt moving the parts.\nYou can attach robots to the belt:\n* `filter`: Remove broken parts.\n* `map`: Paint the parts.\n* `count`: Count the finished parts.\nThe original warehouse is untouched. The Stream just processes the flow.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 834,
+      "question": "What is Optional?",
+      "answer": "It is a box that might be empty.\nBefore, if a method returned `null`, your code would crash (`NullPointerException`).\nNow, it returns an `Optional` box.\nYou are forced to ask: \"Is the box empty?\" before opening it.\nIt makes your code safer by preventing Null crashes.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 835,
+      "question": "Synchronized Block vs Method?",
+      "answer": "**Method:** Locking the whole house.\nIf one person is using the bathroom, nobody can enter the *house*. Safe, but very slow.\n\n**Block:** Locking just the door.\nIf one person is using the bathroom, people can still use the kitchen. `synchronized(bathroom) { ... }`.\nMuch faster because it blocks less code.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 836,
+      "question": "Serialization and serialVersionUID?",
+      "answer": "**Serialization:** Freezing an object into a file so you can transport it or save it.\n**Deserialization:** Thawing it back into live code.\n\n**serialVersionUID:** This is the Version Number.\nIf you save a `User` object (Version 1), then update your code to add a new field (Version 2), Java checks the ID.\nIf ID 1 != ID 2, Java refuses to load the old object because it doesn't match the new code.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 837,
+      "question": "What is ThreadLocal?",
+      "answer": "It gives every thread its own private pocket.\nNormally, variables are shared. `ThreadLocal` creates a separate copy of the variable for each thread.\n**Use Case:** User ID.\nInstead of passing `userId` to every single function, you put it in `ThreadLocal`. Any function in that thread can pull it out of its pocket.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 838,
+      "question": "Comparator vs Comparable?",
+      "answer": "**Comparable (Internal):**\nThe object knows how to sort itself.\nA `Student` class says \"I sort myself by ID\". This is the default.\n\n**Comparator (External):**\nA separate judge decides the order.\nYou create a `NameSorter` or `AgeSorter`.\nUse this when you want to sort differently (e.g., sort by Name instead of ID) without changing the original class.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 839,
+      "question": "Why use Generics?",
+      "answer": "It adds labels to your containers.\n**Without Generics:** A list is a mystery bag. You pull something out, you don't know if it's a String or Integer. You might crash if you guess wrong.\n**With Generics:** `List<String>`. The label says \"Strings Only\".\nThe compiler stops you from putting an Integer inside. No crashes at runtime.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 840,
+      "question": "What is Reflection?",
+      "answer": "It is Java looking in the mirror.\nNormally, code is fixed. **Reflection** allows code to inspect itself at runtime.\nIt can say: \"What methods do I have?\" or \"Run this method name I found in a string\".\n**Use Case:** Frameworks like Spring use it to build your app automatically without you writing boilerplate code.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 841,
+      "question": "Singleton Pattern?",
+      "answer": "Ensures only **ONE** instance of a class exists.\nLike the President. There is only one. Everyone refers to the same President.\n**How:**\n1. Make the constructor `private` (no one can create new ones).\n2. Create one `static` instance inside.\n3. Provide a public method `getInstance()` to share it.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 842,
+      "question": "Fail-Fast vs Fail-Safe?",
+      "answer": "**Fail-Fast (Strict):**\nIf you try to edit a list while reading it, it crashes immediately (`ConcurrentModificationException`).\n\"Stop! You messed up.\"\nExample: `ArrayList`.\n\n**Fail-Safe (Chill):**\nIf you edit a list while reading it, it ignores your changes or works on a copy.\n\"Whatever, I'll keep reading the old version.\"\nExample: `ConcurrentHashMap`.",
+      "difficulty": "Medium",
+      "section": "Java"
+    },
+    {
+      "id": 843,
+      "question": "How does ClassLoader work?",
+      "answer": "It uses a **Delegation Model** (Ask your parent first).\nWhen you need a class:\n1. **App Loader:** Ask parent (Extension).\n2. **Extension Loader:** Ask parent (Bootstrap).\n3. **Bootstrap Loader:** Checks core Java libraries (`java.lang`). If found, returns it.\n4. If not found, it tells the child \"You look for it\".\nThis prevents hackers from replacing core Java classes (like `String`) with their own virus code.",
+      "difficulty": "Hard",
+      "section": "Java"
+    },
+    {
+      "id": 844,
+      "question": "ConcurrentHashMap internals?",
+      "answer": "It is a thread-safe Map.\n**Old Way (Java 7):** Divided map into 16 zones. Only 16 threads could write at once.\n**New Way (Java 8):** No zones. Uses **CAS** (Compare-And-Swap).\n* If a bucket is empty, it uses a fast atomic swap (no locks).\n* If a bucket has data, it locks *only that one bucket*.\nResult: Thousands of threads can write at the same time without waiting.",
+      "difficulty": "Hard",
+      "section": "Java"
+    },
+    {
+      "id": 845,
+      "question": "CompletableFuture vs Future?",
+      "answer": "**Future (Old):**\nLike a laundry ticket. You have to wait at the counter (`.get()`) until it's done. You block your day waiting.\n\n**CompletableFuture (New):**\nLike a delivery service. You say \"When laundry is done, deliver it to my house, then order pizza\".\nYou can chain tasks (`.thenApply`) and do other things while waiting. It is non-blocking.",
+      "difficulty": "Hard",
+      "section": "Java"
+    },
+    {
+      "id": 846,
+      "question": "What is a Memory Leak?",
+      "answer": "It happens when you store objects in a list (like a static Map) and forget to remove them.\nThe Garbage Collector sees they are \"in use\" so it cannot delete them.\nOver time, the pile grows until the computer runs out of RAM (`OutOfMemoryError`).\n**Fix:** Use Profiler tools (VisualVM) to find which list is growing forever.",
+      "difficulty": "Hard",
+      "section": "Java"
+    },
+    {
+      "id": 847,
+      "question": "What is CAS (Compare-And-Swap)?",
+      "answer": "It is a way to update data without using heavy locks.\n**Logic:**\n\"I see the value is 5. I want to change it to 6.\"\n\"Wait, let me check if it is still 5.\"\n\"If yes -> Update to 6.\"\n\"If no (someone else changed it) -> Fail and try again.\"\nIt happens instantly at the CPU level. It is much faster than `synchronized`.",
+      "difficulty": "Hard",
+      "section": "Java"
+    },
+    {
+      "id": 848,
+      "question": "What is a Dynamic Proxy?",
+      "answer": "It allows you to create an object that implements an interface on the fly, without writing a class file.\n**How:** You give it an interface. Java creates a \"fake\" object.\n**Why:** When you call a method on the fake object, it routes the call to a handler.\n**Use Case:** Spring uses this for Transactions. When you call `save()`, the Proxy starts a transaction, calls real `save()`, then commits.",
+      "difficulty": "Hard",
+      "section": "Java"
+    }
+  ]
+}

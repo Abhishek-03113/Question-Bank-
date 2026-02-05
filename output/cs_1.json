@@ -1,0 +1,1063 @@
+{
+  "metadata": {
+    "resource": "cs",
+    "file_id": 1,
+    "timestamp": "2026-02-05T13:08:09.943399",
+    "record_count": 117
+  },
+  "data": [
+    {
+      "id": 1,
+      "cs_question": "What is a primary key in a database?",
+      "cs_answer": "A primary key in a database is a unique identifier for each record in a table. It ensures that no two rows have the same primary key value, which helps maintain data integrity and allows efficient data retrieval. Primary keys must contain unique values and cannot contain null values. They are crucial in relational databases for establishing and enforcing entity integrity. Typically, a primary key is a single column, but it can also be a combination of multiple columns, called a composite key. It is used to link records in different tables through foreign keys, enabling relational joins and queries across tables. Defining a proper primary key is essential for the design of the database schema and plays a key role in indexing and query optimization.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 2,
+      "cs_question": "Explain ACID properties in DBMS.",
+      "cs_answer": "ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability, which are the foundational properties that ensure reliable processing of database transactions. Atomicity guarantees that all parts of a transaction are treated as a single unit—either all of its operations succeed or none do, preventing partial updates. Consistency ensures that a transaction brings the database from one valid state to another while respecting all defined rules, such as constraints and triggers. Isolation ensures that concurrent transactions do not interfere with each other; transactions appear to run sequentially even if they are executed concurrently. Durability ensures that once a transaction has been committed, its changes are permanent, surviving system crashes or power failures. These ACID properties collectively maintain data integrity, support concurrency, and provide robustness in database systems, making transactions predictable and reliable.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 3,
+      "cs_question": "What is normalization?",
+      "cs_answer": "Normalization is a database design process aimed at reducing data redundancy and improving data integrity. It involves organizing a database into tables and columns by applying a set of rules called normal forms. The most common normal forms are First Normal Form (1NF), Second Normal Form (2NF), and Third Normal Form (3NF). Each successive normal form addresses specific types of redundancy and dependency. By normalizing a database, data anomalies during insertion, deletion, and updates are minimized, leading to more efficient and consistent data storage. Normalization also simplifies database maintenance and enhances query performance by structuring data in a clear and logical manner.",
+      "cs_category": "normalization",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 4,
+      "cs_question": "What is the OSI model?",
+      "cs_answer": "The OSI (Open Systems Interconnection) model is a conceptual framework that standardizes the functions of a telecommunication or computing system into seven distinct layers. These layers, from bottom to top, are Physical, Data Link, Network, Transport, Session, Presentation, and Application. Each layer serves a specific purpose and communicates with the layers directly above and below it. The OSI model helps understand and design networks by compartmentalizing different network functions such as data transmission, routing, and error handling. It also facilitates interoperability among diverse products and protocols from different vendors by providing a common reference.",
+      "cs_category": "models",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 5,
+      "cs_question": "Difference between TCP and UDP?",
+      "cs_answer": "TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are core protocols of the Internet Protocol Suite used for transmitting data over networks. TCP is connection-oriented, meaning it establishes a reliable connection through a handshake process before transmitting data. It guarantees delivery, maintains the order of packets, and resends lost packets. As a result, it is slower but ensures data integrity. UDP, on the other hand, is connectionless and does not guarantee packet delivery or order. It sends data faster and with lower overhead but may lose packets and does not retransmit them. UDP is used in applications where speed is critical and occasional loss is acceptable, such as video streaming and online gaming.",
+      "cs_category": "protocols",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 6,
+      "cs_question": "What is IP subnetting?",
+      "cs_answer": "IP subnetting is the process of dividing a larger IP network into smaller sub-networks or subnets. This division allows more efficient use of IP addresses and improves network performance and security. By segmenting networks, subnetting reduces network congestion by limiting broadcast traffic to smaller groups of devices. It also enables hierarchical network design and simplifies management by grouping devices based on location or function. Subnets are identified by a subnet mask, which determines the portion of the IP address that refers to the network and the portion that refers to the host. Proper subnetting planning is essential for scalable and organized network architecture.",
+      "cs_category": "ip",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 7,
+      "cs_question": "Define deadlock in operating systems.",
+      "cs_answer": "A deadlock in operating systems is a state where two or more processes are unable to proceed because each is waiting for resources held by the other. This cycle of dependency results in a standstill where none of the involved processes can continue. Deadlocks can occur in multi-processing environments when processes compete for limited resources such as memory, files, or CPU time. Operating systems employ various strategies to handle deadlocks, including prevention, avoidance, detection, and recovery. Preventing deadlocks involves designing systems so that the necessary conditions for deadlock cannot occur. Deadlock avoidance uses algorithms to make resource allocation decisions that ensure safety. Detection involves recognizing deadlocks when they occur, and recovery attempts to resolve them by terminating or rolling back processes.",
+      "cs_category": "processes",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 8,
+      "cs_question": "What is multithreading?",
+      "cs_answer": "Multithreading is a programming technique that allows multiple threads to execute concurrently within a single process. Threads are the smallest units of a process that can run independently. Multithreading improves the performance of applications by enabling parallelism; for example, one thread can handle user interface interactions while another processes data in the background. It is widely used in operating systems, web servers, and real-time applications to optimize resource utilization and responsiveness. However, multithreaded programs require careful management of shared resources to avoid issues such as race conditions and deadlocks.",
+      "cs_category": "threads",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 9,
+      "cs_question": "Explain load balancing.",
+      "cs_answer": "Load balancing is a technique used in system design to distribute incoming network traffic across multiple servers or resources evenly. The main goal is to optimize resource use, maximize throughput, reduce latency, and ensure high availability and reliability of services. Load balancing can be achieved through hardware appliances or software algorithms that monitor server health and distribute work accordingly. It helps to prevent any single server from becoming a bottleneck, thus improving the overall user experience. Load balancers can operate at different OSI layers, such as Layer 4 (Transport) or Layer 7 (Application), depending on the complexity of the traffic management required.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 10,
+      "cs_question": "What is a RESTful API?",
+      "cs_answer": "A RESTful API (Representational State Transfer) is a web service architecture style that uses standard HTTP methods to interact with resources on a server. It follows principles such as statelessness, where each request from a client contains all the information needed to process it, and a uniform interface for communication. RESTful APIs use URLs to represent resources and standard HTTP methods like GET, POST, PUT, and DELETE to perform operations on those resources. This design makes RESTful APIs simple, scalable, and easy to integrate with web applications, mobile apps, and cloud services. They have become a popular way to expose and consume web services in modern software development.",
+      "cs_category": "api",
+      "cs_section": "System Design",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 11,
+      "cs_question": "Explain the CAP theorem.",
+      "cs_answer": "The CAP theorem is a fundamental principle in distributed systems that states it is impossible for a distributed system to simultaneously provide all three of the following guarantees: Consistency, Availability, and Partition tolerance. Consistency means every read receives the most recent write or an error. Availability means every request receives a response, without guarantee that it contains the most recent write. Partition tolerance means the system continues to operate despite arbitrary message loss or failure of part of the system. Due to network failures being inevitable, distributed systems must choose between consistency and availability during such partitions. This theorem guides the design of distributed databases and systems, influencing trade-offs based on application needs.",
+      "cs_category": "distributed systems",
+      "cs_section": "System Design",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 12,
+      "cs_question": "What is a hash table?",
+      "cs_answer": "A hash table is a data structure that stores key-value pairs and provides efficient lookup, insertion, and deletion operations. It uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found quickly. Proper hashing reduces the chance of collisions, which occur when different keys hash to the same index. When collisions occur, techniques such as chaining or open addressing are used to resolve them. Hash tables are widely used in applications such as databases, caches, and programming language implementations due to their average-case time complexity of O(1) for search operations.",
+      "cs_category": "data structures",
+      "cs_section": "Data Structures and Algorithms",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 13,
+      "cs_question": "Describe binary search algorithm.",
+      "cs_answer": "Binary search is a highly efficient search algorithm used to find the position of an element within a sorted array. It works by repeatedly dividing the search interval in half. Starting with the entire array, the algorithm compares the target value to the middle element. If they match, the search ends. If the target is less, the search continues in the left half; if more, it continues in the right half. This process repeats until the element is found or the search interval is empty. Binary search runs in O(log n) time, making it significantly faster than linear search for large datasets.",
+      "cs_category": "algorithms",
+      "cs_section": "Data Structures and Algorithms",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 14,
+      "cs_question": "What is polymorphism in OOP?",
+      "cs_answer": "Polymorphism in object-oriented programming (OOP) refers to the ability of a function or an object to take on multiple forms. It allows one interface to control access to a general class of actions. The primary types of polymorphism are compile-time (method overloading and operator overloading) and run-time (method overriding). Polymorphism enables flexibility and extensibility in programming by allowing the same operation to behave differently on different classes. This simplifies code and enhances reusability by allowing a single function to work with objects of different types.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 15,
+      "cs_question": "Explain inheritance in OOP.",
+      "cs_answer": "Inheritance is an OOP concept where a new class, known as a subclass or derived class, inherits properties and behaviors from an existing class called the superclass or base class. This mechanism allows code reuse and the creation of a hierarchical relationship between classes. Inheritance supports the design of modular and extensible software by enabling subclasses to extend or override base class methods and attributes. It also promotes maintainability by reducing redundancy and facilitating polymorphism, where objects of different classes can be treated uniformly based on their shared behaviors.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 16,
+      "cs_question": "What are race conditions?",
+      "cs_answer": "Race conditions are concurrency issues that arise when multiple processes or threads access shared resources simultaneously without proper synchronization. This can lead to unpredictable and erroneous behavior, as the final outcome depends on the timing and order of execution. Race conditions are common in multi-threaded and distributed systems where processes compete for critical sections of code or resources. To prevent race conditions, synchronization mechanisms such as locks, semaphores, and monitors are used. Proper design ensures data integrity and predictable application behavior in concurrent environments.",
+      "cs_category": "concurrency",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 17,
+      "cs_question": "What is the TCP three-way handshake?",
+      "cs_answer": "The TCP three-way handshake is a process used to establish a reliable TCP connection between a client and a server. It involves three steps: First, the client sends a SYN (synchronize) packet to request a connection. Second, the server responds with a SYN-ACK (synchronize-acknowledge) packet to acknowledge receipt of the request and synchronize with the client. Third, the client sends an ACK (acknowledge) packet to confirm the connection is established. This handshake ensures both parties are synchronized and ready for data transfer, providing a reliable and ordered communication channel.",
+      "cs_category": "tcp/ip",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 18,
+      "cs_question": "Explain transaction in DBMS.",
+      "cs_answer": "A transaction in DBMS is a sequence of operations performed as a single logical unit of work that must either fully complete or fully fail. Transactions are used to ensure data integrity and consistency, particularly in multi-user environments. A transaction typically includes operations such as reading, writing, updating, or deleting data. It must adhere to the ACID properties, which guarantee atomicity, consistency, isolation, and durability. By making transactions atomic, either all operations succeed, or none do, preventing partial updates that could corrupt data. Transactions also allow rollback in case of errors, ensuring reliability.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 19,
+      "cs_question": "What is caching?",
+      "cs_answer": "Caching is a technique that stores copies of data in a temporary storage area called a cache, which is located closer to the processing unit. This reduces the time required to access frequently used data and improves overall system performance. Caching can occur at multiple levels, including CPU caches, disk caches, browser caches, and web proxy caches. Effective caching strategies consider factors like cache size, replacement policies, and data freshness. By minimizing data access latency, caching enhances user experience and reduces load on backend systems.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 20,
+      "cs_question": "Explain API Gateway.",
+      "cs_answer": "An API Gateway is a server that acts as an entry point for clients accessing backend services through APIs. It handles request routing, composition, and protocol translation, simplifying client interactions with complex systems. API Gateways provide additional functionalities such as authentication, rate limiting, load balancing, caching, and monitoring. By centralizing these concerns, they improve security, performance, and scalability in microservices architectures and distributed systems. API Gateways also facilitate the management of multiple APIs by exposing a unified interface to clients.",
+      "cs_category": "api",
+      "cs_section": "System Design",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 21,
+      "cs_question": "What is a database system?",
+      "cs_answer": "A database system is a computer-based record-keeping system that manages a collection of interrelated data stored together to serve multiple applications. It enables efficient data storage, retrieval, modification, and management using a Database Management System (DBMS). The data is organized independently of the programs that use it, supporting centralized control to reduce redundancy and inconsistency. Database systems facilitate decision-making, operational control, and planning across organizations, providing a structured way to handle large volumes of data while ensuring data integrity, security, and concurrency. Modern database systems support various models like relational, NoSQL, and distributed databases, allowing scalability and flexibility for diverse applications.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 22,
+      "cs_question": "What is a database schema?",
+      "cs_answer": "A database schema is the blueprint or structure of a database that defines how data is organized into tables, the relationships among them, and constraints on the data. It specifies the tables, columns, data types, indexes, and keys, establishing rules for data integrity and consistency. The schema serves as a guide for database creation, ensuring that data adheres to the prescribed format and enables effective querying. Schemas may evolve over time but are crucial for database design, maintenance, and understanding of data relationships within the system.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 23,
+      "cs_question": "What is a data dictionary in a DBMS?",
+      "cs_answer": "A data dictionary is a centralized repository storing metadata—data about database objects such as tables, columns, data types, constraints, and relationships. It is maintained by the DBMS and used to enforce data integrity, validate user queries, and facilitate database administration. The data dictionary enables users and administrators to understand the structure and characteristics of the stored data without accessing the data directly. By centralizing metadata, it supports consistent database design, efficient query optimization, and security policies.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 24,
+      "cs_question": "What is the role of a storage engine in a DBMS?",
+      "cs_answer": "The storage engine in a DBMS is the component responsible for managing how data is physically stored, retrieved, and updated in the underlying file system. It handles data organization, indexing, caching, and transaction logging to ensure efficient and reliable storage operations. Different storage engines may support various features such as transactional integrity, locking mechanisms, and crash recovery. The choice of storage engine impacts database performance, scalability, and reliability, thus forming a critical part of database architecture.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 25,
+      "cs_question": "What is a query processor in DBMS?",
+      "cs_answer": "A query processor interprets and executes database queries by translating declarative query language commands into low-level instructions that interact with the storage engine. It optimizes query execution plans to minimize resource usage and response time, handles syntax and semantic analysis of queries, and manages access rights. The query processor ensures that queries retrieve accurate data while maintaining performance, especially in complex databases with multiple concurrent users.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 26,
+      "cs_question": "What are constraints in a database?",
+      "cs_answer": "Constraints are rules defined on database tables to enforce data validity and integrity. Common constraints include primary key (uniqueness), foreign key (referential integrity), unique, check (value restrictions), and not null (mandatory fields). These constraints prevent invalid data entry and maintain consistent, reliable data by ensuring relationships between tables are correctly enforced. Constraints are specified during table creation or modification and are essential for preserving the logical correctness of the data model.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 27,
+      "cs_question": "What is data manipulation?",
+      "cs_answer": "Data manipulation involves operations like insertion, deletion, and updating of data stored within a database. These actions are essential for maintaining accurate and current data and are performed using Data Manipulation Language (DML) commands such as SELECT, INSERT, UPDATE, and DELETE in SQL. Databases manage concurrent data manipulation while preserving ACID properties to guarantee transaction atomicity, consistency, isolation, and durability, even during failures or concurrent accesses.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 28,
+      "cs_question": "What is a primary key's importance?",
+      "cs_answer": "A primary key uniquely identifies each record within a database table, ensuring there are no duplicate rows. It maintains entity integrity by preventing null or duplicate values in the key columns. The primary key is crucial for establishing relationships with foreign keys in other tables, enabling efficient data retrieval, indexing, and enforcing referential integrity. Database performance and correctness heavily depend on well-chosen primary keys.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 29,
+      "cs_question": "What is SQL?",
+      "cs_answer": "SQL (Structured Query Language) is a standardized programming language used to manage and manipulate relational databases. It enables users to create and modify database structures, insert, update, delete, and query data effectively. SQL statements include Data Definition Language (DDL), Data Manipulation Language (DML), Data Control Language (DCL), and Transaction Control Language (TCL), allowing comprehensive control over database operations and security.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 30,
+      "cs_question": "What is a foreign key in a database?",
+      "cs_answer": "A foreign key is a column or set of columns in one table that refers to the primary key in another table, establishing a link between the two tables. It ensures referential integrity by restricting invalid data entries and maintaining consistent relationships. Foreign keys enable relational database join operations, enhancing data organization and relational structure.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 31,
+      "cs_question": "What is data normalization?",
+      "cs_answer": "Data normalization is a systematic database design technique that organizes tables and relationships to minimize data redundancy and dependency. It divides large tables into smaller, related tables according to normal forms (1NF, 2NF, 3NF, BCNF), improving data integrity and reducing update anomalies. Normalization enhances database efficiency, clarity, and consistency during CRUD operations.",
+      "cs_category": "normalization",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 32,
+      "cs_question": "What is denormalization?",
+      "cs_answer": "Denormalization is the process of intentionally introducing redundancy into a database to improve read performance. It involves combining normalized tables or adding redundant data to reduce the number of joins during query execution. While it speeds up data retrieval, denormalization can increase data inconsistency risk and maintenance complexity, requiring careful application based on system requirements.",
+      "cs_category": "normalization",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 33,
+      "cs_question": "What is a database transaction?",
+      "cs_answer": "A database transaction is a sequence of operations executed as a single logical unit that must either complete entirely or have no effect, maintaining consistency and integrity. Transactions ensure the ACID properties—atomicity, consistency, isolation, and durability—so that multiple concurrent operations do not corrupt data. If an error occurs, the transaction can be rolled back to restore the database to its previous state.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 34,
+      "cs_question": "What is concurrency control in DBMS?",
+      "cs_answer": "Concurrency control manages simultaneous operations on a database without conflicting, maintaining transaction isolation and data integrity. Techniques like locking, timestamp ordering, and multiversion concurrency control (MVCC) prevent anomalies such as lost updates, dirty reads, and phantom reads by coordinating access to data shared among concurrent transactions.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 35,
+      "cs_question": "What is database indexing?",
+      "cs_answer": "Database indexing is a data structure technique used to speed up retrieval operations by providing quick access paths to rows in a table based on key values. Indexes use structures like B-trees or hash tables to allow the DBMS to locate data without scanning the full table, improving query performance substantially, especially in large datasets.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 36,
+      "cs_question": "What is a deadlock in operating systems?",
+      "cs_answer": "Deadlock is a state in an operating system where a set of processes are blocked, each waiting for resources held by the others, resulting in a standstill. It occurs when four conditions—mutual exclusion, hold and wait, no preemption, and circular wait—are all present. Operating systems detect, prevent, or avoid deadlocks through resource allocation strategies, algorithms, and recovery methods to ensure system reliability.",
+      "cs_category": "processes",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 37,
+      "cs_question": "What is virtual memory?",
+      "cs_answer": "Virtual memory is a memory management technique that uses disk storage to extend the apparent amount of usable memory available to programs. It allows running larger applications than physical memory by swapping data between RAM and disk as needed. Virtual memory provides isolation, security, and efficient multitasking, optimizing physical memory utilization.",
+      "cs_category": "memory",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 38,
+      "cs_question": "What is process scheduling?",
+      "cs_answer": "Process scheduling is the OS function of selecting which process runs at any given time to efficiently share CPU time among processes. It uses algorithms like First-Come-First-Serve (FCFS), Round Robin, and Priority Scheduling to determine the execution order, aiming to maximize CPU utilization, throughput, and responsiveness while minimizing wait and turnaround times.",
+      "cs_category": "processes",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 39,
+      "cs_question": "What is multithreading?",
+      "cs_answer": "Multithreading is a programming and OS technique that allows multiple threads of a single process to run concurrently, sharing resources but executing independently. It improves application responsiveness and parallelism, especially on multi-core processors. Proper synchronization is required to avoid issues like race conditions and deadlocks when accessing shared data.",
+      "cs_category": "threads",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 40,
+      "cs_question": "What is a mutex?",
+      "cs_answer": "A mutex (mutual exclusion) is a synchronization primitive used to prevent concurrent threads from simultaneously accessing shared resources, thereby avoiding race conditions. It ensures that only one thread can enter critical sections of code at a time, maintaining data consistency and avoiding deadlocks when used correctly. Mutexes are fundamental in concurrent programming for safe resource management.",
+      "cs_category": "threads",
+      "cs_section": "Operating Systems",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 41,
+      "cs_question": "What is a network protocol?",
+      "cs_answer": "A network protocol is a set of rules and conventions governing communication between network devices, ensuring successful data transmission. Protocols define syntax, semantics, synchronization, and error handling, enabling interoperability across diverse hardware and software, with examples including TCP/IP, HTTP, and FTP.",
+      "cs_category": "protocols",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 42,
+      "cs_question": "What is DNS?",
+      "cs_answer": "Domain Name System (DNS) is a hierarchical decentralized system that translates human-readable domain names into IP addresses required for locating and identifying computer services. It enables users to access websites using memorable names instead of numeric IPs, supporting internet functionality.",
+      "cs_category": "protocols",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 43,
+      "cs_question": "What is IP subnetting?",
+      "cs_answer": "IP subnetting divides a large IP network into smaller, manageable sub-networks to improve performance and security. It uses a subnet mask to separate the IP address into network and host portions, allowing efficient routing and reducing broadcast traffic.",
+      "cs_category": "ip",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 44,
+      "cs_question": "What is a TCP three-way handshake?",
+      "cs_answer": "The TCP three-way handshake is the process used to establish a reliable connection between a client and server. It involves the client sending a SYN packet, the server replying with a SYN-ACK, and the client responding with an ACK, ensuring both parties synchronize connection parameters before data transfer.",
+      "cs_category": "tcp/ip",
+      "cs_section": "Computer Networks",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 45,
+      "cs_question": "What is load balancing?",
+      "cs_answer": "Load balancing distributes incoming network or application traffic across multiple servers to optimize resource use, maximize throughput, reduce latency, and avoid overload on any single server. It enhances availability and reliability by ensuring continuous service during peak traffic or server failures.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 46,
+      "cs_question": "What is caching?",
+      "cs_answer": "Caching is a technique that stores frequently accessed data temporarily in faster storage (cache) closer to the processor or user to reduce retrieval time and improve system performance. Effective caching aids in reducing network latency, server load, and speeds up response times.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 47,
+      "cs_question": "What is an API gateway?",
+      "cs_answer": "An API Gateway acts as a single entry point for client requests to various backend services, handling routing, composition, protocol translation, security (authentication and authorization), rate limiting, caching, and monitoring. It simplifies client interactions with complex microservices architectures and enhances scalability and maintainability.",
+      "cs_category": "api",
+      "cs_section": "System Design",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 48,
+      "cs_question": "What is Object-Oriented Programming (OOP)?",
+      "cs_answer": "Object-Oriented Programming (OOP) is a programming paradigm that organizes software design around data, or objects, rather than functions and logic. It enables modeling real-world entities by bundling data and related operations into classes and objects, promoting modularity, reusability, and scalability in code development.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 49,
+      "cs_question": "What are the four main principles of OOP?",
+      "cs_answer": "The four main principles of OOP are Encapsulation (binding data and code together with controlled access), Abstraction (hiding complexity and showing only essentials), Inheritance (deriving new classes from existing ones to reuse code), and Polymorphism (the ability of different classes to be treated through a common interface).",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 50,
+      "cs_question": "What is a class and an object in OOP?",
+      "cs_answer": "A class is a blueprint or template defining attributes (data) and methods (functions) common to all objects of that type. An object is an instance of a class containing actual values for these attributes. Classes define properties and behaviors, while objects represent real-world entities using those definitions.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 51,
+      "cs_question": "Explain encapsulation in OOP.",
+      "cs_answer": "Encapsulation is the mechanism of restricting direct access to some of an object's components while bundling the data and methods that operate on the data into a single unit or class. It increases security by hiding internal object details and exposing only necessary functionalities through public methods.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 52,
+      "cs_question": "What is abstraction in OOP?",
+      "cs_answer": "Abstraction in OOP is the concept of hiding complex implementation details and showing only the essential features of an object. It simplifies programming by reducing complexity and enabling focus on relevant aspects rather than internal workings, often implemented using abstract classes and interfaces.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 53,
+      "cs_question": "Explain inheritance with an example.",
+      "cs_answer": "Inheritance allows a new class (subclass) to inherit properties and behaviors (methods) from an existing class (superclass), promoting code reuse and hierarchical relationships. For example, a class 'Car' can inherit from a general class 'Vehicle', acquiring common features while adding specific ones.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 54,
+      "cs_question": "What is polymorphism in OOP?",
+      "cs_answer": "Polymorphism is the ability of different objects to respond, each in its own way, to the same method call. It allows methods to perform different tasks based on the object calling them, supporting both compile-time (method overloading) and run-time (method overriding) polymorphism.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 55,
+      "cs_question": "Define method overloading and method overriding.",
+      "cs_answer": "Method overloading allows multiple methods in the same class to have the same name but different parameters, resolved at compile-time. Method overriding allows a subclass to provide a specific implementation of a method already defined in its superclass, resolved at runtime, enabling dynamic polymorphism.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 56,
+      "cs_question": "What are access specifiers in OOP?",
+      "cs_answer": "Access specifiers (public, private, protected) control the visibility and accessibility of class members to other parts of the program. Public members are accessible everywhere, private members only inside the class, and protected members within the class and its subclasses, helping enforce encapsulation.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 57,
+      "cs_question": "What is the difference between an interface and an abstract class?",
+      "cs_answer": "An interface defines a contract with abstract methods without implementation, allowing classes to implement multiple interfaces. An abstract class can have both abstract and concrete methods, serving as a common base class. Interfaces support multiple inheritance; abstract classes are used for shared code.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 58,
+      "cs_question": "What is a constructor?",
+      "cs_answer": "A constructor is a special method in a class used to initialize new objects. It is automatically called when an object is created, often used to set default values or allocate resources.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 59,
+      "cs_question": "What is a destructor?",
+      "cs_answer": "A destructor is a special method invoked automatically when an object is destroyed, used to release resources or perform cleanup tasks.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 60,
+      "cs_question": "Explain the concept of multiple inheritance.",
+      "cs_answer": "Multiple inheritance occurs when a class inherits from more than one superclass, allowing it to acquire properties and methods from all parents. It can lead to complexity such as the diamond problem, which some languages handle via interfaces or special mechanisms.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 61,
+      "cs_question": "What is the diamond problem in inheritance?",
+      "cs_answer": "The diamond problem occurs in multiple inheritance when two parent classes inherit from the same grandparent class, and a subclass inherits from both parents, causing ambiguity about which grandparent method to use. Languages resolve this via virtual inheritance or interfaces.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 62,
+      "cs_question": "What is composition in OOP?",
+      "cs_answer": "Composition is a design principle where an object contains instances of other objects, implying a has-a relationship. It is preferred over inheritance for code reuse because it allows more flexible object relationships and promotes encapsulation.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 63,
+      "cs_question": "What is an abstract method?",
+      "cs_answer": "An abstract method is a method declared without implementation in an abstract class or interface, requiring subclasses to provide the concrete method definition.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 64,
+      "cs_question": "What is the difference between static and instance members?",
+      "cs_answer": "Static members belong to the class itself and are shared among all instances, while instance members belong to individual objects. Static members can be accessed without creating an object, typically used for common properties or utility methods.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 65,
+      "cs_question": "What is the role of the 'this' keyword?",
+      "cs_answer": "The 'this' keyword refers to the current instance of the class, allowing access to instance variables and methods. It helps resolve naming conflicts between instance variables and parameters within methods or constructors.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 66,
+      "cs_question": "Explain static polymorphism.",
+      "cs_answer": "Static polymorphism, or compile-time polymorphism, is achieved via method overloading or operator overloading, where the method to execute is determined at compile time based on method signatures.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 67,
+      "cs_question": "Explain dynamic polymorphism.",
+      "cs_answer": "Dynamic polymorphism, or run-time polymorphism, is implemented via method overriding and virtual functions. The method to execute is determined at runtime based on the object's actual type, enabling flexible and extensible code.",
+      "cs_category": "oop",
+      "cs_section": "Object Oriented Programming",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 68,
+      "cs_question": "What is a relational database?",
+      "cs_answer": "A relational database stores data in tables with rows and columns, using relations to establish connections between tables. It supports SQL for querying and maintains data integrity through keys and constraints.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "easy",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 69,
+      "cs_question": "What is the difference between DBMS and RDBMS?",
+      "cs_answer": "DBMS manages databases without necessarily supporting relations, while RDBMS supports relational structures, enforces referential integrity, supports SQL, and provides transactional features.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 70,
+      "cs_question": "Explain data warehousing.",
+      "cs_answer": "Data warehousing involves collecting, storing, and managing vast amounts of historical data from multiple sources, optimized for query and analysis. Warehouses support business intelligence by enabling complex queries and reporting.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 71,
+      "cs_question": "What is sharding in databases?",
+      "cs_answer": "Sharding divides a database into smaller, faster, more manageable parts called shards, each stored on a separate server, improving scalability and performance.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 72,
+      "cs_question": "What are CAP theorem trade-offs?",
+      "cs_answer": "The CAP theorem states distributed systems can simultaneously provide only two of Consistency, Availability, and Partition tolerance, forcing trade-offs based on application needs.",
+      "cs_category": "distributed systems",
+      "cs_section": "System Design",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 73,
+      "cs_question": "What is eventual consistency?",
+      "cs_answer": "Eventual consistency is a consistency model where updates propagate to all nodes asynchronously, allowing temporary inconsistencies but guaranteeing that all replicas converge eventually.",
+      "cs_category": "distributed systems",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 74,
+      "cs_question": "What is a NoSQL database?",
+      "cs_answer": "NoSQL databases provide flexible schemas for storing unstructured data such as key-value, document, or graph data models, excelling in scalability and performance.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 75,
+      "cs_question": "What is an index in databases?",
+      "cs_answer": "An index is a data structure that improves the speed of data retrieval operations in a database at the cost of additional writes and storage.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 76,
+      "cs_question": "Explain horizontal scaling.",
+      "cs_answer": "Horizontal scaling involves adding more machines or nodes to a system to distribute load and increase capacity, improving fault tolerance and performance.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 77,
+      "cs_question": "Explain vertical scaling.",
+      "cs_answer": "Vertical scaling means adding resources like CPU, RAM, or storage to a single machine to improve capacity but has hardware limitations.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 78,
+      "cs_question": "What is load balancer?",
+      "cs_answer": "A load balancer distributes network or application traffic across multiple servers to enhance availability, reliability, and scalability.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 79,
+      "cs_question": "What is database replication?",
+      "cs_answer": "Replication involves copying and maintaining database objects in multiple databases to increase data availability and fault tolerance.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 80,
+      "cs_question": "What is a schema-less database?",
+      "cs_answer": "A schema-less database does not enforce a fixed schema, allowing storage of data with varying structures, useful for flexible, semi-structured data.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 81,
+      "cs_question": "What is a load balancer health check?",
+      "cs_answer": "Health checks monitor the health status of backend servers to ensure traffic is only sent to healthy instances.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 82,
+      "cs_question": "What is a microservices architecture?",
+      "cs_answer": "Microservices architecture decomposes a large application into loosely coupled, independently deployable services, enhancing scalability and maintainability.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 83,
+      "cs_question": "Explain data partitioning.",
+      "cs_answer": "Data partitioning splits a large dataset into smaller chunks for scalability, improved query response time, and easier management.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 84,
+      "cs_question": "What is replication lag?",
+      "cs_answer": "Replication lag is the delay between updates on the primary database and propagation to replicas, potentially causing stale reads.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 85,
+      "cs_question": "What is a singleton pattern?",
+      "cs_answer": "Singleton is a design pattern ensuring a class has only one instance and provides a global point of access to it.",
+      "cs_category": "design patterns",
+      "cs_section": "System Design",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 86,
+      "cs_question": "What is the difference between synchronous and asynchronous replication?",
+      "cs_answer": "Synchronous replication ensures data is copied to replicas before transaction commit, guaranteeing consistency; asynchronous replication propagates changes with delay, enhancing performance at the risk of temporary inconsistency.",
+      "cs_category": "dbms",
+      "cs_section": "DBMS",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 87,
+      "cs_question": "What is cache invalidation?",
+      "cs_answer": "Cache invalidation is the process of updating or deleting cached data to ensure consistency with the source of truth.",
+      "cs_category": "system design",
+      "cs_section": "System Design",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 88,
+      "cs_question": "Explain the difference between RISC and CISC architectures.",
+      "cs_answer": "Reduced Instruction Set Computing (RISC) architectures use a small, fixed set of simple instructions that execute in a single clock cycle, enabling deep pipelining and high instruction throughput. Complex Instruction Set Computing (CISC) architectures feature larger, more complex instructions that may take multiple cycles to execute, reducing code size but complicating pipeline design. RISC emphasizes hardware simplicity and compiler optimizations, while CISC leverages microcode to implement complex operations. Design choices affect power consumption, performance, and silicon area.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 89,
+      "cs_question": "What is pipelining in CPU design and how does it improve performance?",
+      "cs_answer": "Pipelining divides instruction execution into discrete stages—fetch, decode, execute, memory access, and write-back—allowing multiple instructions to overlap in hardware. Each pipeline stage operates concurrently on different instructions, increasing throughput by processing one instruction per clock cycle under ideal conditions. Performance gains depend on minimizing pipeline hazards such as data, control, and structural hazards. Techniques like forwarding, branch prediction, and pipeline interlocking mitigate stalls. Well-balanced stage durations and hazard resolution strategies are crucial for maximizing pipeline efficiency.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 90,
+      "cs_question": "Describe cache memory levels and their role in the memory hierarchy.",
+      "cs_answer": "Cache memory is organized in multiple levels—L1 (smallest, fastest, on-core), L2 (larger, slower, shared or private), and L3 (largest, slowest, shared across cores). Caches store frequently accessed data and instructions to reduce average memory access latency. The hierarchy exploits temporal and spatial locality: recently or nearby data is likely to be reused. Cache parameters—size, block size, associativity, and replacement policy—impact hit rate and latency. Effective cache hierarchy design is essential for bridging the processor–memory performance gap.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 91,
+      "cs_question": "How does virtual memory work and what is a page table?",
+      "cs_answer": "Virtual memory provides each process with a large, contiguous address space that is mapped to physical memory through page tables managed by the Memory Management Unit (MMU). The OS splits virtual address space into fixed-size pages, mapping them to physical frames on demand. A page table entry stores the frame number, valid bit, access permissions, and flags. On a page fault, the OS swaps the page in from disk, updates the table, and resumes execution. Virtual memory ensures process isolation, memory protection, and efficient RAM utilization.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 92,
+      "cs_question": "What are CPU hazards and how are they classified?",
+      "cs_answer": "CPU pipeline hazards occur when instruction dependencies or resource conflicts prevent the next instruction from executing in the following cycle. Data hazards include Read-After-Write (RAW), Write-After-Read (WAR), and Write-After-Write (WAW). Control hazards arise from branch instructions that alter the program flow. Structural hazards result from insufficient hardware resources for concurrent operations. Hazards are resolved via forwarding, pipeline stalls, register renaming, branch prediction, and hardware replication, balancing complexity and performance.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 93,
+      "cs_question": "Explain superscalar architecture and its benefits.\"",
+      "cs_answer": "Superscalar processors issue and execute multiple instructions per cycle by incorporating multiple parallel execution units (ALUs, FPUs, load/store units). The instruction dispatch unit analyzes dependencies and resource availability, issuing independent instructions simultaneously. Coupled with out-of-order execution, superscalar designs exploit instruction-level parallelism to improve throughput. Benefits include higher performance without increasing clock frequency. Complexity arises from dependency tracking, register renaming, and dynamic scheduling. Effective design demands balancing parallelism, power consumption, and hardware complexity.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 94,
+      "cs_question": "What is branch prediction and why is it critical in modern CPUs?",
+      "cs_answer": "Branch prediction anticipates the direction of conditional branches to maintain pipeline efficiency by fetching and decoding subsequent instructions before the branch outcome is known. Static schemes use compile-time heuristics; dynamic predictors use runtime history tables and saturating counters to track branch behavior. Accurate prediction reduces pipeline flushes and stalls. Mispredictions incur significant penalties, especially in deep pipelines or wide superscalar cores. Advanced multi-level predictors and hybrid schemes combine global and local histories to optimize accuracy.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 95,
+      "cs_question": "Describe register renaming and its significance.\"",
+      "cs_answer": "Register renaming eliminates false data dependencies (WAR, WAW) by mapping architectural registers to a larger physical register file. The renaming unit allocates new physical registers for instruction destinations, updating the register alias table. Instructions operate on physical registers, removing name-based hazards and enabling out-of-order execution. Upon instruction retirement, physical registers are freed. Register renaming enhances parallelism, prevents pipeline stalls due to false dependencies, and supports speculative execution by decoupling programmer-visible registers from hardware resources.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 96,
+      "cs_question": "What is a Translation Lookaside Buffer (TLB) and how does it work?",
+      "cs_answer": "A TLB is a small, associative cache that stores recent virtual-to-physical page translations to accelerate address translation. On a memory access, the MMU checks the TLB; a hit returns the physical frame number, bypassing the slower page table walk. A TLB miss triggers a page table lookup, potentially incurring multiple memory accesses. High TLB hit rates are critical for performance. TLB capacity, associativity, and replacement policy determine effectiveness. Some architectures employ separate instruction and data TLBs for finer control.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 97,
+      "cs_question": "Explain memory hierarchy and locality principles.\"",
+      "cs_answer": "Memory hierarchy arranges storage levels by speed and size: registers, caches, main memory, and secondary storage. Locality principles—temporal (reuse of data over time) and spatial (access of adjacent data)—drive caching efficiency. Hardware and software exploit locality through prefetching, cache line design, and page replacement algorithms. Proper hierarchy design minimizes average access latency and maximizes throughput. Parameters such as block size, associativity, and capacity are tuned to workload characteristics to balance hit rate against cost and energy consumption.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 98,
+      "cs_question": "What is the MESI protocol in cache coherence?",
+      "cs_answer": "MESI (Modified, Exclusive, Shared, Invalid) is a cache coherence protocol ensuring consistency across private caches in multiprocessor systems. Each cache line can be in one of four states: Modified (exclusive and dirty), Exclusive (exclusive and clean), Shared (potentially in multiple caches, clean), or Invalid (not present). Processors exchange coherence messages on bus transactions to transition states, invalidate or update lines. MESI reduces memory traffic by allowing caches to share clean data and detect when exclusive access is required for writes.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 99,
+      "cs_question": "Describe the concept of SIMD and its applications.\"",
+      "cs_answer": "Single Instruction, Multiple Data (SIMD) allows a single instruction to perform parallel operations on multiple data elements simultaneously. SIMD units, found in modern CPUs (e.g., Intel SSE/AVX, ARM NEON), accelerate data-parallel tasks like multimedia processing, graphics, and scientific computing. Vector registers hold multiple operands, and vector instructions apply arithmetic or logical operations across all elements in one cycle. SIMD increases throughput for workloads with high data parallelism but requires data alignment and software optimizations to fully utilize vector lanes.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 100,
+      "cs_question": "What is out-of-order execution?",
+      "cs_answer": "Out-of-order execution enables a CPU to execute instructions as their operands become available, rather than strictly following program order. The instruction scheduler places ready instructions into reservation stations, issuing them to functional units when resources free up. A reorder buffer tracks original program order, committing results in sequence to maintain precise exceptions. Register renaming removes false dependencies. This technique exposes instruction-level parallelism, improving utilization of execution units and overall performance, particularly in superscalar architectures.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 101,
+      "cs_question": "Explain the role of the memory management unit (MMU).",
+      "cs_answer": "The MMU handles virtual-to-physical address translation and access control in hardware. It uses page tables to map virtual pages to physical frames, checking access permissions and raising exceptions on violations. The MMU caches recent translations in the TLB to accelerate lookups. It supports protection mechanisms (read/write/execute bits), enabling process isolation and secure memory access. On page faults, control transfers to the OS, which loads the required pages. The MMU is critical for implementing virtual memory and memory protection features.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 102,
+      "cs_question": "How do superscalar and VLIW architectures differ?",
+      "cs_answer": "Superscalar architectures dynamically issue multiple instructions per cycle using hardware dependency checking, scheduling, and register renaming. In contrast, Very Long Instruction Word (VLIW) architectures rely on the compiler to bundle independent operations into wide instruction words. VLIW simplifies hardware by offloading scheduling complexity to the compiler but requires accurate compile-time dependency analysis. Superscalar designs adapt dynamically to runtime behavior but incur hardware overhead. VLIW benefits deterministic execution timing at the expense of code density and backward compatibility.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 103,
+      "cs_question": "What are structural hazards and how are they mitigated?",
+      "cs_answer": "Structural hazards occur when hardware resources (functional units, memory ports) are insufficient to support all overlapping pipeline stage requests. For instance, a single memory port servicing both instruction fetch and data load causes a conflict. Mitigation strategies include duplicating critical resources, using multi-ported memories, pipeline interleaving to time-multiplex resources, and designing resource arbitration logic. Balancing cost, power, and performance is essential when provisioning redundant hardware to minimize stalls and maximize pipeline throughput.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 104,
+      "cs_question": "Describe the concept of speculative execution.\"",
+      "cs_answer": "Speculative execution predicts the direction of branches and executes subsequent instructions before the branch outcome is confirmed. If the prediction is correct, execution proceeds without interruption, improving performance. On misprediction, the CPU flushes speculatively executed instructions and restores architectural state from checkpoints. Speculation extends beyond branches (e.g., value prediction) to exploit parallelism. While boosting throughput, speculative execution increases design complexity and necessitates robust security measures to prevent side-channel attacks (e.g., Spectre, Meltdown).",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 105,
+      "cs_question": "What is register forwarding and why is it used?",
+      "cs_answer": "Register forwarding (bypassing) resolves certain data hazards by routing results directly from the producing pipeline stage to a dependent instruction without waiting for the write-back stage. This eliminates stalls for Read-After-Write (RAW) hazards when the result is available early. Forwarding paths connect execution units to the operand input of subsequent instructions. While reducing pipeline bubbles improves performance, additional multiplexers and control logic increase hardware complexity and timing constraints in deep pipelines.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 106,
+      "cs_question": "Explain the differences between Harvard and Von Neumann architectures.\"",
+      "cs_answer": "In Harvard architecture, instruction and data memories are separate, allowing simultaneous access and potentially higher throughput. Von Neumann architectures use a unified memory for instructions and data, simplifying design but causing the von Neumann bottleneck where instruction fetch and data access compete for the same bus. Harvard variants are common in embedded DSPs and microcontrollers, while Von Neumann remains standard in general-purpose CPUs. Modern CPUs often implement a modified Harvard model internally with separate L1 caches.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 107,
+      "cs_question": "What is a reorder buffer and its function?",
+      "cs_answer": "A reorder buffer (ROB) tracks the original program order of instructions in out-of-order execution CPUs. When instructions complete out of order, their results are placed in the ROB until they reach the head. Committing instructions in order ensures precise exceptions and consistent architectural state. The ROB holds destination register identifiers, result values, and status flags. It also frees physical registers upon retirement, coordinating register renaming and enabling speculative execution rollback on misprediction or exception.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 108,
+      "cs_question": "How does a multicore processor share cache and maintain coherence?",
+      "cs_answer": "Multicore processors often feature private L1 caches per core and a shared last-level cache (LLC). Cache coherence protocols (MESI, MOESI) maintain consistency by tracking cache line states and broadcasting invalidation or update messages on a coherence bus or directory. Directory-based coherence scales to many cores by centralizing state tracking but adds latency. Coherence ensures that writes by one core become visible to others in a defined ordering model, critical for correct multithreaded program execution.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 109,
+      "cs_question": "What is instruction-level parallelism (ILP)?",
+      "cs_answer": "ILP measures the number of instructions a CPU can execute simultaneously. Processors exploit ILP through superscalar execution, out-of-order scheduling, pipelining, and speculation. Hardware techniques like branch prediction and register renaming expose parallelism hidden by program order. The degree of ILP depends on code structure, compiler optimizations (loop unrolling, software pipelining), and dynamic scheduling. Higher ILP yields better performance but increases complexity, power consumption, and diminishing returns beyond a certain point.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 110,
+      "cs_question": "Explain the concept of loop unrolling.\"",
+      "cs_answer": "Loop unrolling is a compiler optimization that replicates the loop body multiple times, reducing branch overhead and enabling further instruction scheduling and parallelism. By decreasing iteration count and exposing more consecutive instructions, unrolling enhances ILP and pipeline utilization. However, it increases code size, potentially causing instruction cache misses. Compilers balance unroll factor, code size, and register pressure. Effective unrolling demands accurate profiling and architecture-specific tuning for optimal performance gains.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 111,
+      "cs_question": "What are soft and hard interrupts?",
+      "cs_answer": "Hard interrupts are hardware-triggered signals from peripherals (e.g., I/O devices, timers) that preempt CPU execution to invoke interrupt service routines. Soft interrupts are software-generated exceptions or system calls used for process communication and OS services. Hard interrupts use dedicated interrupt vectors; soft interrupts use software trap mechanisms. Both save context, switch privilege levels if necessary, and resume execution upon completion. Handling latency, prioritization, and masking are key design considerations for real-time and general-purpose systems.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 112,
+      "cs_question": "Describe dynamic branch prediction techniques.\"",
+      "cs_answer": "Dynamic predictors adapt based on runtime branch behavior. One-bit predictors use a single saturating bit per branch, toggling on mispredictions. Two-bit saturating counters provide hysteresis, reducing misprediction oscillations. Two-level predictors track global or local branch histories in pattern history tables (PHT), indexing into counters for prediction. Tournament predictors compare multiple schemes (global vs. local) and choose the best. These techniques achieve high accuracy in complex branching patterns, essential for deep pipelines.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 8
+    },
+    {
+      "id": 113,
+      "cs_question": "What is cache associativity and its impact?",
+      "cs_answer": "Cache associativity defines how many cache lines a memory block can occupy within a cache set. Direct-mapped caches (associativity=1) map each block to a single line, simplifying hardware but causing conflicts. Fully associative caches allow any block in any line, maximizing hit rate at high cost. Set-associative caches balance complexity and performance by dividing cache into sets with limited ways. Higher associativity reduces conflict misses but increases lookup time and hardware overhead for tag comparisons.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 7
+    },
+    {
+      "id": 114,
+      "cs_question": "Explain the concept of non-uniform memory access (NUMA).\"",
+      "cs_answer": "NUMA architectures partition memory into multiple regions, each with different access latencies relative to processor cores. Cores access local memory faster than remote memory owned by other nodes. NUMA improves scalability in multiprocessor systems by distributing memory controllers but requires OS support for memory allocation and thread scheduling to minimize remote accesses. Techniques like memory affinity, interconnect optimization, and coherence protocols are used to manage latency and bandwidth in NUMA systems.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "hard",
+      "cs_question_popularity": 9
+    },
+    {
+      "id": 115,
+      "cs_question": "How does a branch target buffer (BTB) work?",
+      "cs_answer": "A BTB caches the target addresses of recently taken branch instructions to accelerate branch resolution. On fetch, the BTB is indexed by the branch PC; a hit provides the predicted target address and direction if combined with a branch predictor. Fetch logic then speculatively continues at the predicted address, reducing control hazard penalties. BTB entries include PC tag, target address, and metadata. False hits cause misfetches requiring pipeline flushes, so BTB design balances capacity, associativity, and replacement policy.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 116,
+      "cs_question": "What is instruction prefetching and its benefits?",
+      "cs_answer": "Instruction prefetching fetches upcoming instructions into the instruction cache before they are requested by the CPU, reducing fetch stalls due to cache misses. Hardware prefetchers monitor access patterns and issue speculative fetches along predicted PC sequences. Software prefetching inserts prefetch instructions in code. Benefits include smoother pipeline flow and higher instruction throughput. Ineffective prefetching can pollute caches and waste memory bandwidth. Prefetch algorithms and tunable aggressiveness parameters optimize trade-offs between latency reduction and resource usage.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 10
+    },
+    {
+      "id": 117,
+      "cs_question": "Describe the role of the write buffer in memory systems.\"",
+      "cs_answer": "A write buffer decouples CPU store operations from main memory writes by queuing data to be written. The CPU can proceed after writing to the buffer without stalling for slow memory operations. Write buffers improve store throughput and hide memory write latency. However, deep buffers risk violating memory consistency models if not managed properly. Mechanisms like store-to-load forwarding and buffer draining on synchronization instructions ensure correct program ordering and visibility across cores.",
+      "cs_category": "Computer Architecture",
+      "cs_section": "computer architecture",
+      "cs_difficulty": "medium",
+      "cs_question_popularity": 8
+    }
+  ]
+}

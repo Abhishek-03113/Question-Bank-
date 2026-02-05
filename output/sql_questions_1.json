@@ -1,0 +1,1450 @@
+{
+  "metadata": {
+    "resource": "sql_questions",
+    "file_id": 1,
+    "timestamp": "2026-02-05T13:08:10.591870",
+    "record_count": 160
+  },
+  "data": [
+    {
+      "id": 1,
+      "question": "What is SQL and why is it important?",
+      "answer": "SQL (Structured Query Language) is used to manage and manipulate relational databases. It allows developers to create, read, update, and delete data efficiently. It’s essential because almost all modern applications rely on structured data storage and retrieval.",
+      "category": "Basics",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 2,
+      "question": "What is the difference between SQL and MySQL?",
+      "answer": "SQL is a language for querying databases, whereas MySQL is a database management system that implements SQL. In short, SQL is the language; MySQL is a tool that uses it to manage databases.",
+      "category": "Basics",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 3,
+      "question": "What are the different types of SQL commands?",
+      "answer": "SQL commands are grouped into categories: DDL (Data Definition Language), DML (Data Manipulation Language), DCL (Data Control Language), TCL (Transaction Control Language), and DQL (Data Query Language). Each type performs a unique database operation.",
+      "category": "Basics",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 4,
+      "question": "What is the difference between WHERE and HAVING clauses?",
+      "answer": "WHERE filters rows before aggregation, while HAVING filters groups after aggregation. You use WHERE with raw data and HAVING with aggregated results like SUM or COUNT, often combined with GROUP BY.",
+      "category": "Filtering",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 5,
+      "question": "Explain primary key and foreign key.",
+      "answer": "A primary key uniquely identifies each record in a table. A foreign key establishes a link between two tables by referencing the primary key of another table, enforcing relational integrity between data sets.",
+      "category": "Constraints",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 6,
+      "question": "What is normalization in SQL?",
+      "answer": "Normalization organizes data to reduce redundancy and improve data integrity. It divides tables into smaller, related tables and uses relationships to maintain data consistency. The main forms include 1NF, 2NF, and 3NF.",
+      "category": "Database Design",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 7,
+      "question": "What is denormalization?",
+      "answer": "Denormalization combines tables to improve read performance. It introduces controlled redundancy to reduce complex joins during queries, often used in reporting or analytics databases where read speed is prioritized over updates.",
+      "category": "Database Design",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 8,
+      "question": "What are joins in SQL?",
+      "answer": "Joins combine rows from multiple tables based on related columns. Common joins include INNER, LEFT, RIGHT, and FULL JOIN. They allow complex queries across tables, enabling data relationships to be queried efficiently.",
+      "category": "Joins",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 9,
+      "question": "Explain INNER JOIN.",
+      "answer": "INNER JOIN returns only the rows that have matching values in both tables. It’s used when you want data that exists in both tables based on a common column.",
+      "category": "Joins",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 10,
+      "question": "Explain LEFT JOIN.",
+      "answer": "LEFT JOIN returns all records from the left table and matched records from the right table. If no match exists, NULL values are shown for columns from the right table.",
+      "category": "Joins",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 11,
+      "question": "What is a subquery?",
+      "answer": "A subquery is a query nested inside another SQL query. It can return single or multiple values and is often used to filter, calculate, or compare data dynamically based on another query.",
+      "category": "Subqueries",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 12,
+      "question": "What are indexes in SQL?",
+      "answer": "Indexes improve the speed of data retrieval by creating a data structure for quick lookups. They act like a book index, allowing faster access to rows based on column values but increase storage and write overhead.",
+      "category": "Optimization",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 13,
+      "question": "What is the difference between clustered and non-clustered indexes?",
+      "answer": "A clustered index sorts and stores the actual data rows in order, while a non-clustered index creates a separate structure pointing to data locations. A table can have only one clustered index.",
+      "category": "Optimization",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 14,
+      "question": "What is a view in SQL?",
+      "answer": "A view is a virtual table created from a query. It stores no physical data but allows users to simplify complex queries, enhance security, and present specific data subsets.",
+      "category": "Views",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 15,
+      "question": "Explain ACID properties.",
+      "answer": "ACID stands for Atomicity, Consistency, Isolation, and Durability — the four principles ensuring reliable transaction processing. They guarantee that transactions are processed completely or not at all, maintaining data integrity.",
+      "category": "Transactions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 16,
+      "question": "What is a transaction?",
+      "answer": "A transaction is a set of operations that execute as a single unit. If any part fails, the entire transaction is rolled back to maintain data integrity. It’s crucial in banking or financial systems.",
+      "category": "Transactions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 17,
+      "question": "What is the difference between DELETE, TRUNCATE, and DROP?",
+      "answer": "DELETE removes specific rows, TRUNCATE removes all rows but keeps the table structure, and DROP removes the entire table from the database. DELETE can use conditions; the others cannot.",
+      "category": "Data Manipulation",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 18,
+      "question": "What are constraints in SQL?",
+      "answer": "Constraints enforce rules on data in tables. Common ones are PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, and DEFAULT. They maintain data accuracy and prevent invalid entries.",
+      "category": "Constraints",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 19,
+      "question": "What is the difference between UNION and UNION ALL?",
+      "answer": "UNION combines results and removes duplicates, while UNION ALL includes duplicates. UNION requires extra processing for distinct filtering, whereas UNION ALL is faster since it skips duplicate checks.",
+      "category": "Set Operations",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 20,
+      "question": "What is a stored procedure?",
+      "answer": "A stored procedure is a group of SQL statements stored in the database. It’s reusable, improves performance, and adds security by reducing direct data manipulation through user queries.",
+      "category": "Procedures",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 21,
+      "question": "What is a trigger in SQL?",
+      "answer": "A trigger automatically executes predefined actions in response to specific table events like INSERT, UPDATE, or DELETE. It’s useful for maintaining audit logs or enforcing data integrity.",
+      "category": "Triggers",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 22,
+      "question": "What is a cursor?",
+      "answer": "A cursor allows row-by-row processing of result sets. It’s helpful in cases where set-based operations aren’t sufficient, though it’s slower and less efficient compared to bulk SQL operations.",
+      "category": "Cursors",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 23,
+      "question": "What are aggregate functions?",
+      "answer": "Aggregate functions perform calculations on multiple rows and return a single value. Common examples include COUNT, SUM, AVG, MIN, and MAX. They’re often used with GROUP BY clauses.",
+      "category": "Functions",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 24,
+      "question": "What are scalar functions?",
+      "answer": "Scalar functions return a single value for each input value. Examples include UPPER(), LOWER(), LEN(), and ROUND(). They operate on individual data elements rather than groups.",
+      "category": "Functions",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 25,
+      "question": "What is the GROUP BY clause used for?",
+      "answer": "GROUP BY organizes rows into groups based on one or more columns. It’s often used with aggregate functions to summarize data, such as calculating total sales per region.",
+      "category": "Grouping",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 26,
+      "question": "What is the difference between IN and EXISTS?",
+      "answer": "IN compares a value to a list or subquery result, while EXISTS checks for the existence of rows in a subquery. EXISTS is generally faster for correlated subqueries.",
+      "category": "Subqueries",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 27,
+      "question": "What is a self-join?",
+      "answer": "A self-join joins a table with itself to compare rows within the same table. It’s often used for hierarchical or recursive relationships, like employees reporting to managers.",
+      "category": "Joins",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 28,
+      "question": "What is the purpose of the DISTINCT keyword?",
+      "answer": "DISTINCT removes duplicate records from query results. It ensures that only unique combinations of selected columns appear in the output.",
+      "category": "Filtering",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 29,
+      "question": "What are wildcards in SQL?",
+      "answer": "Wildcards are used with the LIKE operator for pattern matching. For example, % matches any sequence of characters, and _ matches a single character. Useful for partial searches.",
+      "category": "Filtering",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 30,
+      "question": "What is a surrogate key?",
+      "answer": "A surrogate key is an artificial unique identifier for a record, often implemented as an auto-increment column. It has no business meaning but ensures uniqueness in relational models.",
+      "category": "Keys",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 31,
+      "question": "What is referential integrity?",
+      "answer": "Referential integrity ensures consistency between related tables using foreign keys. It prevents actions that would leave orphan records or break relationships between tables.",
+      "category": "Constraints",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 32,
+      "question": "What is the difference between CHAR and VARCHAR?",
+      "answer": "CHAR has a fixed length, while VARCHAR has a variable length. CHAR is faster for fixed-size data, while VARCHAR is more space-efficient for varying text lengths.",
+      "category": "Data Types",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 33,
+      "question": "What is the COALESCE function?",
+      "answer": "COALESCE returns the first non-null value among its arguments. It’s used for handling NULL values and providing default outputs in queries.",
+      "category": "Functions",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 34,
+      "question": "What is a schema in SQL?",
+      "answer": "A schema is a logical container grouping related database objects like tables, views, and procedures. It helps organize data and manage permissions efficiently.",
+      "category": "Database Design",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 35,
+      "question": "What are transactions isolation levels?",
+      "answer": "Isolation levels define how transaction integrity is maintained when multiple users access data concurrently. Common levels: READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, and SERIALIZABLE.",
+      "category": "Transactions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 36,
+      "question": "How can you optimize SQL queries?",
+      "answer": "Query optimization involves indexing, avoiding SELECT *, minimizing joins, using WHERE clauses, and analyzing query plans. Proper normalization, caching, and partitioning also enhance performance.",
+      "category": "Optimization",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 37,
+      "question": "What is the difference between RANK() and DENSE_RANK()?",
+      "answer": "Both assign rankings based on order, but RANK() skips numbers after ties, whereas DENSE_RANK() doesn’t. If two rows tie for rank 1, the next RANK is 3, but DENSE_RANK is 2.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 38,
+      "question": "What is a window function in SQL?",
+      "answer": "A window function performs calculations across a set of rows related to the current row. Examples: ROW_NUMBER(), RANK(), and SUM() OVER(). They’re used for analytics without grouping data.",
+      "category": "Window Functions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 39,
+      "question": "What is the difference between BETWEEN and IN?",
+      "answer": "BETWEEN filters a range of values (e.g., salary BETWEEN 2000 AND 5000), while IN matches specific values. BETWEEN works for continuous ranges; IN is for discrete value lists.",
+      "category": "Filtering",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 40,
+      "question": "What is the CASE statement used for?",
+      "answer": "CASE adds conditional logic to SQL queries, similar to IF-ELSE. It allows returning specific values based on given conditions within SELECT or WHERE clauses.",
+      "category": "Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 41,
+      "question": "What are temporary tables?",
+      "answer": "Temporary tables store intermediate data during query execution. They exist only during a session and help break complex operations into simpler steps.",
+      "category": "Tables",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 42,
+      "question": "What is a composite key?",
+      "answer": "A composite key combines two or more columns to uniquely identify each record. It’s used when no single column can serve as a unique identifier.",
+      "category": "Keys",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 43,
+      "question": "What is a recursive query?",
+      "answer": "A recursive query repeatedly executes until a condition is met. Commonly used for hierarchical data like employee-manager structures using WITH RECURSIVE or CTEs.",
+      "category": "Subqueries",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 44,
+      "question": "What are common table expressions (CTEs)?",
+      "answer": "CTEs are temporary result sets defined using WITH. They simplify complex queries, improve readability, and can be recursive for hierarchical data traversal.",
+      "category": "CTEs",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 45,
+      "question": "What are SQL injections?",
+      "answer": "SQL injection is a security vulnerability where attackers manipulate queries by injecting malicious input. Using parameterized queries and ORM frameworks helps prevent it.",
+      "category": "Security",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 46,
+      "question": "What is a pivot table in SQL?",
+      "answer": "A pivot table summarizes and transforms rows into columns. It’s useful for aggregating and reporting data, often achieved using the PIVOT operator or conditional aggregation.",
+      "category": "Aggregation",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 47,
+      "question": "What is the difference between logical and physical data independence?",
+      "answer": "Logical independence allows changes in logical schema without affecting applications. Physical independence allows changes in storage without affecting the logical schema.",
+      "category": "Database Design",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 48,
+      "question": "What is the difference between DELETE and UPDATE triggers?",
+      "answer": "DELETE triggers activate when rows are removed, while UPDATE triggers execute when data changes. Both are used to maintain audit logs or synchronize tables.",
+      "category": "Triggers",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 49,
+      "question": "What are materialized views?",
+      "answer": "A materialized view stores the result of a query physically. Unlike normal views, it requires refreshing to update data, improving query performance in analytics.",
+      "category": "Views",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 50,
+      "question": "What are window partitions?",
+      "answer": "Window partitions divide query results into groups before applying window functions. It allows calculations like ranking or running totals within specific data subsets.",
+      "category": "Window Functions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:09:18.739473+00:00",
+      "type": "theory"
+    },
+    {
+      "id": 51,
+      "question": "How do you handle recursive queries without CTEs?",
+      "answer": "Pre-CTE recursion uses stored procedures with loops/temp tables: DECLARE @level INT=0; CREATE TEMP \\#hierarchy; INSERT \\#hierarchy SELECT \\* FROM nodes WHERE parent IS NULL; WHILE @@ROWCOUNT>0 BEGIN SET @level+=1; INSERT \\#hierarchy SELECT n.\\* FROM nodes n JOIN \\#hierarchy h ON n.parent=h.id WHERE h.level=@level-1; END. Iterative, avoids stack overflow but verbose. Suitable for Oracle pre-11g or limited depth. Perf: index parent; limit iterations. Modern preference: recursive CTEs for readability.",
+      "category": "Hierarchical Queries",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 52,
+      "question": "Explain the use of LATERAL joins.",
+      "answer": "LATERAL enables outer-dependent subqueries in FROM: SELECT e.name, p.project FROM employees e CROSS JOIN LATERAL (SELECT \\* FROM projects WHERE emp\\_id=e.id ORDER BY start DESC LIMIT 3) p. Like correlated but returns sets; unnest arrays/JSON. Postgres/Oracle support; for top-N per row. Pros: cleaner than scalar subqueries; cons: serial execution unless parallel. Index join cols for speed. In 2025, vital for app dev with variable results.",
+      "category": "Joins",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 53,
+      "question": "What are covering indexes and when to use them?",
+      "answer": "Covering indexes include all SELECT columns (INCLUDE clause): CREATE INDEX idx\\_cover ON sales(customer\\_id, date) INCLUDE (amount, tax). Query uses index only, no table access—faster I/O. Detect via EXPLAIN 'Using index'. Use for read-heavy reports; avoid on write-frequent tables (rebuild overhead). Composite keys + INCLUDE for non-keys. In tuning, prioritize over scans. SQL Server/Postgres; size trade-off.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 54,
+      "question": "How do you implement row-level security in SQL?",
+      "answer": "RLS policies filter rows per user: Postgres CREATE POLICY emp\\_policy ON employees USING (dept=current\\_setting('app.current\\_dept')); Enforced transparently. SQL Server: CREATE SECURITY POLICY p WITH (STATE=ON) TO role; predicate function filters. Pros: DB-enforced, no app code; cons: perf hit (scan more). Test with SET ROLE; audit violations. For multi-tenant SaaS, combine VPD. 2025 compliance essential (GDPR).",
+      "category": "Security",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 55,
+      "question": "What is the difference between correlated subquery and lateral join?",
+      "answer": "Correlated subquery in WHERE/SELECT executes per row: SELECT \\* FROM emp e WHERE sal > (SELECT AVG(sal) FROM peers p WHERE p.dept=e.dept). Lateral in FROM: SELECT e.\\*, sub.avg FROM emp e LEFT JOIN LATERAL (SELECT AVG(sal) FROM peers p WHERE p.dept=e.dept) sub ON true. Lateral returns multi-cols/sets; often faster, parallelizable. Use lateral for complex per-row (e.g., arrays). Both correlated; index outer.",
+      "category": "Subqueries",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 56,
+      "question": "Explain dynamic pivoting in SQL.",
+      "answer": "Dynamic pivot builds columns runtime: DECLARE @cols NVARCHAR(MAX)=STUFF((SELECT ','+QUOTENAME(month) FROM months FOR XML PATH('')),1,1,''); EXEC('SELECT \\* FROM sales PIVOT(SUM(amount) FOR month IN('+@cols+'))'). For unknown pivots (e.g., dynamic categories). Sanitize to prevent injection; use sp\\_executesql params. Alternatives: STRING\\_AGG in Postgres. Common in dashboards; perf: pre-aggregate.",
+      "category": "Data Transformation",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 57,
+      "question": "How do you detect and resolve deadlocks?",
+      "answer": "Deadlocks: circular waits; detect via Extended Events (deadlock\\_graph) or sys.dm\\_os\\_waiting\\_tasks. Graph XML shows victims/processes. Resolve: short trans, lock hints (UPDLOCK), consistent order, isolation (SNAPSHOT). Prevention: app retries with exponential backoff. Analyze traces for patterns; Query Store historical. High-concurrency key; monitor @@DEADLOCK\\_INT.",
+      "category": "Transactions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 58,
+      "question": "What is query hinting and when to use it?",
+      "answer": "Hints force plans: MySQL SELECT \\* FROM t FORCE INDEX(idx); SQL Server OPTION(LOOP JOIN). For bad cardinality estimates or missing stats. Use rarely—aspirin, not vitamin; fix root (stats/index). Non-portable; adaptive queries (SQL 2017+) reduce need. Analyze EXPLAIN first. In emergencies like prod slowness.",
+      "category": "Performance",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 59,
+      "question": "Explain the use of generated columns.",
+      "answer": "Generated: auto-derived: CREATE TABLE logs (id INT, full\\_path VARCHAR(200) GENERATED ALWAYS AS (CONCAT(dir, '/', file)) STORED). VIRTUAL recomputes; STORED persists/indexable. For computed keys (e.g., MD5 hash), JSON paths. Pros: integrity, no triggers; cons: space/update cost. Postgres 12+; use for denormalized views.",
+      "category": "Tables",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 60,
+      "question": "How do you implement full-text search?",
+      "answer": "Full-text indexes text: Postgres CREATE INDEX ON docs USING GIN(to\\_tsvector('english', content)); SELECT \\* WHERE to\\_tsvector(content) @@ to\\_tsquery('sql & interview'). Scoring with ts\\_rank. MySQL FULLTEXT MATCH AGAINST. Pros: stemming, relevance; cons: lang-specific, rebuilds. For search apps; integrate Lucene if complex.",
+      "category": "Search",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 61,
+      "question": "What are table partitions and subpartitions?",
+      "answer": "Partitions split: CREATE TABLE sales PARTITION BY RANGE (date) (PARTITION p2024 VALUES LESS THAN ('2025-01-01'), ...); SUBPARTITION BY HASH(id) SUBPARTITIONS 4. Pruning: queries skip. Manage: EXCHANGE/REBUILD. Pros: parallel delete/query; cons: cross-part joins slow. For time-series; auto in BigQuery.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 62,
+      "question": "Explain encryption at rest vs in transit.",
+      "answer": "At rest: TDE encrypts files/DB: ALTER DATABASE SET ENCRYPTION ON (cert). Protects theft. In transit: TLS/SSL for connections: Encrypt=True in conn string. Prevents eavesdropping. At rest static; transit dynamic. Keys: EKM for rotation. Overhead low; PCI/HIPAA req.",
+      "category": "Security",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 63,
+      "question": "How do you use recursive CTEs for graph traversal?",
+      "answer": "Recursive CTE for graphs: WITH RECURSIVE path (node, path, depth) AS (SELECT node, ARRAY[node], 1 FROM graph WHERE id=START UNION ALL SELECT g.node, p.path \\|\\| g.node, p.depth+1 FROM graph g JOIN path p ON g.from=p.node WHERE g.node != ALL(p.path) AND depth<MAX) SELECT \\* FROM path. Detects cycles via array. For social networks; index edges.",
+      "category": "CTE",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 64,
+      "question": "What is the NTILE window function?",
+      "answer": "NTILE(n) divides partition into n groups: NTILE(5) OVER(ORDER BY revenue) assigns 1-5 quintiles. Even distribution; last bucket may have more. For segmentation (e.g., RFM analysis). With PARTITION BY customer. Ties sequential.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 65,
+      "question": "How do you unpivot data dynamically?",
+      "answer": "UNPIVOT cols to rows: SELECT product, metric, val FROM (SELECT \\* FROM pivoted) UNPIVOT (val FOR metric IN (Jan\\_sales, Feb\\_sales)) u. Dynamic: UNION ALL per col in loop: SELECT 'Jan' metric, Jan\\_sales val FROM t UNION SELECT 'Feb', Feb\\_sales FROM t. For ETL normalization.",
+      "category": "Data Transformation",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 66,
+      "question": "Explain the use of FIRST\\_VALUE and LAST\\_VALUE.",
+      "answer": "FIRST\\_VALUE(col) OVER(ORDER BY date ROWS UNBOUNDED PRECEDING) first in partition. LAST\\_VALUE requires frame: OVER(ORDER BY date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) for last. IGNORE NULLS option. For session starts/ends. Combine with WHERE for filters.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 67,
+      "question": "What is a filtered index?",
+      "answer": "Filtered: CREATE INDEX ON table (col) WHERE status='active'. Indexes subset; smaller/faster for WHERE matches. SQL Server; like partial in Postgres. Use for sparse (e.g., soft deletes). No updates to filtered rows.",
+      "category": "Performance",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 68,
+      "question": "How do you audit database changes?",
+      "answer": "Auditing: Triggers INSERT audit VALUES (OLD.id, USER(), NOW(), 'update'). Or SQL Server CDC: sp\\_cdc\\_enable\\_db; query cdc tables. Server audit for logins. Pros: granular; cons: perf (async if possible). Rotate; query for compliance.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 69,
+      "question": "What are common table expressions with multiple CTEs?",
+      "answer": "Multiple: WITH cte1 AS (SELECT dept, AVG(sal) avg FROM emp GROUP BY dept), cte2 AS (SELECT e.\\*, c.avg FROM emp e JOIN cte1 c ON e.dept=c.dept) SELECT \\* FROM cte2 WHERE sal > avg. Chained; improves modularity. No inter-deps except sequential. For complex pipelines.",
+      "category": "CTE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 70,
+      "question": "Explain window frame specifications.",
+      "answer": "Frames: ROWS/RANGE/GROUPS BETWEEN bounds. ROWS 2 PRECEDING TO CURRENT: 3 physical rows. RANGE: peers (e.g., same value). Example: AVG(sal) OVER(ORDER BY date ROWS 7 PRECEDING) 7-day moving. Default RANGE to CURRENT. For precise calcs like EMA.",
+      "category": "Window Functions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 71,
+      "question": "How do you handle JSON data querying?",
+      "answer": "JSON: Postgres data->'key' extracts; \\#> '{path}' nested. Index GIN (jsonb). SELECT \\* WHERE data @> '{\\\"status\\\":\\\"active\\\"}'. MySQL JSON\\_SEARCH, ->>. Aggregate: json\\_agg. For APIs; extract to columns for perf.",
+      "category": "JSON",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 72,
+      "question": "What is connection pooling and its benefits?",
+      "answer": "Pooling reuses connections: HikariCP min 10, max 100; reduces open/close overhead (100ms+). Benefits: throughput up 10x, less resource exhaustion. Monitor idle timeout; leaks via JMX. In cloud: RDS Proxy. Tune for app load.",
+      "category": "Performance",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 73,
+      "question": "Explain role-based access control (RBAC) in SQL.",
+      "answer": "RBAC: CREATE ROLE viewer; GRANT SELECT ON SCHEMA public TO viewer; GRANT viewer TO user1. Hierarchical: GRANT role2 TO role1. Vs DAC: scalable for teams. Audit grants; revoke cascades. For orgs, least privilege.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 74,
+      "question": "How do you use CTEs for running totals?",
+      "answer": "WITH ordered AS (SELECT id, val, ROW\\_NUMBER() OVER(ORDER BY date) rn FROM t) SELECT rn, SUM(val) OVER(ORDER BY rn ROWS UNBOUNDED PRECEDING) running FROM ordered. Or direct window. For inventory; index order col. Vs self-join: O(n).",
+      "category": "CTE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 75,
+      "question": "What is the PERCENT\\_RANK window function?",
+      "answer": "PERCENT\\_RANK() OVER(ORDER BY score DESC) = (rank-1)/(total-1), 0-1 relative rank. For % better than: 0.8 top 20%. PARTITION by group. Ties averaged in RANGE. Use in scoring, percentiles.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 76,
+      "question": "How do you pivot with conditional aggregation?",
+      "answer": "Pivot manual: SELECT product, SUM(CASE WHEN region='North' THEN sales ELSE 0 END) North\\_sales FROM data GROUP BY product. For static cols; dynamic build string. Cross-DB; no operator needed. For Excel-like reports.",
+      "category": "Data Transformation",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 77,
+      "question": "Explain the use of HASH vs MERGE joins.",
+      "answer": "HASH: builds in-memory hash on build side (smaller table), probes; equi-joins, no sort. MERGE: sorted inputs, zipper; preserves order, range scans. Optimizer picks; bad stats → hint. HASH spills to tempdb if large. For big data.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 78,
+      "question": "What are database sequences and their advantages?",
+      "answer": "Sequences: CREATE SEQUENCE order\\_seq; NEXTVAL(order\\_seq) unique IDs. Advantages: concurrent (no locks like auto-inc), shareable, CACHE 20 for perf. Cycle for wrap. Postgres/Oracle; vs identity: gap-tolerant. For sharding.",
+      "category": "Sequences",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 79,
+      "question": "How do you secure stored procedures?",
+      "answer": "Secure: WITH EXECUTE AS OWNER for context; validate params (IF @id<=0 RETURN); parameterized dynamic SQL; schema-bind if UDF. GRANT EXECUTE TO role only. No xp\\_cmdshell. Audit executions. Prevent elevation.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 80,
+      "question": "Explain CTE materialization.",
+      "answer": "CTEs inline or temp table per optimizer: large/reused → materialize. Postgres WITH ... AS MATERIALIZED forces. Vs temp: no DDL. Recursive always temp. Check plan: Table Scan on CTE. For perf, use temp if scanned multiple.",
+      "category": "CTE",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 81,
+      "question": "What is CUME\\_DIST window function?",
+      "answer": "CUME\\_DIST() OVER(ORDER BY val) = rows <= current / total, cumulative % up to row. For CDF: 0.6 means 60% at/below. RANGE includes ties. Use in distributions, thresholds.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 82,
+      "question": "How do you handle data skew in joins?",
+      "answer": "Skew: few keys dominate; detect via histograms (ANALYZE). Mitigate: broadcast small side, salt keys (add rand%100), separate skew tables, dynamic partitioning. In SQL: UNION skewed/normal. For hash joins, avoid OOM.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 83,
+      "question": "What is transparent data encryption (TDE)?",
+      "answer": "TDE: whole-DB encryption: CREATE DATABASE ENCRYPTION KEY WITH ALGORITHM AES\\_256 ENCRYPTED BY cert; ALTER DB SET ENCRYPTION ON. Transparent; protects mdf/ldf. Backups encrypted. Keys exportable; EKM for cloud. ~3-5% overhead. For rest compliance.",
+      "category": "Security",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 84,
+      "question": "How do you use CTEs for data validation?",
+      "answer": "WITH anomalies AS (SELECT \\* FROM orders EXCEPT SELECT \\* FROM expected\\_orders) SELECT COUNT(\\*) FROM anomalies. Or recursive for referential chains. If >0, raise error. For ETL: assert integrity. Vs EXCEPT direct: modular.",
+      "category": "CTE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 85,
+      "question": "Explain the ROWS vs RANGE in window frames.",
+      "answer": "ROWS: count physical rows (e.g., ROWS 1 PRECEDING: prior row). RANGE: value-based (RANGE 1 DAY PRECEDING: same/prior day). RANGE peers ties; for time windows. Example: SUM OVER(RANGE INTERVAL 1 DAY). Default RANGE.",
+      "category": "Window Functions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 86,
+      "question": "What are partial indexes?",
+      "answer": "Partial: CREATE INDEX ON logs (user\\_id) WHERE deleted=false. Indexes active subset; tiny for flags. Postgres; filtered equiv SQL Server. Use for 90% filtered queries. No index on false rows.",
+      "category": "Performance",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 87,
+      "question": "How do you prevent SQL injection in dynamic queries?",
+      "answer": "Parameterized: EXEC sp\\_executesql N'SELECT \\* FROM users WHERE id=@id', @id=5. Or PREPARE/EXECUTE in MySQL. No concat strings. Validate/escape if needed. ORM auto-params. Audit dynamic use.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 88,
+      "question": "What is a hierarchical query without recursion?",
+      "answer": "Oracle CONNECT BY: SELECT LEVEL, name FROM emp START WITH manager IS NULL CONNECT BY PRIOR id=manager\\_id. Pseudos: LEVEL, SYS\\_CONNECT\\_BY\\_PATH. For trees; limited depth. Vs CTE: vendor-specific. Modern migrate to recursive.",
+      "category": "Hierarchical Queries",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 89,
+      "question": "Explain the use of LEAD with offset.",
+      "answer": "LEAD(col, 3, 'N/A') OVER(PARTITION BY dept ORDER BY date) third future value. For forecasts: sales - LEAD(sales,1). Offset dynamic via var. Default end. For gaps/trends.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 90,
+      "question": "How do you optimize for write-heavy workloads?",
+      "answer": "Writes: bulk INSERT (BULK/VALUES), minimal indexes (disable/re-enable), staging tables, batched UPDATE, async logging. Tune checkpoints/WAL. Partition append-only. Vs reads: less denorm. Monitor I/O waits.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 91,
+      "question": "What are database roles and schemas?",
+      "answer": "Roles group perms: CREATE ROLE auditor; GRANT SELECT ON audit.\\* TO auditor. Schemas namespace: CREATE SCHEMA prod; objects in prod.table. GRANT USAGE/ALL ON SCHEMA. Vs users: inheritable. For deploys.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 92,
+      "question": "How do CTEs interact with temp tables?",
+      "answer": "CTEs reference temps: WITH cte AS (SELECT \\* FROM \\#temp) SELECT \\* FROM cte. Temps persist; CTEs ephemeral. For hybrid: load temp, CTE transform. Optimizer: CTE may spill to temp. Choose: temp for indexes/multi-session.",
+      "category": "CTE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 93,
+      "question": "What is the LAG function for gap detection?",
+      "answer": "LAG(date,1) OVER(ORDER BY id); WHERE date > LAG(date,1) OVER(ORDER BY id) +1 detects missing. COUNT gaps: SUM(CASE WHEN gap THEN 1 ELSE 0 END) OVER(). For sequences, logs.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 94,
+      "question": "Explain index fragmentation and defragmentation.",
+      "answer": "Fragmentation: splits >30% (avg\\_fragmentation\\_in\\_percent). Detect: sys.dm\\_db\\_index\\_physical\\_stats. Defrag: ALTER INDEX REORGANIZE (low frag) or REBUILD (high, online=ON). Schedule weekly; fillfactor 70 OLTP. Vs drop/create.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 95,
+      "question": "How do you implement data masking?",
+      "answer": "Masking: Dynamic Data Masking (SQL Server): ALTER COLUMN email ADD MASKED WITH (FUNCTION='email()'). Views: CASE WHEN @role='admin' THEN email ELSE LEFT(email,3)+'***' END. Static for non-prod: UPDATE SET masked=SHA2(email). For PII in dev.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 96,
+      "question": "What are recursive queries for bill of materials?",
+      "answer": "BOM explosion: WITH RECURSIVE bom(part, component, qty) AS (SELECT part, sub, 1 FROM assembly WHERE part=TOP UNION ALL SELECT a.part, a.sub, bom.qty\\*a.qty FROM assembly a JOIN bom ON a.part=bom.component) SELECT SUM(qty) FROM bom GROUP BY part. Accumulates; cycle detect. For supply chain.",
+      "category": "CTE",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 97,
+      "question": "How does the RANK function handle ties?",
+      "answer": "RANK() ties share (1,1), skips next (3). OVER(ORDER BY sal DESC). For positions with gaps. Vs DENSE no skip. NULLs low/high? DESC high. Use in leaderboards.",
+      "category": "Window Functions",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 98,
+      "question": "What is adaptive query processing?",
+      "answer": "Adaptive: runtime plan adjust, e.g., SQL Server batch serialization, memory grant feedback (resizes on second exec). For variable cardinality. Reduces spills; in Azure. Vs static: handles drift. Monitor via Query Store.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 99,
+      "question": "Explain certificate-based authentication.",
+      "answer": "Cert auth: CREATE CERTIFICATE client\\_cert; CREATE LOGIN FROM CERTIFICATE client\\_cert; map to users. Client presents cert on connect. Stronger than passwords; for services. Revoke by dropping cert. Azure AD hybrid.",
+      "category": "Security",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 100,
+      "question": "How do you use CTEs for pagination?",
+      "answer": "WITH ranked AS (SELECT \\*, ROW\\_NUMBER() OVER(ORDER BY id) rn FROM large\\_table WHERE filter) SELECT \\* FROM ranked WHERE rn BETWEEN @offset+1 AND @offset+@limit. Efficient post-filter rank. Index order; vs OFFSET direct (slower deep).",
+      "category": "CTE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 101,
+      "question": "What is the DENSE\\_RANK function for leaderboards?",
+      "answer": "DENSE\\_RANK() ties share (1,1), next consecutive (2). No gaps; for dense packing. PARTITION by league. For tournaments without skips.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 102,
+      "question": "How do you tune for concurrent users?",
+      "answer": "Concurrency: SNAPSHOT isolation, rowversion optimistic, covering indexes, read scaled replicas. Tune maxdop=1, cost threshold. Monitor SOS\\_SCHEDULER\\_YIELD waits. App: pooling, async IO. Shard if extreme.",
+      "category": "Performance",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 103,
+      "question": "What are audit specifications in SQL Server?",
+      "answer": "Audit specs: CREATE SERVER AUDIT SPECIFICATION s FOR SERVER AUDIT a ADD (DATABASE\\_OPERATION\\_GROUP); Logs to file/event. Filter events/users. For SOX: SELECT/INSERT on sensitive. Vs trace: lighter. Query fn\\_dblog.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 104,
+      "question": "Explain non-recursive CTEs for modularity.",
+      "answer": "Non-rec: WITH filters AS (SELECT \\* FROM raw WHERE date>=@start), aggs AS (SELECT dept, SUM(sal) FROM filters GROUP BY dept) SELECT \\* FROM aggs ORDER BY sum DESC. Stepwise; reference prior CTEs. For refactoring monsters.",
+      "category": "CTE",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 105,
+      "question": "How do you use window functions for cohort analysis?",
+      "answer": "Cohort retention: FIRST\\_VALUE(signup\\_month) OVER(PARTITION BY user ORDER BY activity\\_date) cohort, COUNT(\\*) OVER(PARTITION BY user, cohort\\_month\\_diff) / COUNT(\\*) OVER(PARTITION BY cohort, cohort\\_month\\_diff) rate. For churn.",
+      "category": "Window Functions",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 106,
+      "question": "What is statistics maintenance?",
+      "answer": "Stats: UPDATE STATISTICS table (SAMPLE 10 PERCENT); histograms for optimizer. Auto SQL Server (trace 2028); manual after bulk. Fullscan accurate but slow. For skewed: auto-update on 500+ mods.",
+      "category": "Performance",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 107,
+      "question": "How do you secure data in transit?",
+      "answer": "Transit: Enforce TLS: ALTER SERVER CONFIGURATION SET ENCRYPTION = ON; client VerifyCertificate. TDS EncryptedConnection. Vs VPN: app-level. Cert pinning prevents MITM. Audit unencrypted connects.",
+      "category": "Security",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 108,
+      "question": "What are the limitations of CTEs?",
+      "answer": "Limits: single-statement scope, no indexes, potential non-materialization (re-execute), update restrictions (no TOP/OLAP). Depth 100 recursive. Vs views: no persist. For ultra-complex: procs/temps.",
+      "category": "CTE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 109,
+      "question": "Explain the use of ROW\\_NUMBER for deduplication.",
+      "answer": "Deduplicate: WITH dups AS (SELECT \\*, ROW\\_NUMBER() OVER(PARTITION BY email ORDER BY created DESC) rn FROM users) DELETE FROM dups WHERE rn>1. Keeps newest. Safe in trans; index partition. Vs MIN(id) subquery.",
+      "category": "Window Functions",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 110,
+      "question": "What is conditional aggregation in SQL?",
+      "answer": "Conditional aggregation applies CASE inside aggregates for conditional sums/counts, e.g., SELECT dept, SUM(CASE WHEN gender='M' THEN salary ELSE 0 END) AS male\\_salary FROM employees GROUP BY dept. It pivots data without PIVOT, efficient for reports. Handles NULLs via COALESCE; outperforms self-joins for large datasets. Use for gender-based analytics or status filtering. In 2025, key for BI tools like Tableau integration. Alternatives: filtered aggregates in Postgres 14+.",
+      "category": "Aggregations",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:19:22.992994+00:00",
+      "type": "query"
+    },
+    {
+      "id": 111,
+      "question": "Write a SQL query to select all employees from the employees table where the salary is greater than 50000.",
+      "answer": "SELECT * FROM employees WHERE salary > 50000;",
+      "category": "SELECT",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 112,
+      "question": "How do you find the second highest salary from the employees table?",
+      "answer": "SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);",
+      "category": "AGGREGATE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 113,
+      "question": "Write a query to join two tables, employees and departments, on department_id.",
+      "answer": "SELECT e.name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.id;",
+      "category": "JOIN",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 114,
+      "question": "Delete all duplicate records from a table keeping only one instance of each duplicate.",
+      "answer": "DELETE FROM table_name WHERE id NOT IN (SELECT MIN(id) FROM table_name GROUP BY column_name HAVING COUNT(*) > 1);",
+      "category": "DELETE",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 115,
+      "question": "Write a SQL query to find the number of employees in each department.",
+      "answer": "SELECT department_id, COUNT(*) as employee_count FROM employees GROUP BY department_id;",
+      "category": "GROUP BY",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 116,
+      "question": "How to update the salary of all employees in a specific department by 10%?",
+      "answer": "UPDATE employees SET salary = salary * 1.10 WHERE department_id = 5;",
+      "category": "UPDATE",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 117,
+      "question": "Write a query to select the top 5 highest paid employees.",
+      "answer": "SELECT * FROM employees ORDER BY salary DESC LIMIT 5;",
+      "category": "ORDER BY",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 118,
+      "question": "Find employees who earn more than their department average salary.",
+      "answer": "SELECT e1.* FROM employees e1 WHERE e1.salary > (SELECT AVG(e2.salary) FROM employees e2 WHERE e2.department_id = e1.department_id);",
+      "category": "SUBQUERY",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 119,
+      "question": "Write a query to insert a new employee into the employees table.",
+      "answer": "INSERT INTO employees (name, salary, department_id) VALUES ('John Doe', 60000, 1);",
+      "category": "INSERT",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 120,
+      "question": "How to create a view that shows employee names and their manager names?",
+      "answer": "CREATE VIEW employee_managers AS SELECT e.name as employee, m.name as manager FROM employees e LEFT JOIN employees m ON e.manager_id = m.id;",
+      "category": "VIEW",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 121,
+      "question": "Write a query to find the employee with the highest salary in each department.",
+      "answer": "SELECT department_id, MAX(salary) as max_salary FROM employees GROUP BY department_id;",
+      "category": "WINDOW FUNCTION",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 122,
+      "question": "How do you handle NULL values in a SELECT statement?",
+      "answer": "SELECT COALESCE(column_name, 'Default Value') FROM table_name;",
+      "category": "NULL HANDLING",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 123,
+      "question": "Write a query to find duplicates in the email column of users table.",
+      "answer": "SELECT email, COUNT(*) FROM users GROUP BY email HAVING COUNT(*) > 1;",
+      "category": "DUPLICATES",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 124,
+      "question": "Create a recursive query to fetch all subordinates of a manager.",
+      "answer": "WITH RECURSIVE subordinates AS ( SELECT id, name, manager_id FROM employees WHERE manager_id = 1 UNION ALL SELECT e.id, e.name, e.manager_id FROM employees e INNER JOIN subordinates s ON e.manager_id = s.id ) SELECT * FROM subordinates;",
+      "category": "RECURSIVE CTE",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 125,
+      "question": "How to pivot data in SQL to transform rows into columns?",
+      "answer": "SELECT department_id, SUM(CASE WHEN salary < 50000 THEN 1 ELSE 0 END) as low_salary, SUM(CASE WHEN salary >= 50000 THEN 1 ELSE 0 END) as high_salary FROM employees GROUP BY department_id;",
+      "category": "PIVOT",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 126,
+      "question": "Find the Nth highest salary using window functions.",
+      "answer": "SELECT salary FROM (SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) as rnk FROM employees) WHERE rnk = N;",
+      "category": "WINDOW FUNCTION",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 127,
+      "question": "Write a query to find the difference between consecutive rows in a table.",
+      "answer": "SELECT time, value, value - LAG(value) OVER (ORDER BY time) as diff FROM sales;",
+      "category": "WINDOW FUNCTION",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 128,
+      "question": "How to find the running total for sales by date?",
+      "answer": "SELECT date, sales, SUM(sales) OVER (ORDER BY date) as running_total FROM sales_table;",
+      "category": "WINDOW FUNCTION",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 129,
+      "question": "Query to find customers who placed more than 3 orders.",
+      "answer": "SELECT customer_id FROM orders GROUP BY customer_id HAVING COUNT(*) > 3;",
+      "category": "GROUP BY",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 130,
+      "question": "Write a LEFT JOIN query to find employees without departments.",
+      "answer": "SELECT e.* FROM employees e LEFT JOIN departments d ON e.dept_id = d.id WHERE d.id IS NULL;",
+      "category": "JOIN",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 131,
+      "question": "How to use UNION to combine results from two SELECT statements?",
+      "answer": "SELECT name FROM table1 UNION SELECT name FROM table2;",
+      "category": "SET OPERATIONS",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 132,
+      "question": "Find the average salary per department using GROUP BY.",
+      "answer": "SELECT department_id, AVG(salary) FROM employees GROUP BY department_id;",
+      "category": "AGGREGATE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 133,
+      "question": "Write a query to replace employee ID with unique identifier from another table.",
+      "answer": "SELECT u.unique_id, e.name FROM Employees e LEFT JOIN EmployeeUNI u ON e.id = u.id;",
+      "category": "JOIN",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 134,
+      "question": "How to select recyclable and low-fat products?",
+      "answer": "SELECT product_id FROM Products WHERE low_fats = 'Y' AND recyclable = 'Y';",
+      "category": "SELECT",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 135,
+      "question": "Find customers who are not referred by customer with id 2.",
+      "answer": "SELECT name FROM Customer WHERE referee_id != 2 OR referee_id IS NULL;",
+      "category": "WHERE",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 136,
+      "question": "Select big countries with area > 3000000 or population > 25000000.",
+      "answer": "SELECT name, population, area FROM World WHERE area > 3000000 OR population > 25000000;",
+      "category": "WHERE",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 137,
+      "question": "Find articles viewed by author id 1.",
+      "answer": "SELECT DISTINCT author_id AS id FROM Views WHERE author_id = 1;",
+      "category": "DISTINCT",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 138,
+      "question": "Select invalid tweets longer than 15 characters.",
+      "answer": "SELECT tweet_id FROM Tweets WHERE LENGTH(content) > 15;",
+      "category": "STRING FUNCTIONS",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 139,
+      "question": "Write a query for product sales analysis.",
+      "answer": "SELECT product_id, year, quantity, price FROM Sales s JOIN Product p ON s.product_id = p.product_id;",
+      "category": "JOIN",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 140,
+      "question": "How to use CTE for complex queries?",
+      "answer": "WITH cte AS (SELECT * FROM table) SELECT * FROM cte WHERE condition;",
+      "category": "CTE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 141,
+      "question": "Find the percentage of users who are active.",
+      "answer": "SELECT ROUND((COUNT(CASE WHEN active = 1 THEN 1 END) * 100.0 / COUNT(*)), 2) FROM users;",
+      "category": "AGGREGATE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 142,
+      "question": "Query to find the mode (most frequent value) in a column.",
+      "answer": "SELECT mode_column FROM (SELECT column, COUNT(*) as cnt FROM table GROUP BY column ORDER BY cnt DESC LIMIT 1) t;",
+      "category": "AGGREGATE",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 143,
+      "question": "How to handle date ranges in queries?",
+      "answer": "SELECT * FROM orders WHERE order_date BETWEEN '2025-01-01' AND '2025-12-31';",
+      "category": "DATE FUNCTIONS",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 144,
+      "question": "Write a query using LIKE for pattern matching.",
+      "answer": "SELECT * FROM customers WHERE name LIKE 'A%';",
+      "category": "LIKE",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 145,
+      "question": "Find the first and last login for each user.",
+      "answer": "SELECT user_id, MIN(login_time) as first, MAX(login_time) as last FROM logins GROUP BY user_id;",
+      "category": "GROUP BY",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 146,
+      "question": "How to use CASE statement for conditional logic?",
+      "answer": "SELECT name, CASE WHEN salary > 50000 THEN 'High' ELSE 'Low' END as category FROM employees;",
+      "category": "CASE",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 147,
+      "question": "Query to swap gender in a table.",
+      "answer": "UPDATE salary SET sex = CASE WHEN sex = 'm' THEN 'f' ELSE 'm' END;",
+      "category": "UPDATE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 148,
+      "question": "Find consecutive numbers in a table.",
+      "answer": "SELECT DISTINCT l1.num AS ConsecutiveNums FROM Logs l1 JOIN Logs l2 ON l1.id = l2.id + 1 AND l1.num = l2.num JOIN Logs l3 ON l2.id = l3.id + 1 AND l2.num = l3.num;",
+      "category": "JOIN",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 149,
+      "question": "Write a query for self-join to find employees earning more than managers.",
+      "answer": "SELECT e1.name FROM employee e1 JOIN employee e2 ON e1.managerId = e2.id WHERE e1.salary > e2.salary;",
+      "category": "JOIN",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 150,
+      "question": "How to delete duplicate emails?",
+      "answer": "DELETE p1 FROM Person p1 JOIN Person p2 ON p1.email = p2.email AND p1.id > p2.id;",
+      "category": "DELETE",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 151,
+      "question": "Find the rank of each employee by salary.",
+      "answer": "SELECT name, salary, DENSE_RANK() OVER (ORDER BY salary DESC) as rank FROM employees;",
+      "category": "WINDOW FUNCTION",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 152,
+      "question": "Query to find overlapping intervals.",
+      "answer": "SELECT * FROM meetings m1 WHERE EXISTS (SELECT 1 FROM meetings m2 WHERE m1.start < m2.end AND m1.end > m2.start AND m1.id != m2.id);",
+      "category": "SUBQUERY",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 153,
+      "question": "How to use FULL OUTER JOIN?",
+      "answer": "SELECT * FROM table1 FULL OUTER JOIN table2 ON table1.id = table2.id;",
+      "category": "JOIN",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 154,
+      "question": "Write a query for cohort analysis.",
+      "answer": "SELECT cohort_month, COUNT(*) as users FROM (SELECT DATE_TRUNC('month', signup_date) as cohort_month FROM users) GROUP BY cohort_month;",
+      "category": "DATE FUNCTIONS",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 155,
+      "question": "Find the median salary.",
+      "answer": "SELECT AVG(salary) as median FROM (SELECT salary FROM employees ORDER BY salary LIMIT 2 - (SELECT COUNT(*) FROM employees) % 2 OFFSET (SELECT (COUNT(*) - 1) / 2 FROM employees)) t;",
+      "category": "AGGREGATE",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 156,
+      "question": "How to use EXCEPT to find differences between two sets?",
+      "answer": "SELECT * FROM table1 EXCEPT SELECT * FROM table2;",
+      "category": "SET OPERATIONS",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 157,
+      "question": "Query to find top 3 salaries per department.",
+      "answer": "SELECT * FROM (SELECT d.name as dep, e.name, e.salary, DENSE_RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) as rnk FROM employee e JOIN department d ON e.departmentId = d.id) WHERE rnk <= 3;",
+      "category": "WINDOW FUNCTION",
+      "difficulty": "hard",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 158,
+      "question": "How to create an index on a table?",
+      "answer": "CREATE INDEX idx_name ON table(column);",
+      "category": "INDEX",
+      "difficulty": "easy",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 159,
+      "question": "Write a query using JSON functions to extract data.",
+      "answer": "SELECT json_column->>'key' FROM table;",
+      "category": "JSON",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    },
+    {
+      "id": 160,
+      "question": "Find users who have never made a purchase.",
+      "answer": "SELECT u.name FROM Users u LEFT JOIN Orders o ON u.id = o.buyer_id WHERE o.buyer_id IS NULL;",
+      "category": "JOIN",
+      "difficulty": "medium",
+      "created_at": "2025-10-30T05:25:36.217862+00:00",
+      "type": "query"
+    }
+  ]
+}

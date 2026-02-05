@@ -1,0 +1,220 @@
+{
+  "metadata": {
+    "resource": "interview_questions_general",
+    "file_id": 1,
+    "timestamp": "2026-02-05T13:08:12.561490",
+    "record_count": 30
+  },
+  "data": [
+    {
+      "id": 1,
+      "question": "Tell me about yourself",
+      "answer": "I graduated with a degree in [Your Field] and completed internships at [Company], where I led [project]. I enjoy problem-solving and collaboration, which I demonstrated by improving [process] by [result]. I'm excited to bring my skills in [skill] to contribute at [Company].",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 2,
+      "question": "What are your strengths?",
+      "answer": "My strengths include strong analytical thinking, effective communication, and adaptability. For instance, I used my analytical skills to optimize [process], resulting in a 20% efficiency increase. I also led cross-functional meetings, improving team alignment and project delivery timelines.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 3,
+      "question": "What are your weaknesses?",
+      "answer": "I sometimes take on too many tasks because I’m eager to help. To manage this, I prioritize using a task board and delegate appropriately. This approach has helped me maintain focus and deliver key projects on time without overcommitting.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 4,
+      "question": "Why are you interested in this position?",
+      "answer": "I admire [Company]'s innovation in [specific area], particularly your recent [project]. My background in [relevant skill] and passion for [field] align with your goals. I’m eager to contribute my expertise in [skill] to help drive further success in this role.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 5,
+      "question": "What do you know about our company?",
+      "answer": "[Company] is known for its leadership in [industry], especially your work on [recent initiative]. Your commitment to [value, e.g., sustainability] and growth into [new market] resonates with my values. I’m excited about the opportunity to be part of that journey.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 6,
+      "question": "Where do you see yourself in five years?",
+      "answer": "In five years, I aim to take on increasing responsibility in project management, leading cross-functional teams to deliver innovative solutions. I plan to further develop leadership skills through mentoring and professional certifications, contributing to company growth and culture.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 7,
+      "question": "What motivates you?",
+      "answer": "I’m motivated by challenges that require creative problem-solving and collaboration. For example, I spearheaded a project to streamline workflows, which improved efficiency by 30%. Achieving tangible results and learning new skills keeps me driven and engaged.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 8,
+      "question": "What are your hobbies and interests outside of work?",
+      "answer": "I enjoy running and recently completed a half marathon, which taught me discipline and goal-setting. I also volunteer teaching coding to students, combining my passion for technology and mentoring, and continuously improving my communication skills.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 9,
+      "question": "Are you willing to relocate or travel?",
+      "answer": "Yes, I’m open to relocation and travel as required. I believe flexibility is essential for career growth and developing a broader understanding of global markets. Previous roles involved travel to client sites, where I gained valuable cross-cultural collaboration experience.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 10,
+      "question": "How do you handle stress and pressure?",
+      "answer": "I stay organized by prioritizing tasks and breaking them into manageable steps. During a high-pressure project, I used time-blocking and regular check-ins, which helped me meet deadlines and maintain quality without burnout.",
+      "difficulty": "easy",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 11,
+      "question": "Why should we hire you?",
+      "answer": "You should hire me because I combine technical skills in [skill] with proven leadership from [project], where I delivered a 25% performance improvement. My adaptability and commitment to continuous learning will help me drive key initiatives at [Company].",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 12,
+      "question": "Describe a challenging situation you’ve faced and how you handled it.",
+      "answer": "During a critical deadline, our main server crashed. I quickly organized a team, identified the issue in the database replication, and implemented a workaround. We restored services within two hours, preventing major client impact.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 13,
+      "question": "How do you prioritize tasks with multiple deadlines?",
+      "answer": "I assess each task’s impact and urgency, then schedule using a matrix—tackling high-impact/high-urgency items first. I also set milestones for longer projects, ensuring steady progress and timely completion.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 14,
+      "question": "Describe a conflict with a colleague and resolution.",
+      "answer": "A teammate and I disagreed on project scope. I scheduled a one-on-one, listened to their concerns, and proposed a compromise that combined both approaches. This restored collaboration and led to a successful deliverable ahead of schedule.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 15,
+      "question": "What are your salary expectations?",
+      "answer": "Based on industry research and my experience level, I’m seeking a range of [range]. However, I’m flexible and open to discussing a package that reflects the role’s responsibilities and the company’s compensation structure.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 16,
+      "question": "Describe a time you worked effectively in a team.",
+      "answer": "On a cross-functional team project, I coordinated between developers and designers to streamline the UI update. I organized weekly check-ins, ensuring alignment, and we delivered the update two weeks early with positive user feedback.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 17,
+      "question": "What do you expect from a supervisor?",
+      "answer": "I value clear communication, constructive feedback, and support for professional development. Having a manager who sets goals and provides guidance helps me perform at my best and continuously improve my skills.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 18,
+      "question": "How do you stay updated with industry trends?",
+      "answer": "I follow industry blogs like [Blog], attend webinars, and participate in professional forums. I also complete online courses regularly, ensuring I stay current with emerging technologies and best practices.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 19,
+      "question": "Describe a project you’re proud of.",
+      "answer": "I led an automation project that reduced manual data entry by 80%, saving 10 hours weekly. I designed scripts, collaborated with stakeholders for requirements, and trained the team on the new process, significantly improving efficiency.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 20,
+      "question": "How do you handle constructive criticism?",
+      "answer": "I view constructive criticism as growth opportunities. When a mentor pointed out weaknesses in my code style, I adopted linters and best practices, which improved my code quality and collaboration within the team.",
+      "difficulty": "medium",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 21,
+      "question": "What is your greatest professional achievement?",
+      "answer": "Leading the migration of a legacy system to microservices architecture stands out. I coordinated cross-team efforts, ensured zero downtime, and reduced deployment time from hours to minutes, greatly improving system reliability.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 22,
+      "question": "Provide an example of a goal you set and achieved.",
+      "answer": "I aimed to improve our CI/CD pipeline efficiency. By implementing parallel builds and caching strategies, I cut build time by 60%, enabling faster releases and improving team productivity.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 23,
+      "question": "How would your previous manager describe you?",
+      "answer": "They would describe me as proactive and detail-oriented. I consistently took initiative to improve processes and ensured high-quality deliverables, earning recognition for driving projects to success.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 24,
+      "question": "What qualities are most important for this role?",
+      "answer": "For this role, critical thinking, effective communication, and adaptability are essential. My track record demonstrates these qualities through successful cross-functional leadership and rapid problem-solving in dynamic environments.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 25,
+      "question": "Describe a time when you had to learn something new quickly.",
+      "answer": "When our team adopted a new framework, I dedicated a weekend to tutorials and built a sample app within two days. This allowed me to assist colleagues and integrate the framework effectively in our project.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 26,
+      "question": "How do you handle tight deadlines?",
+      "answer": "I break down tasks, set clear milestones, and communicate proactively with stakeholders if adjustments are needed. During a product launch, this approach enabled me to meet critical deadlines without compromising quality.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 27,
+      "question": "Have you improved a process?",
+      "answer": "I identified manual testing bottlenecks and introduced automated testing with Jest and Selenium. This reduced release times by 50% and significantly improved test coverage and reliability.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 28,
+      "question": "What are your career aspirations?",
+      "answer": "I aspire to lead technical teams as an engineering manager, driving innovation in [field]. I plan to develop leadership skills and contribute to strategic decision-making, advancing both my career and the organization’s success.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 29,
+      "question": "How do you evaluate success in this role?",
+      "answer": "Success means delivering high-quality solutions on time, collaborating effectively, and continuously improving through feedback. It also includes mentoring junior team members and contributing to a positive team culture.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    },
+    {
+      "id": 30,
+      "question": "Do you have any questions for us?",
+      "answer": "Yes, could you tell me more about the team’s current challenges and priorities? Understanding this will help me see how my experience can best support your goals.",
+      "difficulty": "hard",
+      "section": "General Interview Questions"
+    }
+  ]
+}
