@@ -47,6 +47,14 @@ load_dotenv(PROJECT_ROOT / ".env.local")  # also try .env.local
 
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/interview_prep")
 DB_NAME = MONGODB_URI.rsplit("/", 1)[-1].split("?")[0]  # extract db name from URI
+if not DB_NAME:
+    # Fallback to a sensible default when the URI has no trailing database
+    # component (e.g. mongodb+srv://host/). This prevents pymongo raising
+    # InvalidName errors later on.
+    DB_NAME = "interview_prep"
+    print(
+        "  ⚠  Warning: MONGODB_URI contains no database name; defaulting to 'interview_prep'"
+    )
 
 # File → collection mapping.
 # For interview_questions_* files the domain is injected automatically.
@@ -120,6 +128,48 @@ def build_upsert_ops(records: list, domain: str | None) -> list:
     return ops
 
 
+def ensure_collection_and_index(db, collection_name: str) -> None:
+    """Ensure the collection exists and that a unique index on `id` is present.
+
+    This creates the collection if it doesn't exist (safe to call even when
+    the collection already exists) and attempts to create a unique index on
+    the `id` field. Index creation failures are non-fatal and reported.
+    """
+    try:
+        existing = db.list_collection_names()
+    except Exception:
+        # If list_collection_names fails for some reason, continue and let
+        # the later create_collection call surface the error.
+        existing = []
+
+    if collection_name not in existing:
+        try:
+            db.create_collection(collection_name)
+            print(f"  ℹ  Created collection: {collection_name}")
+        except Exception as e:
+            # If the collection was created concurrently or cannot be created,
+            # log and continue — we'll still obtain the collection handle below.
+            print(f"  ⚠  Could not create collection {collection_name}: {e}")
+
+    collection = db[collection_name]
+    try:
+        # Create a unique index on `id` to support fast upserts.
+        # If the index already exists this is a no-op.
+        indexes = collection.index_information()
+        # Typical index name for single-field ascending index is 'id_1'. Check
+        # indexes to avoid unnecessary creation attempt.
+        if not any(
+            "id" in info.get("key", []) or info_name == "id_1"
+            for info_name, info in indexes.items()
+        ):
+            collection.create_index([("id", 1)], unique=True)
+            print(f"  ℹ  Created unique index on 'id' for {collection_name}")
+    except Exception as e:
+        # If index creation fails (e.g., duplicate keys present), continue but
+        # warn the user — upserts will still work, but may be slower.
+        print(f"  ⚠  Failed to create index on {collection_name}: {e}")
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -155,6 +205,8 @@ def main():
         if not ops:
             continue
 
+        # Ensure the collection exists and has an `id` index before writing.
+        ensure_collection_and_index(db, collection_name)
         collection = db[collection_name]
 
         try:

@@ -51,7 +51,7 @@ export class AptitudeController {
         }
     }
 
-    async handleGetCategories(_req: NextRequest): Promise<NextResponse> {
+    async handleGetCategories(req: NextRequest): Promise<NextResponse> {
         try {
             const data = await aptitudeService.getCategories();
             return ApiResponse.success(data);

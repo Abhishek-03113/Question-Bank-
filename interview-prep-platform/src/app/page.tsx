@@ -1,26 +1,60 @@
-'use client';
-
 import Link from 'next/link';
+import { connectDB } from '@/lib/mongodb';
+import AptitudeQuestion from '@/domains/aptitude/aptitude.model';
+import CsFundamental from '@/domains/cs-fundamentals/cs-fundamentals.model';
+import DsaQuestion from '@/domains/dsa/dsa.model';
+import SqlQuestion from '@/domains/sql/sql.model';
+import HldQuestion from '@/domains/hld/hld.model';
+import LldQuestion from '@/domains/lld/lld.model';
+import InterviewQuestion from '@/domains/interview-questions/interview-questions.model';
+import JobPortal from '@/domains/job-portals/job-portals.model';
+import ColdDm from '@/domains/cold-dms/cold-dms.model';
 
-const DOMAINS = [
-  { icon: '🧮', title: 'Aptitude Questions', meta: '170 questions', badge: 'Quantitative · Logical · Verbal', href: '/aptitude', group: 'Core Technical' },
-  { icon: '💻', title: 'CS Fundamentals', meta: '117 questions', badge: 'DBMS · OS · Networks · OOP', href: '/cs-fundamentals', group: 'Core Technical' },
-  { icon: '🌲', title: 'DSA Questions', meta: '638 questions', badge: 'Top-75 · FAANG · Graph', href: '/dsa', group: 'Core Technical' },
-  { icon: '🗄️', title: 'SQL Questions', meta: '160 questions', badge: 'Theory · Practical', href: '/sql', group: 'Core Technical' },
-  { icon: '🏗️', title: 'HLD Questions', meta: '58 questions', badge: 'System Design', href: '/hld', group: 'Core Technical' },
-  { icon: '🔧', title: 'LLD Questions', meta: '49 questions', badge: 'OOP Design · Patterns', href: '/lld', group: 'Core Technical' },
-  { icon: '🎤', title: 'Interview Questions', meta: '500+ questions · 7 domains', badge: 'AI · Backend · Frontend · Java · ...', href: '/interview-questions/general', group: 'Interview Prep' },
-  { icon: '🌐', title: 'Job Portals', meta: '100 portals', badge: 'General · Remote · Tech', href: '/job-portals', group: 'Interview Prep' },
-  { icon: '✉️', title: 'Cold DM Templates', meta: '104 templates', badge: 'Networking · Follow-up · Referral', href: '/cold-dms', group: 'Interview Prep' },
-];
+async function getStats() {
+  try {
+    await connectDB();
+    const [aptitude, csFundamentals, dsa, sql, hld, lld, interviewQuestions, interviewDomains, jobPortals, coldDms] =
+      await Promise.all([
+        AptitudeQuestion.countDocuments(),
+        CsFundamental.countDocuments(),
+        DsaQuestion.countDocuments(),
+        SqlQuestion.countDocuments(),
+        HldQuestion.countDocuments(),
+        LldQuestion.countDocuments(),
+        InterviewQuestion.countDocuments(),
+        InterviewQuestion.distinct('domain'),
+        JobPortal.countDocuments(),
+        ColdDm.countDocuments(),
+      ]);
+    return { aptitude, csFundamentals, dsa, sql, hld, lld, interviewQuestions, interviewDomains: interviewDomains.length, jobPortals, coldDms };
+  } catch {
+    return { aptitude: 0, csFundamentals: 0, dsa: 0, sql: 0, hld: 0, lld: 0, interviewQuestions: 0, interviewDomains: 0, jobPortals: 0, coldDms: 0 };
+  }
+}
 
-export default function Home() {
+export default async function Home() {
+  const stats = await getStats();
+
+  const total = stats.aptitude + stats.csFundamentals + stats.dsa + stats.sql + stats.hld + stats.lld + stats.interviewQuestions + stats.jobPortals + stats.coldDms;
+
+  const DOMAINS = [
+    { icon: '🧮', title: 'Aptitude Questions', meta: `${stats.aptitude} questions`, badge: 'Quantitative · Logical · Verbal', href: '/aptitude', group: 'Core Technical' },
+    { icon: '💻', title: 'CS Fundamentals', meta: `${stats.csFundamentals} questions`, badge: 'DBMS · OS · Networks · OOP', href: '/cs-fundamentals', group: 'Core Technical' },
+    { icon: '🌲', title: 'DSA Questions', meta: `${stats.dsa} questions`, badge: 'Top-75 · FAANG · Graph', href: '/dsa', group: 'Core Technical' },
+    { icon: '🗄️', title: 'SQL Questions', meta: `${stats.sql} questions`, badge: 'Theory · Practical', href: '/sql', group: 'Core Technical' },
+    { icon: '🏗️', title: 'HLD Questions', meta: `${stats.hld} questions`, badge: 'System Design', href: '/hld', group: 'Core Technical' },
+    { icon: '🔧', title: 'LLD Questions', meta: `${stats.lld} questions`, badge: 'OOP Design · Patterns', href: '/lld', group: 'Core Technical' },
+    { icon: '🎤', title: 'Interview Questions', meta: `${stats.interviewQuestions} questions · ${stats.interviewDomains} domains`, badge: 'AI · Backend · Frontend · Java · ...', href: '/interview-questions/general', group: 'Interview Prep' },
+    { icon: '🌐', title: 'Job Portals', meta: `${stats.jobPortals} portals`, badge: 'General · Remote · Tech', href: '/job-portals', group: 'Interview Prep' },
+    { icon: '✉️', title: 'Cold DM Templates', meta: `${stats.coldDms} templates`, badge: 'Networking · Follow-up · Referral', href: '/cold-dms', group: 'Interview Prep' },
+  ];
+
   const groups = ['Core Technical', 'Interview Prep'];
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="bg-[#1a1a2e] text-white px-6 py-5 rounded-xl mb-6 flex justify-between items-center">
         <h1 className="text-xl font-bold">🎯 Interview Prep Platform</h1>
-        <span className="text-sm opacity-70">9 Resource Domains · 1800+ Questions</span>
+        <span className="text-sm opacity-70">9 Resource Domains · {total.toLocaleString()}+ Questions</span>
       </div>
       {groups.map((group) => (
         <div key={group} className="mb-6">

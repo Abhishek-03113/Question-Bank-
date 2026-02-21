@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env.local
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  seeder:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+    env_file:
+      - ./.env.local
+    depends_on:
+      - mongo
+    entrypoint: [ "/bin/sh", "-c" ]
+    command: "pip install -r scripts/requirements.txt && python scripts/seed.py"
+
+volumes:
+  mongo_data:
