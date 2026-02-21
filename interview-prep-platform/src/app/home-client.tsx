@@ -127,7 +127,7 @@ export default function HomeClient({ stats, total, groups }: { stats: Record<str
                         INTERVIEW PREP
                     </span>
                     <span className="text-sm text-textMuted hidden sm:block font-mono tracking-tight">
-                        {total.toLocaleString()}_QUESTIONS.9_DOMAINS
+                        {total.toLocaleString()} QUESTIONS // 9 DOMAINS
                     </span>
                 </div>
             </motion.header>

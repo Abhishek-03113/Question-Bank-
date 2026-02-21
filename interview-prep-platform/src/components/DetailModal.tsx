@@ -28,19 +28,20 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
         <div
             ref={overlayRef}
             onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#000]/80 backdrop-blur-sm p-4"
         >
-            <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[85vh] flex flex-col">
-                <div className="flex justify-between items-start p-5 border-b">
-                    <h2 className="text-base font-semibold text-gray-900 pr-4 leading-snug">{title}</h2>
+            <div className="bg-bgPrimary border border-accentLime/30 shadow-[0_0_50px_rgba(204,255,0,0.05)] w-full max-w-2xl max-h-[85vh] flex flex-col font-sans">
+                <div className="flex justify-between items-start p-6 border-b border-border">
+                    <h2 className="text-xl font-bold tracking-tight text-white pr-4 leading-snug">{title}</h2>
                     <button
                         onClick={onClose}
-                        className="shrink-0 text-gray-400 hover:text-gray-600 text-xl leading-none mt-0.5"
+                        className="shrink-0 text-textMuted hover:text-accentPink text-2xl leading-none transition-colors"
+                        aria-label="Close modal"
                     >
-                        ✕
+                        ×
                     </button>
                 </div>
-                <div className="overflow-y-auto p-5 flex-1 text-sm text-gray-700 space-y-4">
+                <div className="overflow-y-auto p-6 flex-1 text-sm text-textPrimary space-y-6">
                     {renderContent ? (
                         renderContent(item)
                     ) : (
@@ -55,19 +56,24 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
 function DefaultContent({ item }: { item: Record<string, unknown> }) {
     const skip = new Set(['_id', '__v', 'id']);
     return (
-        <>
+        <div className="space-y-6">
             {Object.entries(item)
                 .filter(([k, v]) => !skip.has(k) && v !== null && v !== undefined && v !== '')
                 .map(([key, value]) => (
                     <div key={key}>
-                        <p className="text-xs font-semibold text-gray-400 uppercase mb-1">
-                            {key.replace(/_/g, ' ')}
+                        <p className="font-mono text-[10px] font-bold tracking-widest uppercase text-accentLime mb-2 flex items-center">
+                            <span className="opacity-50 mr-2">{"//"}</span> {key.replace(/_/g, ' ')}
                         </p>
-                        <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">
+                        <p className="text-[15px] font-medium text-textPrimary leading-relaxed whitespace-pre-wrap">
                             {String(value)}
                         </p>
                     </div>
                 ))}
-        </>
+            {Object.keys(item).length === skip.size && (
+                <div className="text-textMuted font-mono text-xs uppercase tracking-widest py-8 text-center border border-dashed border-border">
+                    {"[ NO READABLE DATA BLOCKS FOUND ]"}
+                </div>
+            )}
+        </div>
     );
 }

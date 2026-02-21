@@ -23,26 +23,26 @@ export default function Pagination({ page, totalPages, onPageChange }: Paginatio
     }
 
     return (
-        <div className="flex justify-center gap-1.5 mt-6">
+        <div className="flex justify-center gap-2 mt-12 pb-12 font-mono">
             <button
                 onClick={() => onPageChange(page - 1)}
                 disabled={page === 1}
-                className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg disabled:opacity-40 hover:bg-gray-50"
+                className="px-4 py-2 border border-border bg-surface text-textPrimary disabled:opacity-20 hover:border-accentLime transition-colors uppercase text-xs tracking-widest disabled:hover:border-border"
             >
-                ‹
+                [ PREV ]
             </button>
             {pages.map((p, i) =>
                 p === '...' ? (
-                    <span key={`dots-${i}`} className="px-2 py-1.5 text-sm text-gray-400">
-                        …
+                    <span key={`dots-${i}`} className="px-4 py-2 text-textMuted text-xs tracking-widest">
+                        ...
                     </span>
                 ) : (
                     <button
                         key={p}
                         onClick={() => onPageChange(p as number)}
-                        className={`px-3 py-1.5 text-sm border rounded-lg ${p === page
-                                ? 'bg-blue-500 text-white border-blue-500'
-                                : 'border-gray-300 hover:bg-gray-50'
+                        className={`px-4 py-2 border text-xs tracking-widest transition-colors ${p === page
+                            ? 'bg-accentLime text-[#000] border-accentLime font-bold'
+                            : 'bg-surface border-border text-textPrimary hover:border-accentLime hover:text-accentLime'
                             }`}
                     >
                         {p}
@@ -52,9 +52,9 @@ export default function Pagination({ page, totalPages, onPageChange }: Paginatio
             <button
                 onClick={() => onPageChange(page + 1)}
                 disabled={page === totalPages}
-                className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg disabled:opacity-40 hover:bg-gray-50"
+                className="px-4 py-2 border border-border bg-surface text-textPrimary disabled:opacity-20 hover:border-accentLime transition-colors uppercase text-xs tracking-widest disabled:hover:border-border"
             >
-                ›
+                [ NEXT ]
             </button>
         </div>
     );

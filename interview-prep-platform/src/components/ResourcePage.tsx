@@ -101,14 +101,15 @@ export default function ResourcePage({
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-50 p-6">
-            <div className="max-w-4xl mx-auto">
-                <div className="flex justify-between items-center mb-5">
-                    <h1 className="text-lg font-bold text-gray-900">
-                        {icon} {title}
+        <div className="min-h-screen theme-bg text-textPrimary p-6 font-sans">
+            <div className="max-w-5xl mx-auto">
+                <div className="flex justify-between items-center mb-8 border-b border-border/60 pb-4">
+                    <h1 className="text-2xl font-black tracking-tight text-textPrimary uppercase">
+                        <span className="mr-3 filter grayscale opacity-80">{icon}</span>
+                        {title}
                     </h1>
-                    <Link href="/" className="text-sm text-blue-500 hover:underline">
-                        ← Back to Dashboard
+                    <Link href="/" className="text-sm font-mono text-accentLime hover:text-white transition-colors uppercase tracking-widest">
+                        // BACK TO ARSENAL
                     </Link>
                 </div>
 
@@ -127,21 +128,27 @@ export default function ResourcePage({
                 />
 
                 {!loading && !error && (
-                    <p className="text-xs text-gray-400 mb-3">
-                        Showing {Math.min((page - 1) * 20 + 1, total)}–{Math.min(page * 20, total)} of {total} results
+                    <p className="text-xs font-mono text-textMuted mb-6 uppercase tracking-widest">
+                        [ SYSTEM ALIGNMENT ] &nbsp;//&nbsp; SHOWING {Math.min((page - 1) * 20 + 1, total)}–{Math.min(page * 20, total)} OF {total}
                     </p>
                 )}
 
                 {loading && (
-                    <div className="text-center py-12 text-gray-400 text-sm">Loading...</div>
+                    <div className="text-center py-20 text-accentLime text-sm font-mono tracking-widest animate-pulse">
+                        INITIALIZING DATA MATRIX...
+                    </div>
                 )}
 
                 {error && (
-                    <div className="text-center py-12 text-red-500 text-sm">{error}</div>
+                    <div className="text-center py-20 text-accentPink text-sm font-mono tracking-widest uppercase border border-accentPink/20 bg-accentPink/5 rounded-lg">
+                        [ ERROR ] // {error}
+                    </div>
                 )}
 
                 {!loading && !error && data.length === 0 && (
-                    <div className="text-center py-12 text-gray-400 text-sm">No results found.</div>
+                    <div className="text-center py-20 text-textMuted text-sm font-mono tracking-widest uppercase opacity-60">
+                        NO ASSETS DEPLOYED.
+                    </div>
                 )}
 
                 {!loading &&

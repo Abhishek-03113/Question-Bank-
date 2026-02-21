@@ -28,20 +28,20 @@ export default function FilterBar({
     extraFilters,
 }: FilterBarProps) {
     return (
-        <div className="flex flex-wrap gap-3 mb-4">
+        <div className="flex flex-wrap gap-4 mb-8">
             <input
                 type="text"
                 value={search}
                 onChange={(e) => onSearchChange(e.target.value)}
-                placeholder="🔍 Search questions..."
-                className="flex-1 min-w-[200px] px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-400"
+                placeholder="EXECUTE SEQUENCE [SEARCH]..."
+                className="flex-1 min-w-[240px] px-4 py-2.5 bg-surface border border-border text-textPrimary placeholder-textMuted/60 font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime focus:ring-1 focus:ring-accentLime/30 transition-all"
             />
             <select
                 value={difficulty}
                 onChange={(e) => onDifficultyChange(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:border-blue-400"
+                className="px-4 py-2.5 bg-surface border border-border text-textPrimary font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime transition-all cursor-pointer"
             >
-                <option value="">All Difficulties</option>
+                <option value="">[ ALL THREAT LEVELS ]</option>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
@@ -53,9 +53,9 @@ export default function FilterBar({
                 <select
                     value={category}
                     onChange={(e) => onCategoryChange(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:border-blue-400"
+                    className="px-4 py-2.5 bg-surface border border-border text-textPrimary font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime transition-all cursor-pointer"
                 >
-                    <option value="">All Categories</option>
+                    <option value="">[ ALL DOMAINS ]</option>
                     {categories.map((c) => (
                         <option key={c} value={c}>
                             {c}
@@ -67,9 +67,9 @@ export default function FilterBar({
                 <select
                     value={section}
                     onChange={(e) => onSectionChange(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:border-blue-400"
+                    className="px-4 py-2.5 bg-surface border border-border text-textPrimary font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime transition-all cursor-pointer"
                 >
-                    <option value="">All Sections</option>
+                    <option value="">[ ALL NODE SECTORS ]</option>
                     {sections.map((s) => (
                         <option key={s} value={s}>
                             {s}
@@ -77,7 +77,11 @@ export default function FilterBar({
                     ))}
                 </select>
             )}
-            {extraFilters}
+            {extraFilters && (
+                <div className="flex gap-4 child:!bg-surface child:!border-border child:!text-textPrimary child:!font-mono child:!text-xs child:!rounded-none child:!px-4 child:!py-2.5 child:!uppercase child:!tracking-widest">
+                    {extraFilters}
+                </div>
+            )}
         </div>
     );
 }
