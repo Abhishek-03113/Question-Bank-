@@ -110,7 +110,13 @@ export class GamificationService {
             xpDelta = 3; // bonus for upgrading viewed → done
             doneDelta = 1;
         } else if (wasDone) {
-            // Idempotent — no-op
+            // Idempotent — question already marked done, no-op
+            return gamificationRepository.findOrCreateProfile(userId);
+        }
+
+        // Early-exit guard: if nothing changed (e.g. duplicate 'viewed' on an
+        // already-viewed question) do not advance streak or lastStudyDate.
+        if (xpDelta === 0 && viewedDelta === 0 && doneDelta === 0) {
             return gamificationRepository.findOrCreateProfile(userId);
         }
 
