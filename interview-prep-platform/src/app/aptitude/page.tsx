@@ -8,6 +8,7 @@ export default function AptitudePage() {
             title="Aptitude Questions"
             icon="🧮"
             apiEndpoint="/api/v1/aptitude"
+            domain="aptitude"
             titleField="question"
             descriptionField="short_description"
             showDifficulty

@@ -8,6 +8,7 @@ export default function CsFundamentalsPage() {
             title="CS Fundamentals"
             icon="💻"
             apiEndpoint="/api/v1/cs-fundamentals"
+            domain="csFundamentals"
             titleField="cs_question"
             showDifficulty
             showCategory
