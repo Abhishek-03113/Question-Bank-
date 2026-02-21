@@ -61,16 +61,16 @@ function DefaultContent({ item }: { item: Record<string, unknown> }) {
                 .filter(([k, v]) => !skip.has(k) && v !== null && v !== undefined && v !== '')
                 .map(([key, value]) => (
                     <div key={key}>
-                        <p className="font-mono text-[10px] font-bold tracking-widest uppercase text-accentLime mb-2 flex items-center">
+                        <p className="font-mono text-[11px] font-bold tracking-widest uppercase text-accentLime mb-3 flex items-center">
                             <span className="opacity-50 mr-2">{"//"}</span> {key.replace(/_/g, ' ')}
                         </p>
-                        <p className="text-[15px] font-medium text-textPrimary leading-relaxed whitespace-pre-wrap">
+                        <div className="text-[15px] font-medium text-textPrimary/90 leading-relaxed whitespace-pre-wrap p-4 bg-surface rounded-md border border-border/60 shadow-inner">
                             {String(value)}
-                        </p>
+                        </div>
                     </div>
                 ))}
             {Object.keys(item).length === skip.size && (
-                <div className="text-textMuted font-mono text-xs uppercase tracking-widest py-8 text-center border border-dashed border-border">
+                <div className="text-textMuted font-mono text-xs uppercase tracking-widest py-8 text-center border border-dashed border-border rounded-md">
                     {"[ NO READABLE DATA BLOCKS FOUND ]"}
                 </div>
             )}

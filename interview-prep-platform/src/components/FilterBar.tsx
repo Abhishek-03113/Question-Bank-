@@ -34,12 +34,12 @@ export default function FilterBar({
                 value={search}
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder="EXECUTE SEQUENCE [SEARCH]..."
-                className="flex-1 min-w-[240px] px-4 py-2.5 bg-surface border border-border text-textPrimary placeholder-textMuted/60 font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime focus:ring-1 focus:ring-accentLime/30 transition-all"
+                className="flex-1 min-w-[240px] px-4 py-3 bg-surface border border-border/80 text-textPrimary placeholder-textMuted/60 font-mono text-[13px] uppercase tracking-widest rounded-md focus:outline-none focus:border-accentLime focus:ring-1 focus:ring-accentLime/30 transition-all shadow-sm"
             />
             <select
                 value={difficulty}
                 onChange={(e) => onDifficultyChange(e.target.value)}
-                className="px-4 py-2.5 bg-surface border border-border text-textPrimary font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime transition-all cursor-pointer"
+                className="px-4 py-3 bg-surface border border-border/80 text-textPrimary font-mono text-[13px] uppercase tracking-widest rounded-md focus:outline-none focus:border-accentLime transition-all cursor-pointer shadow-sm"
             >
                 <option value="">[ ALL THREAT LEVELS ]</option>
                 <option value="easy">Easy</option>
@@ -53,7 +53,7 @@ export default function FilterBar({
                 <select
                     value={category}
                     onChange={(e) => onCategoryChange(e.target.value)}
-                    className="px-4 py-2.5 bg-surface border border-border text-textPrimary font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime transition-all cursor-pointer"
+                    className="px-4 py-3 bg-surface border border-border/80 text-textPrimary font-mono text-[13px] uppercase tracking-widest rounded-md focus:outline-none focus:border-accentLime transition-all cursor-pointer shadow-sm"
                 >
                     <option value="">[ ALL DOMAINS ]</option>
                     {categories.map((c) => (
@@ -67,7 +67,7 @@ export default function FilterBar({
                 <select
                     value={section}
                     onChange={(e) => onSectionChange(e.target.value)}
-                    className="px-4 py-2.5 bg-surface border border-border text-textPrimary font-mono text-xs uppercase tracking-widest rounded-none focus:outline-none focus:border-accentLime transition-all cursor-pointer"
+                    className="px-4 py-3 bg-surface border border-border/80 text-textPrimary font-mono text-[13px] uppercase tracking-widest rounded-md focus:outline-none focus:border-accentLime transition-all cursor-pointer shadow-sm"
                 >
                     <option value="">[ ALL NODE SECTORS ]</option>
                     {sections.map((s) => (
@@ -78,7 +78,7 @@ export default function FilterBar({
                 </select>
             )}
             {extraFilters && (
-                <div className="flex gap-4 child:!bg-surface child:!border-border child:!text-textPrimary child:!font-mono child:!text-xs child:!rounded-none child:!px-4 child:!py-2.5 child:!uppercase child:!tracking-widest">
+                <div className="flex gap-4 child:!bg-surface child:!border-border/80 child:!text-textPrimary child:!font-mono child:!text-[13px] child:!rounded-md child:!px-4 child:!py-3 child:!uppercase child:!tracking-widest child:!shadow-sm">
                     {extraFilters}
                 </div>
             )}
