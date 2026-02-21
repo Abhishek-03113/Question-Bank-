@@ -31,6 +31,15 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
 
     const title = (item[titleField] || item.title || item.Title || 'Detail') as string;
 
+    // Find the main "question" or "description" field to show unconditionally
+    const descriptionKey = Object.keys(item).find(key =>
+        ['description', 'question', 'cs_question', 'Description', 'Question'].includes(key)
+    );
+    const descriptionText = descriptionKey ? item[descriptionKey] as string : null;
+
+    // Filter out the fields we already displayed from the remaining content
+    const skipFields = new Set(['_id', '__v', 'id', titleField, 'title', 'Title', ...(descriptionKey ? [descriptionKey] : [])]);
+
     return (
         <div
             ref={overlayRef}
@@ -49,8 +58,19 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
                     </button>
                 </div>
                 <div className="overflow-y-auto p-6 sm:p-8 flex-1 text-base text-textPrimary">
+                    {descriptionText && (
+                        <div className="mb-8 p-6 bg-surface/50 border-l-4 border-accentLime/50 rounded-r-md">
+                            <h3 className="font-mono text-[11px] font-bold tracking-widest uppercase text-textMuted mb-3 flex items-center">
+                                <span className="opacity-50 mr-2">{"//"}</span> PROBLEM DESCRIPTION
+                            </h3>
+                            <div className="text-base font-medium text-textPrimary/90 leading-relaxed whitespace-pre-wrap">
+                                {descriptionText}
+                            </div>
+                        </div>
+                    )}
+
                     {!showAnswer ? (
-                        <div className="h-full min-h-[30vh] flex flex-col items-center justify-center">
+                        <div className="py-8 flex flex-col items-center justify-center">
                             <button
                                 onClick={() => setShowAnswer(true)}
                                 className="px-8 py-4 bg-accentLime/10 text-accentLime border border-accentLime hover:bg-accentLime hover:text-bgPrimary text-sm font-mono font-bold uppercase tracking-widest transition-all focus:outline-none"
@@ -59,11 +79,11 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
                             </button>
                         </div>
                     ) : (
-                        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 border-t border-border/50 pt-8 mt-2">
                             {renderContent ? (
                                 renderContent(item)
                             ) : (
-                                <DefaultContent item={item} />
+                                <DefaultContent item={item} skipFields={skipFields} />
                             )}
                         </div>
                     )}
@@ -73,8 +93,8 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
     );
 }
 
-function DefaultContent({ item }: { item: Record<string, unknown> }) {
-    const skip = new Set(['_id', '__v', 'id']);
+function DefaultContent({ item, skipFields }: { item: Record<string, unknown>, skipFields?: Set<string> }) {
+    const skip = skipFields || new Set(['_id', '__v', 'id']);
     return (
         <div className="space-y-6">
             {Object.entries(item)
