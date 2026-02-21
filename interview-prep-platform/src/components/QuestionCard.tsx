@@ -54,7 +54,7 @@ export default function QuestionCard({
                             {section}
                         </span>
                     )}
-                    {tags.map((tag) => (
+                    {Array.isArray(tags) && tags.map((tag) => (
                         <span key={tag} className="font-mono uppercase text-[10px] tracking-widest px-2.5 py-1 border bg-surface border-border text-textMuted">
                             {tag}
                         </span>
