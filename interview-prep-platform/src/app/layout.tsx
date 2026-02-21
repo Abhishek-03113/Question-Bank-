@@ -16,6 +16,7 @@ const jetbrains = JetBrains_Mono({
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Interview Prep Platform",
@@ -35,6 +36,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
           <ThemeToggle />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
