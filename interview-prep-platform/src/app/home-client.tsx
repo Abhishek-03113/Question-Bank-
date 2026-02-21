@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
+import GamificationDashboard from '@/components/GamificationDashboard';
+import { useGamification } from '@/hooks/useGamification';
 
 const DOMAIN_CONFIG = [
     {
@@ -113,6 +115,8 @@ const itemVariants: Variants = {
 };
 
 export default function HomeClient({ stats, total, groups }: { stats: Record<string, number>; total: number; groups: readonly string[] }) {
+    const { profile, loading: gamLoading } = useGamification();
+
     return (
         <div className="min-h-screen theme-bg text-textPrimary">
             {/* Nav bar */}
@@ -162,6 +166,11 @@ export default function HomeClient({ stats, total, groups }: { stats: Record<str
                         </Link>
                     </motion.div>
                 </div>
+
+                {/* Gamification Dashboard */}
+                <motion.div variants={itemVariants} className="mb-16">
+                    <GamificationDashboard profile={profile} loading={gamLoading} />
+                </motion.div>
 
                 {/* Groups */}
                 {groups.map((group) => (

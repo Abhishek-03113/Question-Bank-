@@ -33,6 +33,7 @@ export default function LldPage() {
             title="LLD Questions"
             icon="🔧"
             apiEndpoint="/api/v1/lld"
+            domain="lld"
             titleField="question"
             showDifficulty
             showSection

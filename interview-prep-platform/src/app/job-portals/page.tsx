@@ -5,7 +5,9 @@ import Link from 'next/link';
 import FilterBar from '@/components/FilterBar';
 import Pagination from '@/components/Pagination';
 import DetailModal from '@/components/DetailModal';
+import GamificationBar from '@/components/GamificationBar';
 import { useListData } from '@/hooks/useListData';
+import { useGamification } from '@/hooks/useGamification';
 
 interface JobPortal {
     _id: string;
@@ -39,8 +41,14 @@ export default function JobPortalsPage() {
 
     const { data, total, totalPages, loading, error } = useListData<JobPortal>('/api/v1/job-portals', params);
     const { data: categories } = useListData<string>('/api/v1/job-portals/categories', {});
+    const { profile, loading: gamLoading, recordActivity } = useGamification();
 
     const handleSearchChange = useCallback((val: string) => { setSearch(val); setPage(1); }, []);
+
+    const handleView = useCallback((portal: JobPortal) => {
+        setSelectedItem(portal as unknown as Record<string, unknown>);
+        void recordActivity(`jobPortals-${portal.id ?? portal._id}`, 'jobPortals', 'viewed');
+    }, [recordActivity]);
 
     return (
         <div className="min-h-screen bg-bgPrimary text-textPrimary p-6 relative overflow-hidden">
@@ -48,13 +56,17 @@ export default function JobPortalsPage() {
             <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-accentLime/5 to-transparent pointer-events-none" />
 
             <div className="max-w-4xl mx-auto relative z-10">
-                <div className="flex justify-between items-center mb-10 border-b border-border/50 pb-6">
+                <div className="flex justify-between items-center mb-6 border-b border-border/50 pb-6">
                     <h1 className="text-2xl font-black text-textPrimary tracking-tight flex items-center">
                         <span className="mr-3 opacity-80">🌐</span> JOB PORTALS
                     </h1>
                     <Link href="/" className="font-mono text-[11px] font-bold tracking-widest uppercase text-textMuted hover:text-accentLime transition-colors">
                         {"// BACK TO ARSENAL"}
                     </Link>
+                </div>
+
+                <div className="mb-6">
+                    <GamificationBar profile={profile} loading={gamLoading} domain="jobPortals" />
                 </div>
 
                 <div className="flex flex-wrap gap-3 mb-6">
@@ -129,7 +141,7 @@ export default function JobPortalsPage() {
                                 </a>
                             )}
                             <button
-                                onClick={() => setSelectedItem(portal as unknown as Record<string, unknown>)}
+                                onClick={() => handleView(portal)}
                                 className="px-4 py-2 bg-surface hover:bg-surface/80 border border-border/80 hover:border-accentPink/50 text-textMuted hover:text-accentPink font-mono text-[11px] uppercase font-bold tracking-widest rounded-md transition-all text-center"
                             >
                                 [ VIEW ]

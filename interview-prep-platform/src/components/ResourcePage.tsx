@@ -6,12 +6,16 @@ import FilterBar from './FilterBar';
 import QuestionCard from './QuestionCard';
 import Pagination from './Pagination';
 import DetailModal from './DetailModal';
+import GamificationBar from './GamificationBar';
 import { useListData } from '@/hooks/useListData';
+import { useGamification } from '@/hooks/useGamification';
 
 interface ResourcePageProps {
     title: string;
     icon: string;
     apiEndpoint: string;
+    /** Domain key used for gamification progress tracking. Optional — gamification is disabled if omitted. */
+    domain?: string;
     titleField?: string;
     descriptionField?: string;
     showDifficulty?: boolean;
@@ -38,6 +42,7 @@ export default function ResourcePage({
     title,
     icon,
     apiEndpoint,
+    domain,
     titleField = 'question',
     descriptionField,
     showDifficulty = true,
@@ -56,6 +61,8 @@ export default function ResourcePage({
     const [section, setSection] = useState('');
     const [extraFilterState, setExtraFilterState] = useState<Record<string, string>>({});
     const [selectedItem, setSelectedItem] = useState<Record<string, unknown> | null>(null);
+
+    const { profile, loading: gamLoading, recordActivity, isDone } = useGamification();
 
     const params = {
         page,
@@ -100,10 +107,30 @@ export default function ResourcePage({
         setPage(1);
     }, []);
 
+    const handleView = useCallback(
+        (item: Record<string, unknown>) => {
+            setSelectedItem(item);
+            if (domain) {
+                const qId = `${domain}-${item.id ?? item._id}`;
+                void recordActivity(qId, domain, 'viewed');
+            }
+        },
+        [domain, recordActivity]
+    );
+
+    const handleMarkDone = useCallback(
+        (item: Record<string, unknown>) => {
+            if (!domain) return;
+            const qId = `${domain}-${item.id ?? item._id}`;
+            void recordActivity(qId, domain, 'done');
+        },
+        [domain, recordActivity]
+    );
+
     return (
         <div className="min-h-screen theme-bg text-textPrimary p-6 font-sans">
             <div className="max-w-5xl mx-auto">
-                <div className="flex justify-between items-center mb-8 border-b border-border/60 pb-4">
+                <div className="flex justify-between items-center mb-6 border-b border-border/60 pb-4">
                     <h1 className="text-2xl font-black tracking-tight text-textPrimary uppercase">
                         <span className="mr-3 filter grayscale opacity-80">{icon}</span>
                         {title}
@@ -112,6 +139,13 @@ export default function ResourcePage({
                         // BACK TO ARSENAL
                     </Link>
                 </div>
+
+                {/* Gamification Bar */}
+                {domain && (
+                    <div className="mb-6">
+                        <GamificationBar profile={profile} loading={gamLoading} domain={domain} />
+                    </div>
+                )}
 
                 <FilterBar
                     search={search}
@@ -162,11 +196,14 @@ export default function ResourcePage({
                                 category: item.category as string | undefined,
                                 section: item.section as string | undefined,
                             };
+                        const questionId = domain ? `${domain}-${item.id ?? item._id}` : undefined;
                         return (
                             <QuestionCard
                                 key={(item._id as string) || idx}
                                 {...cardProps}
-                                onView={() => setSelectedItem(item)}
+                                onView={() => handleView(item)}
+                                onMarkDone={domain ? () => handleMarkDone(item) : undefined}
+                                isDone={questionId ? isDone(questionId) : undefined}
                             />
                         );
                     })}

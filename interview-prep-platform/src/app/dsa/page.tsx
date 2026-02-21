@@ -8,6 +8,7 @@ export default function DsaPage() {
             title="DSA Questions"
             icon="🌲"
             apiEndpoint="/api/v1/dsa"
+            domain="dsa"
             titleField="title"
             descriptionField="description"
             showDifficulty

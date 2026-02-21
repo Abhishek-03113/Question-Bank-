@@ -4,7 +4,9 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import Pagination from '@/components/Pagination';
 import DetailModal from '@/components/DetailModal';
+import GamificationBar from '@/components/GamificationBar';
 import { useListData } from '@/hooks/useListData';
+import { useGamification } from '@/hooks/useGamification';
 
 interface ColdDm {
     _id: string;
@@ -30,8 +32,14 @@ export default function ColdDmsPage() {
 
     const { data, total, totalPages, loading, error } = useListData<ColdDm>('/api/v1/cold-dms', params);
     const { data: categories } = useListData<string>('/api/v1/cold-dms/categories', {});
+    const { profile, loading: gamLoading, recordActivity } = useGamification();
 
     const handleSearchChange = useCallback((val: string) => { setSearch(val); setPage(1); }, []);
+
+    const handleView = useCallback((dm: ColdDm) => {
+        setSelectedItem(dm as unknown as Record<string, unknown>);
+        void recordActivity(`coldDms-${dm.id ?? dm._id}`, 'coldDms', 'viewed');
+    }, [recordActivity]);
 
     const handleCopy = async (text: string, id: string) => {
         await navigator.clipboard.writeText(text);
@@ -45,13 +53,17 @@ export default function ColdDmsPage() {
             <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-accentPink/5 to-transparent pointer-events-none" />
 
             <div className="max-w-4xl mx-auto relative z-10">
-                <div className="flex justify-between items-center mb-10 border-b border-border/50 pb-6">
+                <div className="flex justify-between items-center mb-6 border-b border-border/50 pb-6">
                     <h1 className="text-2xl font-black text-textPrimary tracking-tight flex items-center">
                         <span className="mr-3 opacity-80">✉️</span> COLD DM TEMPLATES
                     </h1>
                     <Link href="/" className="font-mono text-[11px] font-bold tracking-widest uppercase text-textMuted hover:text-accentPink transition-colors">
                         {"// BACK TO ARSENAL"}
                     </Link>
+                </div>
+
+                <div className="mb-6">
+                    <GamificationBar profile={profile} loading={gamLoading} domain="coldDms" />
                 </div>
 
                 <div className="flex flex-wrap gap-3 mb-6">
@@ -106,7 +118,7 @@ export default function ColdDmsPage() {
                                     {copiedId === dm.id ? '[ ✓ COPIED ]' : '[ COPY ]'}
                                 </button>
                                 <button
-                                    onClick={() => setSelectedItem(dm as unknown as Record<string, unknown>)}
+                                    onClick={() => handleView(dm)}
                                     className="px-4 py-2 bg-surface hover:bg-surface/80 border border-border/80 hover:border-accentPink/50 text-textMuted hover:text-accentPink font-mono text-[11px] uppercase font-bold tracking-widest rounded-md transition-all text-center"
                                 >
                                     [ VIEW ]

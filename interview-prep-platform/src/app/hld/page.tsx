@@ -33,6 +33,7 @@ export default function HldPage() {
             title="HLD Questions"
             icon="🏗️"
             apiEndpoint="/api/v1/hld"
+            domain="hld"
             titleField="question"
             showDifficulty
             showSection

@@ -8,6 +8,7 @@ export default function SqlPage() {
             title="SQL Questions"
             icon="🗄️"
             apiEndpoint="/api/v1/sql"
+            domain="sql"
             titleField="question"
             showDifficulty
             showCategory
