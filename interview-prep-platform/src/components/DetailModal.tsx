@@ -38,7 +38,11 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
     const descriptionText = descriptionKey ? item[descriptionKey] as string : null;
 
     // Filter out the fields we already displayed from the remaining content
-    const skipFields = new Set(['_id', '__v', 'id', titleField, 'title', 'Title', ...(descriptionKey ? [descriptionKey] : [])]);
+    const skipFields = new Set([
+        '_id', '__v', 'id', 'created_at', 'updated_at', 'createdAt', 'updatedAt',
+        titleField, 'title', 'Title',
+        ...(descriptionKey ? [descriptionKey] : [])
+    ]);
 
     return (
         <div
@@ -48,7 +52,7 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
         >
             <div className="bg-bgPrimary border border-accentLime/30 shadow-[0_0_50px_rgba(204,255,0,0.05)] w-full max-w-4xl max-h-[85vh] flex flex-col font-sans">
                 <div className="flex justify-between items-start p-6 sm:p-8 border-b border-border">
-                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white pr-4 leading-snug">{title}</h2>
+                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-textPrimary pr-4 leading-snug">{title}</h2>
                     <button
                         onClick={onClose}
                         className="shrink-0 text-textMuted hover:text-accentPink text-2xl leading-none transition-colors"
@@ -94,7 +98,7 @@ export default function DetailModal({ item, onClose, titleField = 'question', re
 }
 
 function DefaultContent({ item, skipFields }: { item: Record<string, unknown>, skipFields?: Set<string> }) {
-    const skip = skipFields || new Set(['_id', '__v', 'id']);
+    const skip = skipFields || new Set(['_id', '__v', 'id', 'created_at', 'updated_at', 'createdAt', 'updatedAt']);
     return (
         <div className="space-y-6">
             {Object.entries(item)
@@ -104,7 +108,7 @@ function DefaultContent({ item, skipFields }: { item: Record<string, unknown>, s
                         <p className="font-mono text-[11px] font-bold tracking-widest uppercase text-accentLime mb-3 flex items-center">
                             <span className="opacity-50 mr-2">{"//"}</span> {key.replace(/_/g, ' ')}
                         </p>
-                        <div className="text-[15px] font-medium text-textPrimary/90 leading-relaxed whitespace-pre-wrap p-4 bg-surface rounded-md border border-border/60 shadow-inner">
+                        <div className="text-[17px] font-medium text-textPrimary leading-loose whitespace-pre-wrap p-5 md:p-6 bg-surface rounded-md border border-border/60 shadow-inner">
                             {String(value)}
                         </div>
                     </div>

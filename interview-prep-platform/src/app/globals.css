@@ -4,7 +4,8 @@
 
 @layer base {
 
-  :root {
+  :root,
+  .dark {
     --bg-primary: 15, 15, 17;
     /* #0f0f11 */
     --text-primary: 240, 240, 240;
@@ -21,6 +22,24 @@
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 16px;
+  }
+
+  .light {
+    --bg-primary: 250, 250, 252;
+    /* Off-white background */
+    --text-primary: 20, 20, 20;
+    /* Dark gray text */
+    --text-muted: 100, 100, 105;
+
+    --accent-lime: 120, 180, 0;
+    /* Darker lime for contrast on white */
+    --accent-pink: 220, 0, 70;
+    /* Darker pink */
+
+    --surface: 255, 255, 255;
+    /* Pure white cards */
+    --border: 220, 220, 225;
+    /* Light gray borders */
   }
 
   html,

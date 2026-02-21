@@ -14,6 +14,9 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
 export const metadata: Metadata = {
   title: "Interview Prep Platform",
   description: "Modularized Job Interview Preparation Platform — 1800+ Questions, 9 Domains",
@@ -25,11 +28,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${bricolage.variable} ${jetbrains.variable} font-sans antialiased theme-bg text-theme-text`}
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+          <ThemeToggle />
+        </ThemeProvider>
       </body>
     </html>
   );
