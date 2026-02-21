@@ -1,0 +1,178 @@
+'use client';
+
+import { useState, useCallback } from 'react';
+import Link from 'next/link';
+import FilterBar from './FilterBar';
+import QuestionCard from './QuestionCard';
+import Pagination from './Pagination';
+import DetailModal from './DetailModal';
+import { useListData } from '@/hooks/useListData';
+
+interface ResourcePageProps {
+    title: string;
+    icon: string;
+    apiEndpoint: string;
+    titleField?: string;
+    descriptionField?: string;
+    showDifficulty?: boolean;
+    showCategory?: boolean;
+    showSection?: boolean;
+    categoryFilterLabel?: string;
+    sectionFilterLabel?: string;
+    categoriesEndpoint?: string;
+    sectionsEndpoint?: string;
+    extraFilters?: (filters: Record<string, string>, setFilters: (f: Record<string, string>) => void) => React.ReactNode;
+    renderModalContent?: (item: Record<string, unknown>) => React.ReactNode;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getCardProps?: (item: any) => {
+        title: string;
+        description?: string;
+        difficulty?: string;
+        category?: string;
+        section?: string;
+        tags?: string[];
+    };
+}
+
+export default function ResourcePage({
+    title,
+    icon,
+    apiEndpoint,
+    titleField = 'question',
+    descriptionField,
+    showDifficulty = true,
+    showCategory = false,
+    showSection = false,
+    categoriesEndpoint,
+    sectionsEndpoint,
+    extraFilters,
+    renderModalContent,
+    getCardProps,
+}: ResourcePageProps) {
+    const [page, setPage] = useState(1);
+    const [search, setSearch] = useState('');
+    const [difficulty, setDifficulty] = useState('');
+    const [category, setCategory] = useState('');
+    const [section, setSection] = useState('');
+    const [extraFilterState, setExtraFilterState] = useState<Record<string, string>>({});
+    const [selectedItem, setSelectedItem] = useState<Record<string, unknown> | null>(null);
+
+    const params = {
+        page,
+        limit: 20,
+        ...(search && { search }),
+        ...(difficulty && { difficulty }),
+        ...(category && { category }),
+        ...(section && { section }),
+        ...extraFilterState,
+    };
+
+    const { data, total, totalPages, loading, error } = useListData<Record<string, unknown>>(
+        apiEndpoint,
+        params
+    );
+
+    const { data: categories } = useListData<string>(categoriesEndpoint || '', {});
+    const { data: sections } = useListData<string>(sectionsEndpoint || '', {});
+
+    const handleSearchChange = useCallback((val: string) => {
+        setSearch(val);
+        setPage(1);
+    }, []);
+
+    const handleDifficultyChange = useCallback((val: string) => {
+        setDifficulty(val);
+        setPage(1);
+    }, []);
+
+    const handleCategoryChange = useCallback((val: string) => {
+        setCategory(val);
+        setPage(1);
+    }, []);
+
+    const handleSectionChange = useCallback((val: string) => {
+        setSection(val);
+        setPage(1);
+    }, []);
+
+    const handleExtraFilterChange = useCallback((f: Record<string, string>) => {
+        setExtraFilterState(f);
+        setPage(1);
+    }, []);
+
+    return (
+        <div className="min-h-screen bg-gray-50 p-6">
+            <div className="max-w-4xl mx-auto">
+                <div className="flex justify-between items-center mb-5">
+                    <h1 className="text-lg font-bold text-gray-900">
+                        {icon} {title}
+                    </h1>
+                    <Link href="/" className="text-sm text-blue-500 hover:underline">
+                        ← Back to Dashboard
+                    </Link>
+                </div>
+
+                <FilterBar
+                    search={search}
+                    onSearchChange={handleSearchChange}
+                    difficulty={showDifficulty ? difficulty : ''}
+                    onDifficultyChange={showDifficulty ? handleDifficultyChange : () => { }}
+                    category={showCategory ? category : undefined}
+                    onCategoryChange={showCategory ? handleCategoryChange : undefined}
+                    categories={showCategory ? (categories as string[]) : []}
+                    section={showSection ? section : undefined}
+                    onSectionChange={showSection ? handleSectionChange : undefined}
+                    sections={showSection ? (sections as string[]) : []}
+                    extraFilters={extraFilters ? extraFilters(extraFilterState, handleExtraFilterChange) : undefined}
+                />
+
+                {!loading && !error && (
+                    <p className="text-xs text-gray-400 mb-3">
+                        Showing {Math.min((page - 1) * 20 + 1, total)}–{Math.min(page * 20, total)} of {total} results
+                    </p>
+                )}
+
+                {loading && (
+                    <div className="text-center py-12 text-gray-400 text-sm">Loading...</div>
+                )}
+
+                {error && (
+                    <div className="text-center py-12 text-red-500 text-sm">{error}</div>
+                )}
+
+                {!loading && !error && data.length === 0 && (
+                    <div className="text-center py-12 text-gray-400 text-sm">No results found.</div>
+                )}
+
+                {!loading &&
+                    data.map((item, idx) => {
+                        const cardProps = getCardProps
+                            ? getCardProps(item)
+                            : {
+                                title: (item[titleField] || item.Title || '') as string,
+                                description: descriptionField ? (item[descriptionField] as string) : undefined,
+                                difficulty: item.difficulty as string | undefined,
+                                category: item.category as string | undefined,
+                                section: item.section as string | undefined,
+                            };
+                        return (
+                            <QuestionCard
+                                key={(item._id as string) || idx}
+                                {...cardProps}
+                                onView={() => setSelectedItem(item)}
+                            />
+                        );
+                    })}
+
+                <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+            </div>
+
+            <DetailModal
+                item={selectedItem}
+                onClose={() => setSelectedItem(null)}
+                titleField={titleField}
+                renderContent={renderModalContent}
+            />
+        </div>
+    );
+}
