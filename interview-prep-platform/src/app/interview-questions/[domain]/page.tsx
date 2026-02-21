@@ -41,11 +41,18 @@ export default function InterviewQuestionsPage({ params }: InterviewQuestionsPag
     const domainLabel = domain.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
     return (
-        <div className="min-h-screen bg-gray-50 p-6">
-            <div className="max-w-4xl mx-auto">
-                <div className="flex justify-between items-center mb-5">
-                    <h1 className="text-lg font-bold text-gray-900">🎤 Interview Questions — {domainLabel}</h1>
-                    <Link href="/" className="text-sm text-blue-500 hover:underline">← Back to Dashboard</Link>
+        <div className="min-h-screen bg-bgPrimary text-textPrimary p-6 relative overflow-hidden">
+            {/* Background effects matching Home */}
+            <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-accentLime/5 to-transparent pointer-events-none" />
+
+            <div className="max-w-4xl mx-auto relative z-10">
+                <div className="flex justify-between items-center mb-10 border-b border-border/50 pb-6">
+                    <h1 className="text-2xl font-black text-textPrimary tracking-tight flex items-center uppercase">
+                        <span className="mr-3 opacity-80">🎤</span> {domainLabel} QUESTIONS
+                    </h1>
+                    <Link href="/" className="font-mono text-[11px] font-bold tracking-widest uppercase text-textMuted hover:text-accentLime transition-colors">
+                        {"// BACK TO ARSENAL"}
+                    </Link>
                 </div>
 
                 <DomainNav activeDomain={domain} />
@@ -58,8 +65,8 @@ export default function InterviewQuestionsPage({ params }: InterviewQuestionsPag
                 />
 
                 {!loading && !error && (
-                    <p className="text-xs text-gray-400 mb-3">
-                        Showing {Math.min((page - 1) * 20 + 1, total)}–{Math.min(page * 20, total)} of {total} results
+                    <p className="font-mono text-[10px] font-bold tracking-widest uppercase text-textMuted mt-4 mb-6 flex items-center">
+                        <span className="opacity-50 mr-2">[ SYSTEM ]</span> SHOWING {Math.min((page - 1) * 20 + 1, total)}–{Math.min(page * 20, total)} OF {total}
                     </p>
                 )}
 
