@@ -1,3 +1,8 @@
+// Force per-request rendering so MongoDB counts are always fresh and never
+// baked into a static build (which would show 0 if the DB was unreachable
+// at build time).
+export const dynamic = 'force-dynamic';
+
 import { connectDB } from '@/lib/mongodb';
 import AptitudeQuestion from '@/domains/aptitude/aptitude.model';
 import CsFundamental from '@/domains/cs-fundamentals/cs-fundamentals.model';
@@ -27,7 +32,8 @@ async function getStats() {
         ColdDm.countDocuments(),
       ]);
     return { aptitude, csFundamentals, dsa, sql, hld, lld, interviewQuestions, interviewDomains: interviewDomains.length, jobPortals, coldDms };
-  } catch {
+  } catch (err) {
+    console.error('[getStats] Failed to fetch question counts from MongoDB:', err);
     return { aptitude: 0, csFundamentals: 0, dsa: 0, sql: 0, hld: 0, lld: 0, interviewQuestions: 0, interviewDomains: 0, jobPortals: 0, coldDms: 0 };
   }
 }
